@@ -6,7 +6,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 HELLO ZHONG
 public class character extends JFrame{
-  JButton character = new JButton("kev");
+  JButton character = new JButton("carly");
   public character() {
 	  character.addActionListener(new ActionListener() {
 
