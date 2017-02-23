@@ -6,6 +6,7 @@ import javafx.scene.image.*;
 import javafx.scene.canvas.*;
 import javafx.event.*;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.KeyCode;
 
 
 
@@ -21,25 +22,19 @@ public class keyboardevent extends Application {
       canvas.getGraphicsContext2D();
     draw(g, 175);
     stage.show();
-    /*road.setOnKeyPressed(this::arrow);*/
+    road.setOnKeyPressed(this::handle);
   }
 
   private void draw(GraphicsContext g, int x) {
-    g.setFill(white);
-    g.fillRect(0, 0, 400, 300);
     g.fillOval(x, 175, 50, 50);
   }
 
-  /*private void arrow(KeyEvent event) {
-    KeyEvent keypressed = (char)event.getCode();
-    switch(event.getCode()){
-      case KeyEvent.LEFT:
-        draw(g, 100);
-        break;
-      case KeyEvent.RIGHT:
-        move=Move.Right;
-        break;
-    System.out.println(event.getCode());
+  public void handle(KeyEvent event) {
+    if(event.getCode() == KeyCode.RIGHT) {
+      System.out.println("RIGHT");
     }
-  }*/
+    else if(event.getCode() == KeyCode.LEFT) {
+      System.out.println("LEFT");
+    }
+  }
 }
