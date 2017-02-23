@@ -1,54 +1,48 @@
 package groupProjectUI;
 
-import java.awt.BorderLayout;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-
-import groupProject.characterBody;
+import javafx.application.*;
+import javafx.stage.*;
+import javafx.scene.*;
+import javafx.scene.control.*;
 
 enum Move{
-	Up,Down,Left,Right;
+	Left,Right;
 }
 
-@SuppressWarnings("serial")
-public class character extends JPanel{
+
+public class character extends Application{
 	private Move move;
-	JButton star = new JButton("oli");
+	Button star = new Button("oli");
 	//LinkedList star = new LinkedList();
 	public character() {
-		
+
 		// we need create a character:here!!and then add keylistener to him
 		// to be finished------>character
-		addKeyListener(new KeyListener() {
-			
+		static EventType<keyPressed> () {
+
+		}
+		setOnAction(new KeyListener()) {
+
 			@Override
 			public void keyTyped(KeyEvent e) {
 				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void keyReleased(KeyEvent e) {
 				// TODO Auto-generated method stub
-				
-			}	
+
+			}
 			@Override
 			// I search from java API that keyEvent has keyPressed function,VK_UP(reprent up)
-			// and I can also transfer into code by getKeyCode(),it can be comparabled. 
+			// and I can also transfer into code by getKeyCode(),it can be comparabled.
 			public void keyPressed(KeyEvent e) {
-				switch(e.getKeyCode()){
-					case KeyEvent.VK_UP:
-						move=Move.Up;
-						break;
-					case KeyEvent.VK_DOWN:
-						move=Move.Down;
-						break;
-					case KeyEvent.VK_LEFT:
+				switch(e.getCode()){
+					case KeyEvent.LEFT:
 						move=Move.Left;
 						break;
-					case KeyEvent.VK_RIGHT:
+					case KeyEvent.RIGHT:
 						move=Move.Right;
 						break;
 				}
@@ -56,7 +50,7 @@ public class character extends JPanel{
 		});
 		add(BorderLayout.SOUTH,star);
 	}
-	void doMove(){	
+	void doMove(){
 		// when he moves,it will change his position in characterBody by creating construction
 		characterBody star = null;
 		switch(move){
