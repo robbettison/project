@@ -10,7 +10,7 @@ import javafx.scene.input.KeyCode;
 
 
 
-public class keyboardevent extends Application {
+public class keyboardevent2 extends Application {
   private int n = 0;
   int x=175;
   Canvas canvas = new Canvas(400, 300);
@@ -34,12 +34,15 @@ public class keyboardevent extends Application {
   public void handle(KeyEvent event) {
     if(event.getCode() == KeyCode.RIGHT) {
       System.out.println("RIGHT");
-      x+=10;
+      x+=50;
       g.clearRect(0, 0, 400, 300);
       draw(g, x);
     }
     else if(event.getCode() == KeyCode.LEFT) {
       System.out.println("LEFT");
+      x-=50;
+      g.clearRect(0, 0, 400, 300);
+      draw(g, x);
     }
   }
 }
