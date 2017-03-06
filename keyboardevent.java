@@ -12,15 +12,15 @@ import javafx.scene.input.KeyCode;
 
 public class keyboardevent extends Application {
   private int n = 0;
+  int x=175;
+  Canvas canvas = new Canvas(400, 300);
+  GraphicsContext g = canvas.getGraphicsContext2D();
 
   public void start (Stage stage) {
-    Canvas canvas = new Canvas(400, 300);
     Group root = new Group(canvas);
     Scene road = new Scene(root);
     stage.setScene(road);
-    GraphicsContext g =
-      canvas.getGraphicsContext2D();
-    draw(g, 175);
+    draw(g, x);
     stage.show();
     road.setOnKeyPressed(this::handle);
   }
@@ -29,9 +29,14 @@ public class keyboardevent extends Application {
     g.fillOval(x, 175, 50, 50);
   }
 
+
+
   public void handle(KeyEvent event) {
     if(event.getCode() == KeyCode.RIGHT) {
       System.out.println("RIGHT");
+      x+=10;
+      g.clearRect(0, 0, 400, 300);
+      draw(g, x);
     }
     else if(event.getCode() == KeyCode.LEFT) {
       System.out.println("LEFT");
