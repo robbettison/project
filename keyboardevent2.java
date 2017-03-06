@@ -12,25 +12,27 @@ import javafx.scene.input.KeyCode;
 
 public class keyboardevent2 extends Application {
   private int n = 0;
-  int x=175;
+  int x=100;
 int channel = 1;
 
   Canvas canvas = new Canvas(400, 300);
 Image bg = new Image("road.jpeg");
+Image player = new Image ("player.png");
   GraphicsContext g = canvas.getGraphicsContext2D();
 
   public void start (Stage stage) {
     Group root = new Group(canvas);
     Scene road = new Scene(root);
     stage.setScene(road);
-    draw(g, x, bg);
+    draw(g, x, bg, player);
     stage.show();
     road.setOnKeyPressed(this::handle);
   }
 
-  private void draw(GraphicsContext g, int x, Image bg) {
+  private void draw(GraphicsContext g, int x, Image bg, Image player) {
 g.drawImage(bg, 0, 0);
-    g.fillOval(x, 175, 50, 50);
+
+g.drawImage(player, x,175);
   }
 
 
@@ -43,7 +45,7 @@ if (channel < 4){
 channel +=1;
  x+=50;
 
-      draw(g, x, bg);
+      draw(g, x, bg, player);
 }
     }
     else if(event.getCode() == KeyCode.LEFT) {
@@ -52,7 +54,7 @@ if (channel >0){
 channel -=1;
       x-=50;
 
-      draw(g, x, bg);
+      draw(g, x, bg, player);
 }
     }
   }
