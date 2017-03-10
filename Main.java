@@ -12,10 +12,11 @@ import javafx.scene.layout.*;
 
 
 
-public class keyboardevent2 extends Application {
+public class Main extends Application {
   private int n = 0;
   int x=100;
   int channel = 1;
+  Graphics mainGame = new Graphics(0);
 
 
   /*Canvas canvas = new Canvas(400, 300);
@@ -29,8 +30,7 @@ public class keyboardevent2 extends Application {
 
   public void start(Stage stage) {
 
-    Graphics mainGame = new Graphics(0);
-    mainGame.setUp();
+    mainGame.setUp(stage);
     /*Group root = new Group(canvas);
     Scene road = new Scene(root);
 
@@ -43,7 +43,7 @@ public class keyboardevent2 extends Application {
 
     stage.setScene(road);*/
     mainGame.draw(x);
-    mainGame.show();
+    mainGame.show(stage);
     road.setOnKeyPressed(this::handle);
     //playerScore.setGraphic()
 
@@ -64,7 +64,8 @@ public class keyboardevent2 extends Application {
       channel +=1;
        x+=50;
     score.set(score.get()+1);
-            draw(g, x, bg, player);
+            //draw(g, x, bg, player);
+            mainGame.draw(x);
       }
     }
     else if(event.getCode() == KeyCode.LEFT) {
@@ -72,8 +73,9 @@ public class keyboardevent2 extends Application {
       if (channel >0){
       channel -=1;
             x-=50;
+            mainGame.draw(x);
 
-            draw(g, x, bg, player);
+            //draw(g, x, bg, player);
       }
     }
   }
