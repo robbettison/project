@@ -1,19 +1,19 @@
-Intro
+Intro -- Jacob
   Background
   Requirement spec
   Existing Products
-Aims and objectives (goals to tick off)
-Concept development
+Aims and objectives (goals to tick off) -- Jacob
+Concept development   --Oli
   Initial Ideas
   Constraints
-  Use cases
-Design Implementation
+  Use cases -- Zhong
+Design Implementation -- Rob, Hugo
   Module Design
   Libraries
   Audio
   Graphics
   Testing
-Project Management
+Project Management -- Kev
   Planning and Scheduling
     Gantt Chart
     Group meetings
