@@ -13,10 +13,9 @@ import javafx.scene.layout.*;
 
 
 public class Main extends Application {
-  private int n = 0;
-  int x=100;
-  int channel = 1;
-  MGraphics mainGame = new MGraphics(0);
+  
+  MGraphics graphic = new MGraphics(0);
+  Event Mevent = new Event();
 
 
   /*Canvas canvas = new Canvas(400, 300);
@@ -30,7 +29,7 @@ public class Main extends Application {
 
   public void start(Stage stage) {
 
-    mainGame.setUp(stage);
+    graphic.setUp(stage);
     /*Group root = new Group(canvas);
     Scene road = new Scene(root);
 
@@ -42,12 +41,22 @@ public class Main extends Application {
     root.getChildren().add(stack);
 
     stage.setScene(road);*/
-    mainGame.draw(x);
-    mainGame.show(stage);
-    mainGame.getScene().setOnKeyPressed(this::handle);
+    //int x;
+    //x = event.handle();
+    //graphic.draw(Mevent.getCoordinate());
+    graphic.show(stage);
+    //graphic.getScene().setOnKeyPressed(Mevent::handle);
+    //graphic.draw(Mevent.getCoordinate());
+    //System.out.println(!(Mevent));
+    while(false){
+      graphic.getScene().setOnKeyPressed(Mevent::handle);
+      graphic.draw(Mevent.getCoordinate());
+    }
+
     //playerScore.setGraphic()
 
   }
+
 
   /*void draw(GraphicsContext g, int x, Image bg, Image player) {
     g.drawImage(bg, 0, 0);
@@ -56,29 +65,6 @@ public class Main extends Application {
 
 
 
-  public void handle(KeyEvent event) {
-    if(event.getCode() == KeyCode.RIGHT) {
-      System.out.println("RIGHT");
-
-      if (channel < 4){
-      channel +=1;
-       x+=50;
-    mainGame.getScore().set(mainGame.getScore().get()+1);
-            //draw(g, x, bg, player);
-            mainGame.draw(x);
-      }
-    }
-    else if(event.getCode() == KeyCode.LEFT) {
-      System.out.println("LEFT");
-      if (channel >0){
-      channel -=1;
-            x-=50;
-            mainGame.draw(x);
-
-            //draw(g, x, bg, player);
-      }
-    }
-  }
 
 
 }

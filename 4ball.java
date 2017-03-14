@@ -12,7 +12,7 @@ import javafx.scene.layout.*;
 
 
 
-public class old extends Application {
+public class 4ball extends Application {
   private int n = 0;
   int x=100;
   int channel = 1;
