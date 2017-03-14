@@ -14,17 +14,20 @@ public class MTime{
 	}
 	void time(Circle[] circle){
 		for(int i=0;i<4;i++){
-			double randScale = (Math.random() * 4) + 1;
-			KeyValue kValueX = new KeyValue(circle[i].scaleXProperty() , randScale);
-			KeyValue kValueY = new KeyValue(circle[i].scaleYProperty() , randScale);
+			double scale = 2.5;
+			KeyValue kValueX = new KeyValue(circle[i].scaleXProperty() , scale);
+			KeyValue kValueY = new KeyValue(circle[i].scaleYProperty() , scale);
+			KeyValue xC = new KeyValue(circle[i].translateXProperty(), i);
+			KeyValue yC = new KeyValue(circle[i].translateYProperty(), 100);
 
-			KeyFrame kFrame = new KeyFrame(Duration.millis(5000 + (Math.random() * 5000)) , kValueX , kValueY);
+			KeyFrame kFrame = new KeyFrame(Duration.millis(5000 ) , kValueX , kValueY, xC, yC);
 
 			Timeline timeL = new Timeline();
 			timeL.getKeyFrames().add(kFrame);
-			timeL.setAutoReverse(true);
+			timeL.setAutoReverse(false);
 			timeL.setCycleCount(Animation.INDEFINITE);
 			timeL.play();
 		}
+
 	}
 }

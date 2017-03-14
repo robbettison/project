@@ -63,6 +63,9 @@ import javafx.scene.paint.*;
   }
   else return "player.png";
  }
+ MGraphics(){
+
+ }
 
 
 
@@ -100,18 +103,24 @@ import javafx.scene.paint.*;
  
 
 
+    setRandCircle();
       
        // ballPane.getChildren().addAll(ball1, scorePane);
-    for(int i=0;i<4;i++) {
-        root.getChildren().add(circles[i]);
-       circles[i].setFill(new ImagePattern(new Image(randImage())));
 
-
-    }
     root.getChildren().add(scorePane);
 
     stage.setScene(road);
   }
+
+  void setRandCircle(){
+      for(int i=0;i<4;i++) {
+          root.getChildren().add(circles[i]);
+          circles[i].setFill(new ImagePattern(new Image(randImage())));
+
+      }
+  }
+
+
 
   void draw(int x) {
     g.drawImage(bg, 0, 0);
