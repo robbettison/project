@@ -11,9 +11,9 @@ import javafx.beans.property.*;
 import javafx.scene.layout.*;
 
 public class Event {
-   private int n = 0;
-   private int x=100;
-   private int channel = 1;
+   	private int n = 0;
+   	private int x=100;
+	private int channel = 1;
 
 	Event(){
 
