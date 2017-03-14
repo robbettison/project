@@ -19,7 +19,7 @@ import javafx.beans.property.*;
 import javafx.scene.layout.*;
 
 
- public class MGraphics extends Application{
+ public class MGraphics {
 
   Canvas canvas = new Canvas(400, 300);
   Image bg = new Image("road.jpeg");
@@ -35,7 +35,7 @@ import javafx.scene.layout.*;
   StackPane stack = new StackPane();
 
   MGraphics(int x) {
-    this.score = new SimpleIntegerProperty(x);
+    score = new SimpleIntegerProperty(x);
 
   }
   IntegerProperty getScore(){

@@ -16,7 +16,7 @@ public class Main extends Application {
   private int n = 0;
   int x=100;
   int channel = 1;
-  Graphics mainGame = new Graphics(0);
+  MGraphics mainGame = new MGraphics(0);
 
 
   /*Canvas canvas = new Canvas(400, 300);
@@ -44,7 +44,7 @@ public class Main extends Application {
     stage.setScene(road);*/
     mainGame.draw(x);
     mainGame.show(stage);
-    road.setOnKeyPressed(this::handle);
+    mainGame.getScene().setOnKeyPressed(this::handle);
     //playerScore.setGraphic()
 
   }
@@ -63,7 +63,7 @@ public class Main extends Application {
       if (channel < 4){
       channel +=1;
        x+=50;
-    score.set(score.get()+1);
+    mainGame.getScore().set(mainGame.getScore().get()+1);
             //draw(g, x, bg, player);
             mainGame.draw(x);
       }
