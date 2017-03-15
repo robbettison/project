@@ -53,7 +53,8 @@ public class old extends Application {
 
     //MGraphics oli_star = new MGraphics(0);
     mtime.time(mainGame.circles);
-    System.out.println(mainGame.circles[1]);
+
+
 
 
     mainGame.getScene().setOnKeyPressed(this::handle);

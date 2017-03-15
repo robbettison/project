@@ -7,6 +7,23 @@ import javafx.scene.image.*;
 import javafx.scene.shape.*;
 
 
+import java.util.*;
+import javafx.application.*;
+import javafx.stage.*;
+import javafx.scene.*;
+import javafx.scene.control.*;
+import javafx.scene.image.*;
+import javafx.scene.canvas.*;
+import javafx.event.*;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.KeyCode;
+import javafx.beans.property.*;
+import javafx.scene.layout.*;
+import javafx.geometry.Pos;
+import javafx.geometry.Insets;
+import javafx.scene.shape.*;
+import javafx.scene.paint.*;
+
 
 public class MTime{
 	MTime(){
@@ -33,5 +50,8 @@ xChange += 30;
 			timeL.play();
 		}
 
+
 	}
 }
+
+
