@@ -83,7 +83,7 @@ import javafx.scene.paint.*;
 
   void setCircle(int x, int y, int radius){
     for(int i=0;i<4;i++) {
-      circles[i] = new Circle(x+i*100-100, y, radius, Color.BLUEVIOLET);
+      circles[i] = new Circle(x+i*50-50, y, radius, Color.BLUEVIOLET);
       //circles[].add(circle);
     }
 
@@ -97,7 +97,7 @@ import javafx.scene.paint.*;
   }
 
   void setUp(Stage stage) {
-    setCircle(140, 150, 20);
+    setCircle(140, 100, 20);
     playerScore.textProperty().bind(score.asString());
     scorePane.getChildren().addAll(whiteBox1, playerScore);
  
