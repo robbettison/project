@@ -30,16 +30,16 @@ public class MTime{
 
 	}
 	void time(Circle[] circle){
-int xChange = -60;
+int xChange = -90;
 		for(int i=0;i<4;i++){
 
-xChange += 30;
+xChange += 40;
 
 			double scale = 2.5;
 			KeyValue kValueX = new KeyValue(circle[i].scaleXProperty() , scale);
 			KeyValue kValueY = new KeyValue(circle[i].scaleYProperty() , scale);
 			KeyValue xC = new KeyValue(circle[i].translateXProperty(), xChange);
-			KeyValue yC = new KeyValue(circle[i].translateYProperty(), 100);
+			KeyValue yC = new KeyValue(circle[i].translateYProperty(), 330);
 
 			KeyFrame kFrame = new KeyFrame(Duration.millis(5000 ) , kValueX , kValueY, xC, yC);
 
