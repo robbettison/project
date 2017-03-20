@@ -13,7 +13,8 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
-
+import javafx.scene.shape.*;
+import javafx.scene.paint.*;
 
 
 
@@ -53,8 +54,9 @@ public class old extends Application {
 
     //MGraphics oli_star = new MGraphics(0);
     mtime.time(mainGame.circles);
+    //mainGame.setRandCircle();
 
-
+    System.out.println("here");
 
 
     mainGame.getScene().setOnKeyPressed(this::handle);

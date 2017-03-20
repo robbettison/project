@@ -36,7 +36,7 @@ import javafx.scene.paint.*;
   //Image[] balls = new Image[2];
   //ystem.out.println(getClass().getResource("ball1.png"));
   //balls[0] = Toolkit.getDefaultToolkit().createImage("ball1.png")
-  
+
 
 
  // ImageView ball1 = new ImageView(ball);
@@ -52,8 +52,8 @@ import javafx.scene.paint.*;
 
 
  // Circle circle1,circle2;
- // 
- 
+ //
+
  String randImage(){
   Random aa = new Random();
   int x = aa.nextInt(2);
@@ -100,11 +100,13 @@ import javafx.scene.paint.*;
     setCircle(140, 0, 20);
     playerScore.textProperty().bind(score.asString());
     scorePane.getChildren().addAll(whiteBox1, playerScore);
- 
 
+    for(int i=0;i<4;i++) {
 
+    root.getChildren().add(circles[i]);
+  }
     setRandCircle();
-      
+
        // ballPane.getChildren().addAll(ball1, scorePane);
 
     root.getChildren().add(scorePane);
@@ -114,7 +116,7 @@ import javafx.scene.paint.*;
 
   void setRandCircle(){
       for(int i=0;i<4;i++) {
-          root.getChildren().add(circles[i]);
+          //root.getChildren().add(circles[i]);
           circles[i].setFill(new ImagePattern(new Image(randImage())));
 
       }

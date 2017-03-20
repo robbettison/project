@@ -25,12 +25,15 @@ import javafx.scene.shape.*;
 import javafx.scene.paint.*;
 
 
+
 public class MTime{
 	MTime(){
 
 	}
 	void time(Circle[] circle){
 int xChange = -90;
+
+
 		for(int i=0;i<4;i++){
 
 xChange += 40;
@@ -41,17 +44,20 @@ xChange += 40;
 			KeyValue xC = new KeyValue(circle[i].translateXProperty(), xChange);
 			KeyValue yC = new KeyValue(circle[i].translateYProperty(), 330);
 
-			KeyFrame kFrame = new KeyFrame(Duration.millis(5000 ) , kValueX , kValueY, xC, yC);
+			KeyFrame kFrame2 = new KeyFrame(Duration.millis(3000 ) , kValueX , kValueY, xC, yC);
+			KeyFrame kFrame = new KeyFrame(Duration.millis(1000 ) , kValueX , kValueY, xC, yC);
 
 			Timeline timeL = new Timeline();
-			timeL.getKeyFrames().add(kFrame);
+
+			timeL.getKeyFrames().addAll(kFrame,kFrame2);
 			timeL.setAutoReverse(false);
-			timeL.setCycleCount(Animation.INDEFINITE);
+			timeL.setCycleCount(2);
 			timeL.play();
+
+
 		}
+		//timeL.stop();
 
 
 	}
 }
-
-
