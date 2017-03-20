@@ -54,12 +54,15 @@ public class old extends Application {
 
     //MGraphics oli_star = new MGraphics(0);
     mtime.time(mainGame.circles);
+
     //mainGame.setRandCircle();
 
     System.out.println("here");
 
 
     mainGame.getScene().setOnKeyPressed(this::handle);
+    //SequentialTransition seq = new SequentialTransition(timeL, timeL2);
+    //seq.play();
 
 
     //playerScore.setGraphic()
