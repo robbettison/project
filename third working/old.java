@@ -53,7 +53,7 @@ public class old extends Application {
     mainGame.show(stage);
 
     //MGraphics oli_star = new MGraphics(0);
-    mtime.time(mainGame.circles);
+    mtime.time(mainGame.circles, 1000);
 
     //mainGame.setRandCircle();
 

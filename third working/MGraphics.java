@@ -6,6 +6,14 @@
  *
  */
 import java.util.*;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.animation.SequentialTransition;
+import javafx.util.Duration;
+import javafx.scene.image.*;
+import javafx.scene.shape.*;
 import javafx.application.*;
 import javafx.stage.*;
 import javafx.scene.*;
@@ -43,36 +51,23 @@ import javafx.scene.paint.*;
   ImageView whiteBox1 = new ImageView(whiteBox);
   GraphicsContext g = canvas.getGraphicsContext2D();
   StackPane ballPane = new StackPane();
-  IntegerProperty score;
+  IntegerProperty score = new SimpleIntegerProperty(0);
   Group root = new Group(canvas);
   Scene road = new Scene(root);
   Label playerScore = new Label();
   StackPane scorePane = new StackPane();
-  Circle[] circles = new Circle[4];
+  Group circle = new Group();
+  Timeline timeL = new Timeline();
 
 
  // Circle circle1,circle2;
  //
 
- String randImage(){
-  Random aa = new Random();
-  int x = aa.nextInt(2);
 
-  if (x == 0){
-    return "ball1.png";
-  }
-  else return "player.png";
- }
  MGraphics(){
 
  }
 
-
-
-  MGraphics(int x) {
-    score = new SimpleIntegerProperty(x);
-
-  }
   IntegerProperty getScore(){
     return this.score;
   }
@@ -81,46 +76,35 @@ import javafx.scene.paint.*;
     return this.road;
   }
 
-  void setCircle(int x, int y, int radius){
-    for(int i=0;i<4;i++) {
-      circles[i] = new Circle(x+i*20, y, radius, Color.BLUEVIOLET);
-      //circles[].add(circle);
+  //put 4 new rand circle into circle group
+    void setCircle(int x, int y, int radius) {
+
+      for (int i = 0; i < 4; i++) {
+          Circle newCircle= new Circle(x + i * 20, y, radius, Color.BLUEVIOLET);
+          setRandCircle(newCircle);
+          circle.getChildren().add(newCircle);
+      }
+
     }
+     void setRandCircle(Circle circle){
+             circle.setFill(new ImagePattern(new Image(randImage())));
+
+     }
 
 
-
-
-    //circle1 = new Circle(x, y, radius, Color.BLUEVIOLET);
-        //circle2 = new Circle(x+ 40, y, radius, Color.BLUEVIOLET);
-           // circle[2] = new Circle(x + 80, y, radius, Color.BLUEVIOLET);
-             //   circle[3] = new Circle(x + 120, y, radius, Color.BLUEVIOLET);
-  }
-
-  void setUp(Stage stage) {
-    setCircle(140, 0, 20);
-    playerScore.textProperty().bind(score.asString());
-    scorePane.getChildren().addAll(whiteBox1, playerScore);
-
-    for(int i=0;i<4;i++) {
-
-    root.getChildren().add(circles[i]);
-  }
-    setRandCircle();
+    void setUp(Stage stage) {
+        setCircle(140, -200, 20);
+        playerScore.textProperty().bind(score.asString());
+        scorePane.getChildren().addAll(whiteBox1, playerScore);
+        root.getChildren().add(circle);
 
        // ballPane.getChildren().addAll(ball1, scorePane);
 
-    root.getChildren().add(scorePane);
+        root.getChildren().add(scorePane);
 
-    stage.setScene(road);
-  }
+        stage.setScene(road);
+    }
 
-  void setRandCircle(){
-      for(int i=0;i<4;i++) {
-          //root.getChildren().add(circles[i]);
-          circles[i].setFill(new ImagePattern(new Image(randImage())));
-
-      }
-  }
 
 
 
@@ -135,4 +119,59 @@ import javafx.scene.paint.*;
 
 
 
+     String randImage(){
+         Random aa = new Random();
+         int x = aa.nextInt(2);
+
+         if (x == 0){
+             return "ball1.png";
+         }
+         else return "player.png";
+     }
+
+     KeyFrame makeKeyFrame(int time, int scaleX, int scaleY, int endX, int endY, Node currentCircle){
+
+
+             KeyFrame keyF = new KeyFrame(Duration.millis(time),
+                     new KeyValue(currentCircle.scaleXProperty() , scaleX),
+                     new KeyValue(currentCircle.scaleYProperty() , scaleY),
+                     new KeyValue(currentCircle.translateXProperty(), endX),
+                     new KeyValue(currentCircle.translateYProperty(), endY));
+
+            return keyF;
+
+     }
+
+
+     void circleAnimation(){
+         int xChange = -20;
+ 
+Timeline tl1 = new Timeline();
+Timeline tl2 = new Timeline();
+
+
+         for (Node node: circle.getChildren()){
+             xChange += 50;
+             System.out.println(xChange);
+             tl1.getKeyFrames().add(makeKeyFrame(2000, 2, 2, xChange, 600, node));
+
+         }
+
+
+//8 circles are now set, will have to make new group everytime for each keyframe to work properly
+setCircle(140,-200,20);
+xChange=-20;
+         for (Node node: circle.getChildren()){
+             xChange += 50;
+             System.out.println(xChange);
+             tl2.getKeyFrames().add(makeKeyFrame(2000, 2, 2, xChange, 600, node));
+
+         }
+
+SequentialTransition sequence = new SequentialTransition(tl1, tl2);
+sequence.play();
+        // timeL.play();
+
+
+     }
 }
