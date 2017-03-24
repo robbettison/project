@@ -182,8 +182,10 @@ import javafx.scene.paint.*;
 //
 //         }
 
-SequentialTransition sequence = new SequentialTransition(makeTimeline(),makeTimeline(),makeTimeline(), makeTimeline());
-//sequence.getChildren().add(makeTimeline(), makeTimeline());
+SequentialTransition sequence = new SequentialTransition();
+for (int i = 0; i < 40; i++) {
+    sequence.getChildren().add(makeTimeline());
+}
 sequence.play();
         // timeL.play();
 
