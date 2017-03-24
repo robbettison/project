@@ -11,6 +11,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.animation.SequentialTransition;
+import javafx.animation.FadeTransition;
 import javafx.util.Duration;
 import javafx.scene.image.*;
 import javafx.scene.shape.*;
@@ -35,7 +36,7 @@ import javafx.scene.paint.*;
  public class MGraphics {
 
   Canvas canvas = new Canvas(400, 300);
-  Image bg = new Image("road.jpeg");
+ // Image bg = new Image("road.jpeg");
   Image player = new Image ("player.png");
   Image whiteBox = new Image("Box.png");
   Image ball = new Image("ball1.png");
@@ -53,15 +54,13 @@ import javafx.scene.paint.*;
   StackPane ballPane = new StackPane();
   IntegerProperty score = new SimpleIntegerProperty(0);
   Group root = new Group(canvas);
-  Scene road = new Scene(root);
+  Scene scene = new Scene(root);
   Label playerScore = new Label();
   StackPane scorePane = new StackPane();
- // Group circle = new Group();
-  Timeline timeL = new Timeline();
 
 
- // Circle circle1,circle2;
- //
+    String[] roads = new String[3];
+
 
 
  MGraphics(){
@@ -73,12 +72,12 @@ import javafx.scene.paint.*;
   }
 
   Scene getScene(){
-    return this.road;
+    return this.scene;
   }
 
   //put 4 new rand circle into circle group
     Group setCircle(int x, int y, int radius) {
-      ArrayList<int> temp = new ArrayList<int>();
+      ArrayList<Integer> temp = new ArrayList<Integer>();
 
       Group circle = new Group();
       for (int i = 0; i < 4; i++) {
@@ -91,8 +90,8 @@ import javafx.scene.paint.*;
 
     }
 
-     void setRandCircle(Circle circle, ArrayList<int> temp){
-             circle.setFill(new ImagePattern(new Image(randImage(temp))));
+     void setRandCircle(Circle circle, ArrayList<Integer> temp){
+        circle.setFill(new ImagePattern(new Image(randImage(temp))));
      }
 
 
@@ -104,27 +103,25 @@ import javafx.scene.paint.*;
 
         root.getChildren().add(scorePane);
 
-        stage.setScene(road);
+        stage.setScene(scene);
     }
 
 
-
-
-  void draw(int x) {
-    g.drawImage(bg, 0, 0);
-    g.drawImage(player, x,250);
-  }
+     void draw(int x) {
+   // g.drawImage(bg, 0, 0);
+         g.drawImage(player, x,250);
+     }
 
   void show(Stage stage) {
   	stage.show();
   }
 
 
-
-     String randImage(ArrayList<int> temp){
+//array to ensure 4 differnt rand
+     String randImage(ArrayList<Integer> temp){
          Random aa = new Random();
          int x = aa.nextInt(4);
-         while (temp.contains(aa)){
+         while (temp.contains(x)){
              x=aa.nextInt(4);
          }
          temp.add(x);
@@ -143,14 +140,14 @@ import javafx.scene.paint.*;
          else if (x==2){
              return "2.png";
          }
-         else if (x==3){
+         else
              return "3.png";
-         }
+
      }
 
 
 
-     KeyFrame makeKeyFrame(int time, int scaleX, int scaleY, int endX, int endY, Node currentCircle){
+     KeyFrame makeKeyFrame(int time, double scaleX, double scaleY, int endX, int endY, Node currentCircle){
 
 
              KeyFrame keyF = new KeyFrame(Duration.millis(time),
@@ -163,28 +160,79 @@ import javafx.scene.paint.*;
 
      }
 
-     Timeline makeTimeline(){
+     Timeline makeCircleTimeline(int time){
         Timeline tl = new Timeline();
         Group group = new Group();
-        group = setCircle(140,-50,20);
+        group = setCircle(140,-50,10);
         root.getChildren().add(group);
         int xChange = 0;
         for (Node node: group.getChildren()) {
             xChange += 50;
-            tl.getKeyFrames().add(makeKeyFrame(2000,2,2,xChange,600,node));
+            tl.getKeyFrames().add(makeKeyFrame(time,2.5,2.5,xChange,600,node));
         }
-
         return tl;
      }
 
-
+//time so is quicker
     void circleAnimation(){
 
         SequentialTransition sequence = new SequentialTransition();
+        int time = 5000;
         for (int i = 0; i < 40; i++) {
-            sequence.getChildren().add(makeTimeline());
+            sequence.getChildren().add(makeCircleTimeline(time));
+            time -= 100;
         }
+        //roadAnimation();
+
+        SequentialTransition sequence1 = new SequentialTransition();
+        int time1 = 7000;
+        for (int i = 0; i < 3; i++) {
+            sequence1.getChildren().add(makeRoadTimeLine(i));
+            time1 -= 100;
+        }
+
+        sequence1.play();
         sequence.play();
 
      }
+
+     Timeline makeRoadTimeLine(int n){
+
+        Timeline tl = new Timeline();
+
+        ImageView road = new ImageView(new Image("road" + n + ".jpeg"));
+        root.getChildren().add(road);
+        tl.getKeyFrames().add(makeKeyFrame(10000,1,1,0,0,road));
+
+         return tl;
+
+     }
+
+
+
+/*
+
+     void roadAnimation(){
+        initRoad();
+        ImageView imageview = new ImageView(new Image(road[0]));
+        Group road = new Group();
+        road.getChildren().add(imageview);
+       for (int i = 0; i < 3; i++) {
+            road.getChildren().add(makeRoadTimeLine(i));
+       }
+       road.play();
+
+     }
+
+     void initRoad(){
+         for (int i = 0; i < 3; i++){
+             roads[i] =  "road" + i +".jpeg";
+             System.out.println(roads[i]);
+         }
+     }
+
+     */
+
+
+
 }
