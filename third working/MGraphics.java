@@ -78,19 +78,21 @@ import javafx.scene.paint.*;
 
   //put 4 new rand circle into circle group
     Group setCircle(int x, int y, int radius) {
+      ArrayList<int> temp = new ArrayList<int>();
 
       Group circle = new Group();
       for (int i = 0; i < 4; i++) {
+          //keep track of rand
           Circle newCircle= new Circle(x + i * 20, y, radius, Color.BLUEVIOLET);
-          setRandCircle(newCircle);
+          setRandCircle(newCircle, temp);
           circle.getChildren().add(newCircle);
       }
       return circle;
 
     }
 
-     void setRandCircle(Circle circle){
-             circle.setFill(new ImagePattern(new Image(randImage())));
+     void setRandCircle(Circle circle, ArrayList<int> temp){
+             circle.setFill(new ImagePattern(new Image(randImage(temp))));
      }
 
 
@@ -119,15 +121,34 @@ import javafx.scene.paint.*;
 
 
 
-     String randImage(){
+     String randImage(ArrayList<int> temp){
          Random aa = new Random();
-         int x = aa.nextInt(2);
-
-         if (x == 0){
-             return "ball1.png";
+         int x = aa.nextInt(4);
+         while (temp.contains(aa)){
+             x=aa.nextInt(4);
          }
-         else return "player.png";
+         temp.add(x);
+
+         return getImage(x);
+
      }
+
+     String getImage(int x){
+         if (x == 0){
+             return "0.png";
+         }
+         else if (x == 1){
+             return "1.png";
+         }
+         else if (x==2){
+             return "2.png";
+         }
+         else if (x==3){
+             return "3.png";
+         }
+     }
+
+
 
      KeyFrame makeKeyFrame(int time, int scaleX, int scaleY, int endX, int endY, Node currentCircle){
 
@@ -157,38 +178,13 @@ import javafx.scene.paint.*;
      }
 
 
-     void circleAnimation(){
-//         int xChange = -20;
-//
-//Timeline tl1 = new Timeline();
-//Timeline tl2 = new Timeline();
-//
-//
-//         for (Node node: circle.getChildren()){
-//             xChange += 50;
-//             System.out.println(xChange);
-//             tl1.getKeyFrames().add(makeKeyFrame(2000, 2, 2, xChange, 600, node));
-//
-//         }
-//
-//
-////8 circles are now set, will have to make new group everytime for each keyframe to work properly
-//setCircle(140,-200,20);
-//xChange=-20;
-//         for (Node node: circle.getChildren()){
-//             xChange += 50;
-//             System.out.println(xChange);
-//             tl2.getKeyFrames().add(makeKeyFrame(2000, 2, 2, xChange, 600, node));
-//
-//         }
+    void circleAnimation(){
 
-SequentialTransition sequence = new SequentialTransition();
-for (int i = 0; i < 40; i++) {
-    sequence.getChildren().add(makeTimeline());
-}
-sequence.play();
-        // timeL.play();
-
+        SequentialTransition sequence = new SequentialTransition();
+        for (int i = 0; i < 40; i++) {
+            sequence.getChildren().add(makeTimeline());
+        }
+        sequence.play();
 
      }
 }

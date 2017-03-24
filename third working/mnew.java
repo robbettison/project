@@ -42,14 +42,9 @@ public class mnew extends Application {
         mgraphics.draw(x);
         mgraphics.show(stage);
 
-    mgraphics.circleAnimation();
+        mgraphics.circleAnimation();
 
-    System.out.println("here");
-
-
-    mgraphics.getScene().setOnKeyPressed(this::handle);
-
-
+        mgraphics.getScene().setOnKeyPressed(this::handle);
 
     }
 
