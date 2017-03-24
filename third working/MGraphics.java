@@ -56,7 +56,7 @@ import javafx.scene.paint.*;
   Scene road = new Scene(root);
   Label playerScore = new Label();
   StackPane scorePane = new StackPane();
-  Group circle = new Group();
+ // Group circle = new Group();
   Timeline timeL = new Timeline();
 
 
@@ -77,28 +77,28 @@ import javafx.scene.paint.*;
   }
 
   //put 4 new rand circle into circle group
-    void setCircle(int x, int y, int radius) {
+    Group setCircle(int x, int y, int radius) {
 
+      Group circle = new Group();
       for (int i = 0; i < 4; i++) {
           Circle newCircle= new Circle(x + i * 20, y, radius, Color.BLUEVIOLET);
           setRandCircle(newCircle);
           circle.getChildren().add(newCircle);
       }
+      return circle;
 
     }
+
      void setRandCircle(Circle circle){
              circle.setFill(new ImagePattern(new Image(randImage())));
-
      }
 
 
     void setUp(Stage stage) {
-        setCircle(140, -200, 20);
+       // setCircle(140, -200, 20);
         playerScore.textProperty().bind(score.asString());
         scorePane.getChildren().addAll(whiteBox1, playerScore);
-        root.getChildren().add(circle);
-
-       // ballPane.getChildren().addAll(ball1, scorePane);
+      //  root.getChildren().add(circle);
 
         root.getChildren().add(scorePane);
 
@@ -142,33 +142,48 @@ import javafx.scene.paint.*;
 
      }
 
+     Timeline makeTimeline(){
+        Timeline tl = new Timeline();
+        Group group = new Group();
+        group = setCircle(140,-50,20);
+        root.getChildren().add(group);
+        int xChange = 0;
+        for (Node node: group.getChildren()) {
+            xChange += 50;
+            tl.getKeyFrames().add(makeKeyFrame(2000,2,2,xChange,600,node));
+        }
+
+        return tl;
+     }
+
 
      void circleAnimation(){
-         int xChange = -20;
- 
-Timeline tl1 = new Timeline();
-Timeline tl2 = new Timeline();
+//         int xChange = -20;
+//
+//Timeline tl1 = new Timeline();
+//Timeline tl2 = new Timeline();
+//
+//
+//         for (Node node: circle.getChildren()){
+//             xChange += 50;
+//             System.out.println(xChange);
+//             tl1.getKeyFrames().add(makeKeyFrame(2000, 2, 2, xChange, 600, node));
+//
+//         }
+//
+//
+////8 circles are now set, will have to make new group everytime for each keyframe to work properly
+//setCircle(140,-200,20);
+//xChange=-20;
+//         for (Node node: circle.getChildren()){
+//             xChange += 50;
+//             System.out.println(xChange);
+//             tl2.getKeyFrames().add(makeKeyFrame(2000, 2, 2, xChange, 600, node));
+//
+//         }
 
-
-         for (Node node: circle.getChildren()){
-             xChange += 50;
-             System.out.println(xChange);
-             tl1.getKeyFrames().add(makeKeyFrame(2000, 2, 2, xChange, 600, node));
-
-         }
-
-
-//8 circles are now set, will have to make new group everytime for each keyframe to work properly
-setCircle(140,-200,20);
-xChange=-20;
-         for (Node node: circle.getChildren()){
-             xChange += 50;
-             System.out.println(xChange);
-             tl2.getKeyFrames().add(makeKeyFrame(2000, 2, 2, xChange, 600, node));
-
-         }
-
-SequentialTransition sequence = new SequentialTransition(tl1, tl2);
+SequentialTransition sequence = new SequentialTransition(makeTimeline(),makeTimeline(),makeTimeline(), makeTimeline());
+//sequence.getChildren().add(makeTimeline(), makeTimeline());
 sequence.play();
         // timeL.play();
 

@@ -47,14 +47,14 @@ public class mnew extends Application {
     System.out.println("here");
 
 
-   // mgraphics.getScene().setOnKeyPressed(this::handle);
+    mgraphics.getScene().setOnKeyPressed(this::handle);
 
 
 
     }
 
 
-/*
+
 
     public void handle(KeyEvent event) {
         if(event.getCode() == KeyCode.RIGHT) {
@@ -64,9 +64,9 @@ public class mnew extends Application {
                 channel +=1;
                 x+=50;
                 //set score in logic not graphics
-                mainGame.getScore().set(mainGame.getScore().get()+1);
+                mgraphics.getScore().set(mgraphics.getScore().get()+1);
                 //draw(g, x, bg, player);
-                mainGame.draw(x);
+                mgraphics.draw(x);
             }
         }
         else if(event.getCode() == KeyCode.LEFT) {
@@ -75,14 +75,14 @@ public class mnew extends Application {
                 channel -=1;
                 x-=50;
 
-                mainGame.draw(x);
+                mgraphics.draw(x);
 
                 //draw(g, x, bg, player);
             }
         }
     }
 
-    */
+
 
 
 }
