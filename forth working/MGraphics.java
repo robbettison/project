@@ -36,19 +36,15 @@ import javafx.scene.paint.*;
  public class MGraphics {
 
   Canvas canvas = new Canvas(400, 300);
- // Image bg = new Image("road.jpeg");
+  Image bg = new Image("road0.jpeg");
   Image player = new Image ("player.png");
   Image whiteBox = new Image("Box.png");
   Image ball = new Image("ball1.png");
 
-  //deck.add(new Image("player.png"));
-  //Image[] balls = new Image[2];
-  //ystem.out.println(getClass().getResource("ball1.png"));
-  //balls[0] = Toolkit.getDefaultToolkit().createImage("ball1.png")
+  BackgroundImage bi = new BackgroundImage(bg, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+          BackgroundSize.DEFAULT);
 
 
-
- // ImageView ball1 = new ImageView(ball);
   ImageView whiteBox1 = new ImageView(whiteBox);
   GraphicsContext g = canvas.getGraphicsContext2D();
   StackPane ballPane = new StackPane();
@@ -59,7 +55,7 @@ import javafx.scene.paint.*;
   StackPane scorePane = new StackPane();
 
 
-    String[] roads = new String[3];
+  Pane road = new Pane();
 
 
 
@@ -100,7 +96,7 @@ import javafx.scene.paint.*;
         playerScore.textProperty().bind(score.asString());
         scorePane.getChildren().addAll(whiteBox1, playerScore);
       //  root.getChildren().add(circle);
-
+        scorePane.setBackground(new Background(bi));
         root.getChildren().add(scorePane);
 
         stage.setScene(scene);
@@ -183,19 +179,14 @@ import javafx.scene.paint.*;
             sequence.getChildren().add(makeCircleTimeline(time));
             time -= 100;
         }
-        //roadAnimation();
+        sequence.setCycleCount(sequence.INDEFINITE);
+        roadAnimation();
 
-        /*SequentialTransition sequence1 = new SequentialTransition();
-        int time1 = 7000;
-        for (int i = 0; i < 3; i++) {
-            sequence1.getChildren().add(makeRoadTimeLine(i));
-            time1 -= 100;
-        }
-
-        sequence1.play();*/
         sequence.play();
-
      }
+
+
+
 
      Timeline makeRoadTimeLine(int n){
 
@@ -203,7 +194,7 @@ import javafx.scene.paint.*;
 
         ImageView road = new ImageView(new Image("road" + n + ".jpeg"));
         root.getChildren().add(road);
-        tl.getKeyFrames().add(makeKeyFrame(10000,1,1,0,0,road));
+        tl.getKeyFrames().add(makeKeyFrame(n*1000,1,1,0,0,road));
 
          return tl;
 
@@ -211,28 +202,64 @@ import javafx.scene.paint.*;
 
 
 
-/*
+
 
      void roadAnimation(){
-        initRoad();
-        ImageView imageview = new ImageView(new Image(road[0]));
-        Group road = new Group();
-        road.getChildren().add(imageview);
-       for (int i = 0; i < 3; i++) {
-            road.getChildren().add(makeRoadTimeLine(i));
-       }
-       road.play();
+
+
+        SequentialTransition seq = new SequentialTransition();
+        ImageView[] slides = makeRoadImageViews();
+
+        for (ImageView image: slides){
+         //   PauseTransition pause = new PauseTransition(Duration.millis(1000));
+           FadeTransition show = new FadeTransition(Duration.millis(1000), image);
+            FadeTransition gone = new FadeTransition(Duration.millis(1000), image);
+           show.setFromValue(1);
+           show.setToValue(0.1);
+
+            image.setOpacity(0);
+            root.getChildren().add(image);
+            image.toBack();
+            seq.getChildren().add(show);
+
+        }
+
+        /*set Background at the end*/
+        setBackGround();
+
+        seq.setCycleCount(seq.INDEFINITE);
+        seq.play();
 
      }
 
-     void initRoad(){
+     void setBackGround(){
+         ImageView back = new ImageView(new Image("road.jpeg"));
+         back.setFitWidth(400);
+         back.setFitHeight(300);
+         root.getChildren().add(back);
+         back.toBack();
+     }
+
+
+     ImageView[] makeRoadImageViews(){
+         ImageView[] slides = new ImageView[3];
          for (int i = 0; i < 3; i++){
-             roads[i] =  "road" + i +".jpeg";
-             System.out.println(roads[i]);
+             Image image = new Image("road" + i + ".jpeg");
+             slides[i] = new ImageView(image);
+             slides[i].setFitWidth(400);
+             slides[i].setFitHeight(300);
+
          }
+  //       road.getChildren().add(slides);
+
+         return slides;
+
+
+
+
      }
 
-     */
+
 
 
 

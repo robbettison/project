@@ -1,1 +1,4 @@
 hello star! to play this game, ask jacob because we don’t know 
+
+Press left or right to control the character.
+
