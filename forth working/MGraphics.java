@@ -37,7 +37,7 @@ import javafx.scene.paint.*;
 
   Canvas canvas = new Canvas(400, 300);
   Image bg = new Image("road0.jpeg");
-  Image player = new Image ("player.png");
+
   Image whiteBox = new Image("Box.png");
   Image ball = new Image("ball1.png");
 
@@ -48,6 +48,7 @@ import javafx.scene.paint.*;
   IntegerProperty score = new SimpleIntegerProperty(0);
   IntegerProperty playerX = new SimpleIntegerProperty();
   IntegerProperty playerY = new SimpleIntegerProperty();
+  ImageView player = new ImageView(new Image("player.png"));
   Group root = new Group(canvas);
   Scene scene = new Scene(root);
   Label playerScore = new Label();
@@ -64,7 +65,7 @@ import javafx.scene.paint.*;
  MGraphics(){
 
  }
-
+/*
  void bindPlayerXY(ImageView player, int x, int y){
      playerX.unbind();
      playerY.unbind();
@@ -79,7 +80,7 @@ import javafx.scene.paint.*;
  }
  void setPlayerY(int y){
      this.playerY.set(playerY.get()+y);
- }
+ }*/
 
   IntegerProperty getScore(){
     return this.score;
@@ -115,17 +116,13 @@ import javafx.scene.paint.*;
 
 
         root.getChildren().add(scorePane);
+        root.getChildren().add(player);
 
         stage.setScene(scene);
+        changePlayerPosition(100, 250);
 
         return scene;
     }
-
-
-     void draw(int x) {
-   // g.drawImage(bg, 0, 0);
-   //      g.drawImage(player, x,250);
-     }
 
   void show(Stage stage) {
   	stage.show();
@@ -282,6 +279,7 @@ import javafx.scene.paint.*;
      }
 
 
+
      ImageView[] makeRoadImageViews(){
          ImageView[] slides = new ImageView[3];
          for (int i = 0; i < 3; i++){
@@ -307,13 +305,19 @@ import javafx.scene.paint.*;
             playerAnimation[i].setY(250);
 
 //following line not working
-             bindPlayerXY(playerAnimation[i], 200, 250);
+        //     bindPlayerXY(playerAnimation[i], 200, 250);
 
          }
-     }
+     }	
 
-
-
+    void changePlayerPosition(int x, int y){
+        for (ImageView iv: playerAnimation){
+            iv.setX(x);
+            iv.setY(y);
+        }
+        player.setX(x);
+        player.setY(y);
+    }
 
 
 }

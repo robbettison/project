@@ -39,7 +39,6 @@ public class mnew extends Application {
 
         mgraphics.setUp(stage);
 
-        mgraphics.draw(x);
         mgraphics.show(stage);
 
         mgraphics.circleAnimation();
@@ -61,7 +60,7 @@ public class mnew extends Application {
                 //set score in logic not graphics
                 mgraphics.getScore().set(mgraphics.getScore().get()+1);
                 //draw(g, x, bg, player);
-                mgraphics.draw(x);
+                mgraphics.changePlayerPosition(x, 250);
             }
         }
         else if(event.getCode() == KeyCode.LEFT) {
@@ -70,7 +69,7 @@ public class mnew extends Application {
                 channel -=1;
                 x-=50;
 
-                mgraphics.draw(x);
+                mgraphics.changePlayerPosition(x, 250);
 
                 //draw(g, x, bg, player);
             }
