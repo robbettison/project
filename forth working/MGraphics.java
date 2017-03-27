@@ -41,18 +41,20 @@ import javafx.scene.paint.*;
   Image whiteBox = new Image("Box.png");
   Image ball = new Image("ball1.png");
 
-  BackgroundImage bi = new BackgroundImage(bg, BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
-          BackgroundSize.DEFAULT);
-
 
   ImageView whiteBox1 = new ImageView(whiteBox);
   GraphicsContext g = canvas.getGraphicsContext2D();
   StackPane ballPane = new StackPane();
   IntegerProperty score = new SimpleIntegerProperty(0);
+  IntegerProperty playerX = new SimpleIntegerProperty();
+  IntegerProperty playerY = new SimpleIntegerProperty();
   Group root = new Group(canvas);
   Scene scene = new Scene(root);
   Label playerScore = new Label();
   StackPane scorePane = new StackPane();
+
+  ImageView[] playerAnimation;
+
 
 
   Pane road = new Pane();
@@ -61,6 +63,22 @@ import javafx.scene.paint.*;
 
  MGraphics(){
 
+ }
+
+ void bindPlayerXY(ImageView player, int x, int y){
+     playerX.unbind();
+     playerY.unbind();
+     setPlayerX(x);
+     setPlayerY(y);
+     playerX.bind(player.translateXProperty());
+     playerY.bind(player.translateXProperty());
+ }
+
+ void setPlayerX(int x){
+     this.playerX.set(playerX.get()+x);
+ }
+ void setPlayerY(int y){
+     this.playerY.set(playerY.get()+y);
  }
 
   IntegerProperty getScore(){
@@ -92,21 +110,21 @@ import javafx.scene.paint.*;
 
 
     Scene setUp(Stage stage) {
-       // setCircle(140, -200, 20);
         playerScore.textProperty().bind(score.asString());
         scorePane.getChildren().addAll(whiteBox1, playerScore);
-      //  root.getChildren().add(circle);
-        scorePane.setBackground(new Background(bi));
+
+
         root.getChildren().add(scorePane);
 
         stage.setScene(scene);
+
         return scene;
     }
 
 
      void draw(int x) {
    // g.drawImage(bg, 0, 0);
-         g.drawImage(player, x,250);
+   //      g.drawImage(player, x,250);
      }
 
   void show(Stage stage) {
@@ -181,6 +199,7 @@ import javafx.scene.paint.*;
         }
         sequence.setCycleCount(sequence.INDEFINITE);
         roadAnimation();
+        playerAnimation();
 
         sequence.play();
      }
@@ -201,35 +220,57 @@ import javafx.scene.paint.*;
      }
 
 
+     void playerAnimation(){
 
+         makePlayerImageViews();
+         makeAnimation(playerAnimation, 1);
 
+     }
+//0 for animation at back, 1 for front
+    void makeAnimation(ImageView[] slides, int position){
+        SequentialTransition seq = new SequentialTransition();
+        for (ImageView image: slides){
+            //   PauseTransition pause = new PauseTransition(Duration.millis(1000));
+            FadeTransition show = new FadeTransition(Duration.millis(1000), image);
+            FadeTransition gone = new FadeTransition(Duration.millis(1000), image);
+
+            if (position == 0) {
+                show.setFromValue(1);
+                show.setToValue(0);
+            }
+            else{
+                show.setFromValue(0);
+                show.setToValue(1);
+            }
+
+            image.setOpacity(0);
+            root.getChildren().add(image);
+
+            if (position == 0) {
+                image.toBack();
+            }
+            else {
+                image.toFront();
+                System.out.println(image);
+            }
+            seq.getChildren().add(show);
+
+        }
+        seq.setCycleCount(seq.INDEFINITE);
+        seq.play();
+
+    }
 
      void roadAnimation(){
 
 
-        SequentialTransition seq = new SequentialTransition();
+
         ImageView[] slides = makeRoadImageViews();
 
-        for (ImageView image: slides){
-         //   PauseTransition pause = new PauseTransition(Duration.millis(1000));
-           FadeTransition show = new FadeTransition(Duration.millis(1000), image);
-            FadeTransition gone = new FadeTransition(Duration.millis(1000), image);
-           show.setFromValue(1);
-           show.setToValue(0.1);
-
-            image.setOpacity(0);
-            root.getChildren().add(image);
-            image.toBack();
-            seq.getChildren().add(show);
-
-        }
+        makeAnimation(slides, 0);
 
         /*set Background at the end*/
         setBackGround();
-
-        seq.setCycleCount(seq.INDEFINITE);
-        seq.play();
-
      }
 
      void setBackGround(){
@@ -250,13 +291,25 @@ import javafx.scene.paint.*;
              slides[i].setFitHeight(300);
 
          }
-  //       road.getChildren().add(slides);
+
 
          return slides;
+     }
 
+     void makePlayerImageViews(){
+         playerAnimation = new ImageView[4];
+         for (int i = 0; i < 4; i++){
+             Image image = new Image( i + ".png");
+             playerAnimation[i] = new ImageView(image);
+             playerAnimation[i].setFitWidth(50);
+             playerAnimation[i].setFitHeight(50);
+             playerAnimation[i].setX(0);
+            playerAnimation[i].setY(250);
 
+//following line not working
+             bindPlayerXY(playerAnimation[i], 200, 250);
 
-
+         }
      }
 
 
