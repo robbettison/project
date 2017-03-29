@@ -76,7 +76,7 @@ public class MMenu extends Application{
 
 
 
-
+/*
 public void handle(KeyEvent event) {
 
         if(event.getCode() == KeyCode.RIGHT) {
@@ -105,7 +105,7 @@ System.out.println(x);
             }
         }
     }
-
+*/
 
 
 

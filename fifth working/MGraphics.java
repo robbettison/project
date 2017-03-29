@@ -35,7 +35,7 @@ import javafx.scene.paint.*;
 
  public class MGraphics {
 
-  Canvas canvas = new Canvas(400, 300);
+  Canvas canvas = new Canvas(607, 1080);
   Image bg = new Image("road0.jpeg");
 
   Image whiteBox = new Image("Box.png");
@@ -46,9 +46,8 @@ import javafx.scene.paint.*;
   GraphicsContext g = canvas.getGraphicsContext2D();
   StackPane ballPane = new StackPane();
   IntegerProperty score = new SimpleIntegerProperty(0);
-  IntegerProperty playerX = new SimpleIntegerProperty();
-  IntegerProperty playerY = new SimpleIntegerProperty();
-  ImageView player = new ImageView(new Image("player.png"));
+
+  ImageView player = new ImageView(new Image("frame0.png"));
   Group root = new Group(canvas);
   Scene scene = new Scene(root);
   Label playerScore = new Label();
@@ -65,22 +64,7 @@ import javafx.scene.paint.*;
  MGraphics(){
 
  }
-/*
- void bindPlayerXY(ImageView player, int x, int y){
-     playerX.unbind();
-     playerY.unbind();
-     setPlayerX(x);
-     setPlayerY(y);
-     playerX.bind(player.translateXProperty());
-     playerY.bind(player.translateXProperty());
- }
 
- void setPlayerX(int x){
-     this.playerX.set(playerX.get()+x);
- }
- void setPlayerY(int y){
-     this.playerY.set(playerY.get()+y);
- }*/
 
   IntegerProperty getScore(){
     return this.score;
@@ -98,7 +82,7 @@ import javafx.scene.paint.*;
       Group circle = new Group();
       for (int i = 0; i < 4; i++) {
           //keep track of rand
-          Circle newCircle= new Circle(x + i * 20, y, radius, Color.BLUEVIOLET);
+          Circle newCircle= new Circle(x + i * 5, y, radius, Color.BLUEVIOLET);
           setRandCircle(newCircle, temp);
           circle.getChildren().add(newCircle);
       }
@@ -117,10 +101,14 @@ import javafx.scene.paint.*;
 
 
         root.getChildren().add(scorePane);
-        //root.getChildren().add(player);
+//        player.setX(275);
+//        player.setY(800);
+//        player.setFitHeight(250);
+//        player.setFitWidth(150);
+//        root.getChildren().add(player);
 
         stage.setScene(scene);
-        changePlayerPosition(100, 220);
+        changePlayerPosition(275, 800);
 
         return scene;
     }
@@ -176,12 +164,12 @@ import javafx.scene.paint.*;
      Timeline makeCircleTimeline(int time){
         Timeline tl = new Timeline();
         Group group = new Group();
-        group = setCircle(140,-50,10);
+        group = setCircle(290,267,2);
         root.getChildren().add(group);
-        int xChange = 0;
+        int xChange = -475;
         for (Node node: group.getChildren()) {
-            xChange += 50;
-            tl.getKeyFrames().add(makeKeyFrame(time,2.5,2.5,xChange,600,node));
+            xChange += 200;
+            tl.getKeyFrames().add(makeKeyFrame(time,40,40,xChange,1200,node));
         }
         return tl;
      }
@@ -226,22 +214,26 @@ import javafx.scene.paint.*;
      }
     //0 for animation at back, 1 for front
     void makeAnimation(ImageView[] slides, int position){
+
         SequentialTransition seq = new SequentialTransition();
         for (ImageView image: slides){
             //   PauseTransition pause = new PauseTransition(Duration.millis(1000));
-            FadeTransition show = new FadeTransition(Duration.millis(60), image);
-            //FadeTransition gone = new FadeTransition(Duration.millis(1000), image);
+            FadeTransition show = new FadeTransition(Duration.millis(100), image);
+            FadeTransition gone = new FadeTransition(Duration.millis(1), image);
 
             if (position == 0) {
                 show.setFromValue(1);
                 show.setToValue(0);
+
             }
             else{
                 show.setFromValue(0);
                 show.setToValue(1);
+               // gone.setToValue(1);
+                //gone.setToValue(0);
             }
 
-            //image.setOpacity(0);
+            image.setOpacity(1);
             root.getChildren().add(image);
 
             if (position == 0) {
@@ -249,14 +241,16 @@ import javafx.scene.paint.*;
             }
             else {
                 image.toFront();
-                seq.setAutoReverse(true);
+              //  seq.setAutoReverse(true);
                 System.out.println(image);
             }
-            seq.getChildren().add(show);
+            seq.getChildren().addAll(show, gone);
 
         }
         seq.setCycleCount(seq.INDEFINITE);
         seq.play();
+
+
 
     }
 
@@ -277,9 +271,9 @@ import javafx.scene.paint.*;
      }
 
      void setBackGround(){
-         ImageView back = new ImageView(new Image("road.jpeg"));
-         back.setFitWidth(400);
-         back.setFitHeight(300);
+         ImageView back = new ImageView(new Image("Road_anim_3d_20000.png"));
+         back.setFitWidth(607);
+         back.setFitHeight(1080);
          root.getChildren().add(back);
          back.toBack();
      }
@@ -287,12 +281,14 @@ import javafx.scene.paint.*;
 
 
      ImageView[] makeRoadImageViews(){
-         ImageView[] slides = new ImageView[3];
-         for (int i = 0; i < 3; i++){
-             Image image = new Image("road" + i + ".jpeg");
+         ImageView[] slides = new ImageView[30];
+         int temp;
+         for (int i = 0; i < 30; i++){
+             temp = 20000+i;
+             Image image = new Image("Road_anim_3d_" + temp + ".png");
              slides[i] = new ImageView(image);
-             slides[i].setFitWidth(400);
-             slides[i].setFitHeight(300);
+             slides[i].setFitWidth(607);
+             slides[i].setFitHeight(1080);
 
          }
 
@@ -305,8 +301,8 @@ import javafx.scene.paint.*;
          for (int i = 0; i < 24; i++){
              Image image = new Image("frame" + i + ".png");
              playerAnimation[i] = new ImageView(image);
-             playerAnimation[i].setFitWidth(50);
-             playerAnimation[i].setFitHeight(70);
+             playerAnimation[i].setFitWidth(150);
+             playerAnimation[i].setFitHeight(250);
              //playerAnimation[i].setX(0);
              //playerAnimation[i].setY(150);
 
