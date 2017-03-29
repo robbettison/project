@@ -122,7 +122,7 @@ System.out.println(x);
 	        mgraphics.circleAnimation();
 	        starStage.setScene(mgraphics.setUp(starStage));
 	        mgraphics.getScene().setOnKeyPressed(this::handle);
-	  		System.out.println("start");
+	  		System.out.println("sta1rt");
 	  		show(starStage);
 	  		break;
 	  	case "Instructions":

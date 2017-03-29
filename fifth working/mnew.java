@@ -38,6 +38,15 @@ public class mnew{
   }
 
 
+
+  public void checkWin(){
+      if (mgraphics.checkIntersect()){
+          mgraphics.getScore().set(mgraphics.getScore().get()+1);
+      }
+
+  }
+
+
     public void handle(KeyEvent event) {
         if(event.getCode() == KeyCode.RIGHT) {
             System.out.println("RIGHT");
@@ -46,9 +55,11 @@ public class mnew{
                 channel +=1;
                 x+=125;
                 //set score in logic not graphics
-                mgraphics.getScore().set(mgraphics.getScore().get()+1);
+
                 //draw(g, x, bg, player);
                 mgraphics.changePlayerPosition(x, 800);
+
+
             }
         }
         else if(event.getCode() == KeyCode.LEFT) {

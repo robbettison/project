@@ -75,8 +75,10 @@ public class MMenu extends Application{
 	        mgraphics.circleAnimation();
 	        starStage.setScene(mgraphics.setUp(starStage));
 	        mgraphics.getScene().setOnKeyPressed(mn::handle);
-	  		System.out.println("start");
+
+			System.out.println("start");
 	  		show(starStage);
+
 	  		break;
 	  	case "Instructions":
 	  		Instructions instruct = new Instructions(backScene, backStage, scene.getWidth(), scene.getHeight());
