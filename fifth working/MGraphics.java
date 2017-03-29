@@ -120,7 +120,7 @@ import javafx.scene.paint.*;
         //root.getChildren().add(player);
 
         stage.setScene(scene);
-        changePlayerPosition(100, 250);
+        changePlayerPosition(100, 220);
 
         return scene;
     }
@@ -305,8 +305,8 @@ import javafx.scene.paint.*;
          for (int i = 0; i < 24; i++){
              Image image = new Image("frame" + i + ".png");
              playerAnimation[i] = new ImageView(image);
-             playerAnimation[i].setFitWidth(70);
-             playerAnimation[i].setFitHeight(50);
+             playerAnimation[i].setFitWidth(50);
+             playerAnimation[i].setFitHeight(70);
              //playerAnimation[i].setX(0);
              //playerAnimation[i].setY(150);
 

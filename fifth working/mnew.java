@@ -48,7 +48,7 @@ public class mnew{
                 //set score in logic not graphics
                 mgraphics.getScore().set(mgraphics.getScore().get()+1);
                 //draw(g, x, bg, player);
-                mgraphics.changePlayerPosition(x, 250);
+                mgraphics.changePlayerPosition(x, 220);
             }
         }
         else if(event.getCode() == KeyCode.LEFT) {
@@ -57,7 +57,7 @@ public class mnew{
                 channel -=1;
                 x-=50;
 
-                mgraphics.changePlayerPosition(x, 250);
+                mgraphics.changePlayerPosition(x, 220);
                 //mgraphics.getSeq().play();
 
                 //draw(g, x, bg, player);
