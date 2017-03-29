@@ -18,11 +18,11 @@ import javafx.scene.paint.*;
 
 
 
-public class mnew extends Application {
+public class mnew{
     private int n = 0;
     int x=100;
     int channel = 1;
-    MGraphics mgraphics = new MGraphics();
+    MGraphics mgraphics;
     MTime mtime = new MTime();
 
   /*Canvas canvas = new Canvas(400, 300);
@@ -33,21 +33,9 @@ public class mnew extends Application {
   GraphicsContext g = canvas.getGraphicsContext2D();
   StackPane stackPane = new StackPane();
   IntegerProperty score = new SimpleIntegerProperty(0);*/
-
-    public void start(Stage stage) {
-
-
-        mgraphics.setUp(stage);
-
-        mgraphics.show(stage);
-
-        mgraphics.circleAnimation();
-
-        mgraphics.getScene().setOnKeyPressed(this::handle);
-
-    }
-
-
+  public mnew(MGraphics mgraphics){
+    this.mgraphics = mgraphics;
+  }
 
 
     public void handle(KeyEvent event) {
@@ -70,13 +58,11 @@ public class mnew extends Application {
                 x-=50;
 
                 mgraphics.changePlayerPosition(x, 250);
+                //mgraphics.getSeq().play();
 
                 //draw(g, x, bg, player);
             }
         }
     }
-
-
-
 
 }

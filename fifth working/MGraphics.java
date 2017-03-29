@@ -39,7 +39,7 @@ import javafx.scene.paint.*;
   Image bg = new Image("road0.jpeg");
 
   Image whiteBox = new Image("Box.png");
-  Image ball = new Image("ball1.png");
+  //Image ball = new Image("ball1.png");
 
 
   ImageView whiteBox1 = new ImageView(whiteBox);
@@ -90,6 +90,7 @@ import javafx.scene.paint.*;
     return this.scene;
   }
 
+
   //put 4 new rand circle into circle group
     Group setCircle(int x, int y, int radius) {
       ArrayList<Integer> temp = new ArrayList<Integer>();
@@ -116,7 +117,7 @@ import javafx.scene.paint.*;
 
 
         root.getChildren().add(scorePane);
-        root.getChildren().add(player);
+        //root.getChildren().add(player);
 
         stage.setScene(scene);
         changePlayerPosition(100, 250);
@@ -124,12 +125,12 @@ import javafx.scene.paint.*;
         return scene;
     }
 
-  void show(Stage stage) {
-  	stage.show();
-  }
+    void show(Stage stage) {
+  	 stage.show();
+    }
 
 
-//array to ensure 4 differnt rand
+    //array to ensure 4 differnt rand
      String randImage(ArrayList<Integer> temp){
          Random aa = new Random();
          int x = aa.nextInt(4);
@@ -185,7 +186,7 @@ import javafx.scene.paint.*;
         return tl;
      }
 
-//time so is quicker
+    //time so is quicker
     void circleAnimation(){
 
         SequentialTransition sequence = new SequentialTransition();
@@ -223,13 +224,13 @@ import javafx.scene.paint.*;
          makeAnimation(playerAnimation, 1);
 
      }
-//0 for animation at back, 1 for front
+    //0 for animation at back, 1 for front
     void makeAnimation(ImageView[] slides, int position){
         SequentialTransition seq = new SequentialTransition();
         for (ImageView image: slides){
             //   PauseTransition pause = new PauseTransition(Duration.millis(1000));
-            FadeTransition show = new FadeTransition(Duration.millis(1000), image);
-            FadeTransition gone = new FadeTransition(Duration.millis(1000), image);
+            FadeTransition show = new FadeTransition(Duration.millis(60), image);
+            //FadeTransition gone = new FadeTransition(Duration.millis(1000), image);
 
             if (position == 0) {
                 show.setFromValue(1);
@@ -240,7 +241,7 @@ import javafx.scene.paint.*;
                 show.setToValue(1);
             }
 
-            image.setOpacity(0);
+            //image.setOpacity(0);
             root.getChildren().add(image);
 
             if (position == 0) {
@@ -248,6 +249,7 @@ import javafx.scene.paint.*;
             }
             else {
                 image.toFront();
+                seq.setAutoReverse(true);
                 System.out.println(image);
             }
             seq.getChildren().add(show);
@@ -257,6 +259,10 @@ import javafx.scene.paint.*;
         seq.play();
 
     }
+
+    /*SequentialTransition getSeq(){
+        return this.tempSeq;
+    }*/
 
      void roadAnimation(){
 
@@ -295,20 +301,20 @@ import javafx.scene.paint.*;
      }
 
      void makePlayerImageViews(){
-         playerAnimation = new ImageView[4];
-         for (int i = 0; i < 4; i++){
-             Image image = new Image( i + ".png");
+         playerAnimation = new ImageView[24];
+         for (int i = 0; i < 24; i++){
+             Image image = new Image("frame" + i + ".png");
              playerAnimation[i] = new ImageView(image);
-             playerAnimation[i].setFitWidth(50);
+             playerAnimation[i].setFitWidth(70);
              playerAnimation[i].setFitHeight(50);
-             playerAnimation[i].setX(0);
-            playerAnimation[i].setY(250);
+             //playerAnimation[i].setX(0);
+             //playerAnimation[i].setY(150);
 
-//following line not working
-        //     bindPlayerXY(playerAnimation[i], 200, 250);
+        // following line not working
+        // bindPlayerXY(playerAnimation[i], 200, 250);
 
          }
-     }	
+     }
 
     void changePlayerPosition(int x, int y){
         for (ImageView iv: playerAnimation){

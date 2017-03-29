@@ -47,8 +47,7 @@ public class MMenu extends Application{
     Label gameName = new Label("BUG BITS");
     List<Button> buttonList = new ArrayList<Button>();
     MGraphics mgraphics = new MGraphics();
-    mnew mmm= new mnew();
-    int x=100;
+    mnew mn= new mnew(mgraphics);
 
     String[] name = {"Start", "Instructions", "Leader Board", "Quit"};
 
@@ -68,57 +67,14 @@ public class MMenu extends Application{
 	}
 
 
-
-
-
-
-
-public void handle(KeyEvent event) {
-int x = 100;
-int channel = 1;
-        if(event.getCode() == KeyCode.RIGHT) {
-            System.out.println("RIGHT");
-
-            if (channel < 3){
-                channel +=1;
-                x+=50;
-                //set score in logic not graphics
-                mgraphics.getScore().set(mgraphics.getScore().get()+1);
-                //draw(g, x, bg, player);
-                mgraphics.changePlayerPosition(x, 250);
-System.out.println(x);
-            }
-        }
-        else if(event.getCode() == KeyCode.LEFT) {
-            System.out.println("LEFT");
-            if (channel >0){
-                channel -=1;
-                x-=50;
-
-                mgraphics.changePlayerPosition(x, 250);
-System.out.println(x);
-
-                //draw(g, x, bg, player);
-            }
-        }
-    }
-
-
-
-
-
-
-
-
 	private void press(ActionEvent event) {
 	  String text = ((Button)event.getSource()).getText();
 	  switch(text){
 	  	case "Start":
 	  		// goto game home to play game
-	        mgraphics.draw(x);
 	        mgraphics.circleAnimation();
 	        starStage.setScene(mgraphics.setUp(starStage));
-	        mgraphics.getScene().setOnKeyPressed(this::handle);
+	        mgraphics.getScene().setOnKeyPressed(mn::handle);
 	  		System.out.println("start");
 	  		show(starStage);
 	  		break;
