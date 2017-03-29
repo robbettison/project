@@ -12,6 +12,7 @@ import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.animation.SequentialTransition;
 import javafx.animation.FadeTransition;
+import javafx.animation.TranslateTransition;
 import javafx.util.Duration;
 import javafx.scene.image.*;
 import javafx.scene.shape.*;
@@ -216,9 +217,10 @@ import javafx.scene.paint.*;
     void makeAnimation(ImageView[] slides, int position){
 
         SequentialTransition seq = new SequentialTransition();
+        SequentialTransition try1 = new SequentialTransition();
         for (ImageView image: slides){
-            //   PauseTransition pause = new PauseTransition(Duration.millis(1000));
-            FadeTransition show = new FadeTransition(Duration.millis(100), image);
+
+            FadeTransition show = new FadeTransition(Duration.millis(50), image);
             FadeTransition gone = new FadeTransition(Duration.millis(1), image);
 
             if (position == 0) {
@@ -229,8 +231,10 @@ import javafx.scene.paint.*;
             else{
                 show.setFromValue(0);
                 show.setToValue(1);
-               // gone.setToValue(1);
-                //gone.setToValue(0);
+
+
+            //     gone.setToValue(1);
+              //  gone.setToValue(0);
             }
 
             image.setOpacity(1);
@@ -241,12 +245,14 @@ import javafx.scene.paint.*;
             }
             else {
                 image.toFront();
-              //  seq.setAutoReverse(true);
                 System.out.println(image);
             }
             seq.getChildren().addAll(show, gone);
 
+
         }
+
+        seq.setAutoReverse(true);
         seq.setCycleCount(seq.INDEFINITE);
         seq.play();
 
