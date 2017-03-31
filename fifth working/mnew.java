@@ -42,12 +42,15 @@ public class mnew{
   public void checkWin(){
       if (mgraphics.checkIntersect()){
           mgraphics.getScore().set(mgraphics.getScore().get()+1);
+System.out.println("collide");
       }
 
   }
 
 
     public void handle(KeyEvent event) {
+checkWin();
+
         if(event.getCode() == KeyCode.RIGHT) {
             System.out.println("RIGHT");
 

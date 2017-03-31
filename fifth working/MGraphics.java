@@ -13,6 +13,7 @@ import javafx.animation.Timeline;
 import javafx.animation.SequentialTransition;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
+import javafx.animation.PauseTransition;
 import javafx.util.Duration;
 import javafx.scene.image.*;
 import javafx.scene.shape.*;
@@ -216,12 +217,20 @@ import javafx.scene.paint.*;
 
      //0 for animation at back, 1 for front
      void makeAnimation(ImageView[] slides, int position) {
+
+         int i = 0;
          SequentialTransition seq = new SequentialTransition();
          SequentialTransition try1 = new SequentialTransition();
          for (ImageView image : slides) {
+   if (i >=23){
+	i = 22;
+}
 
-             FadeTransition show = new FadeTransition(Duration.millis(50), image);
-             FadeTransition gone = new FadeTransition(Duration.millis(1), image);
+             FadeTransition show = new FadeTransition(Duration.millis(20), image);
+            FadeTransition show2 = new FadeTransition(Duration.millis(1), slides[i+1]);
+
+
+                 FadeTransition gone = new FadeTransition(Duration.millis(1), image);
 
              if (position == 0) {
                  show.setFromValue(1);
@@ -231,9 +240,10 @@ import javafx.scene.paint.*;
                  show.setFromValue(0);
                  show.setToValue(1);
 
-
-                 gone.setToValue(1);
-                 gone.setToValue(0);
+		show2.setFromValue(0);
+		show2.setToValue(1);
+                 gone.setFromValue(1);
+              gone.setToValue(0);
              }
 
              image.setOpacity(1);
@@ -243,14 +253,17 @@ import javafx.scene.paint.*;
                  image.toBack();
              } else {
                  image.toFront();
-                 System.out.println(image);
-             }
-             seq.getChildren().addAll(show, gone);
 
+             }
+             seq.getChildren().addAll(show, show2, gone);
+
+
+          
+i++;
 
          }
 
-         seq.setAutoReverse(true);
+      //   seq.setAutoReverse(true);
          seq.setCycleCount(seq.INDEFINITE);
          seq.play();
 
