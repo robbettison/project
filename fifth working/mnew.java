@@ -20,8 +20,8 @@ import javafx.scene.paint.*;
 
 public class mnew{
     private int n = 0;
-    int x=100;
-    int channel = 1;
+    int x=275;
+    int channel = 2;
     MGraphics mgraphics;
     MTime mtime = new MTime();
 
@@ -38,26 +38,40 @@ public class mnew{
   }
 
 
+
+  public void checkWin(){
+      if (mgraphics.checkIntersect()){
+          mgraphics.getScore().set(mgraphics.getScore().get()+1);
+System.out.println("collide");
+      }
+
+  }
+
+
     public void handle(KeyEvent event) {
+checkWin();
+
         if(event.getCode() == KeyCode.RIGHT) {
             System.out.println("RIGHT");
 
             if (channel < 3){
                 channel +=1;
-                x+=50;
+                x+=125;
                 //set score in logic not graphics
-                mgraphics.getScore().set(mgraphics.getScore().get()+1);
+
                 //draw(g, x, bg, player);
-                mgraphics.changePlayerPosition(x, 250);
+                mgraphics.changePlayerPosition(x, 800);
+
+
             }
         }
         else if(event.getCode() == KeyCode.LEFT) {
             System.out.println("LEFT");
             if (channel >0){
                 channel -=1;
-                x-=50;
+                x-=125;
 
-                mgraphics.changePlayerPosition(x, 250);
+                mgraphics.changePlayerPosition(x, 800);
                 //mgraphics.getSeq().play();
 
                 //draw(g, x, bg, player);

@@ -119,8 +119,6 @@ import javafx.scene.paint.*;
         root.getChildren().add(player);
 
         stage.setScene(scene);
-        changePlayerPosition(100, 250);
-
         return scene;
     }
 
@@ -310,13 +308,13 @@ import javafx.scene.paint.*;
          }
      }	
 
-    void changePlayerPosition(int x, int y){
+    void changePlayerPosition(int x){
         for (ImageView iv: playerAnimation){
             iv.setX(x);
-            iv.setY(y);
+
         }
         player.setX(x);
-        player.setY(y);
+
     }
 
 

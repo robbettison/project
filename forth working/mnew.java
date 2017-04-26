@@ -60,7 +60,7 @@ public class mnew extends Application {
                 //set score in logic not graphics
                 mgraphics.getScore().set(mgraphics.getScore().get()+1);
                 //draw(g, x, bg, player);
-                mgraphics.changePlayerPosition(x, 250);
+                mgraphics.changePlayerPosition(x);
             }
         }
         else if(event.getCode() == KeyCode.LEFT) {
@@ -69,7 +69,7 @@ public class mnew extends Application {
                 channel -=1;
                 x-=50;
 
-                mgraphics.changePlayerPosition(x, 250);
+                mgraphics.changePlayerPosition(x);
 
                 //draw(g, x, bg, player);
             }

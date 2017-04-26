@@ -36,6 +36,10 @@ import javafx.scene.input.KeyCode;
 
 public class MMenu extends Application{
 
+	//temp
+
+	int channel = 1;
+
 	// bakcground
     Canvas canvas = new Canvas(400, 300);
     Image bg = new Image("Bug.png");
@@ -72,10 +76,9 @@ public class MMenu extends Application{
 
 
 
-
+/*
 public void handle(KeyEvent event) {
-int x = 100;
-int channel = 1;
+
         if(event.getCode() == KeyCode.RIGHT) {
             System.out.println("RIGHT");
 
@@ -84,8 +87,8 @@ int channel = 1;
                 x+=50;
                 //set score in logic not graphics
                 mgraphics.getScore().set(mgraphics.getScore().get()+1);
-                //draw(g, x, bg, player);
-                mgraphics.changePlayerPosition(x, 250);
+
+                mgraphics.changePlayerPosition(x);
 System.out.println(x);
             }
         }
@@ -95,14 +98,14 @@ System.out.println(x);
                 channel -=1;
                 x-=50;
 
-                mgraphics.changePlayerPosition(x, 250);
+                mgraphics.changePlayerPosition(x);
 System.out.println(x);
 
                 //draw(g, x, bg, player);
             }
         }
     }
-
+*/
 
 
 
@@ -115,11 +118,11 @@ System.out.println(x);
 	  switch(text){
 	  	case "Start":
 	  		// goto game home to play game
-	        mgraphics.draw(x);
+
 	        mgraphics.circleAnimation();
 	        starStage.setScene(mgraphics.setUp(starStage));
 	        mgraphics.getScene().setOnKeyPressed(this::handle);
-	  		System.out.println("start");
+	  		System.out.println("sta1rt");
 	  		show(starStage);
 	  		break;
 	  	case "Instructions":
