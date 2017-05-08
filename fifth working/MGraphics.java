@@ -68,7 +68,6 @@ import javafx.scene.paint.*;
          return this.scene;
      }
 
-
      //put 4 new rand circle into circle group
      Group setCircle(int x, int y, int radius) {
          ArrayList<Integer> temp = new ArrayList<Integer>();
@@ -175,16 +174,19 @@ import javafx.scene.paint.*;
 
          SequentialTransition sequence = new SequentialTransition();
          int time = 5000;
-         for (int i = 0; i < 40; i++) {
+         for (int i = 0; i < 3; i++) {
              sequence.getChildren().add(makeCircleTimeline(time));
              time -= 100;
          }
          sequence.setCycleCount(sequence.INDEFINITE);
          roadAnimation();
+
+
          playerAnimation();
 
          sequence.play();
      }
+
 
 
      // Timeline makeRoadTimeLine(int n) {
@@ -322,6 +324,7 @@ import javafx.scene.paint.*;
          }
      }
 
+
      void changePlayerPosition(int x, int y) {
          for (ImageView iv : playerAnimation) {
              iv.setX(x);
@@ -332,16 +335,34 @@ import javafx.scene.paint.*;
      }
 
 
-     boolean checkIntersect() {
+     Circle checkIntersect() {
 
          for (Circle circle : check1) {
              if (playerAnimation[0].getBoundsInParent().intersects(circle.getBoundsInParent())) {
-                 System.out.println("collide");
-                 return true;
+		check1.remove(circle);
+
+
+                 return circle;
              }
          }
 
-         return false;
+         return null;
+     }
+     void restoreCheck1(Circle circle){
+	if (circle != null){
+        	check1.add(circle);
+	}
      }
 
+
+	void removeGraphic(Circle circle){
+		group.getChildren().remove(circle);
+System.out.println(group.getChildren());
+		System.out.println("removing");
+		System.out.println(circle);
+	}
+
 }
+
+
+
