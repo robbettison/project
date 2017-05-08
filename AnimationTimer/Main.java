@@ -26,11 +26,13 @@ public class Main extends Application {
   Fruits allFruit;
   final LongProperty lastUpdateTime = new SimpleLongProperty();
   Player player;
+  Background background;
 
   public void start(Stage stage) {
     root.getChildren().add(fruit);
     allFruit = new Fruits(4, fruit);
     player = new Player(root, scene, fruit);
+    background = new Background(root);
     stage.setScene(scene);
     stage.show();
     beginFruit.start();
