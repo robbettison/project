@@ -48,7 +48,7 @@ public class MUI{
 
 
     public void handle(KeyEvent event) {
-        checkWin();
+
 
         if(event.getCode() == KeyCode.RIGHT) {
             System.out.println("RIGHT");
