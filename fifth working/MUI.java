@@ -23,7 +23,7 @@ public class MUI{
     int x=275;
     int channel = 2;
     MGraphics mgraphics;
-  
+
   /*Canvas canvas = new Canvas(400, 300);
   Image bg = new Image("road.jpeg");
   Image player = new Image ("player.png");
@@ -41,14 +41,14 @@ public class MUI{
   public void checkWin(){
       if (mgraphics.checkIntersect()){
           mgraphics.getScore().set(mgraphics.getScore().get()+1);
-System.out.println("collide");
+          System.out.println("collide");
       }
 
   }
 
 
     public void handle(KeyEvent event) {
-checkWin();
+        checkWin();
 
         if(event.getCode() == KeyCode.RIGHT) {
             System.out.println("RIGHT");

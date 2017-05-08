@@ -9,7 +9,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.geometry.Pos;
 import javafx.scene.canvas.*;
-
+import javafx.geometry.Orientation;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 
 
 public class Instructions {
@@ -24,6 +26,7 @@ public class Instructions {
 	Scene scene = new Scene(borderPane, 400, 300);
 	Button back = new Button("back");
 	MMenu menu = new MMenu();
+	ScrollBar sc = new ScrollBar();
 
 
 	public Instructions(){}
@@ -50,6 +53,15 @@ public class Instructions {
 		borderPane.getChildren().add(canvas);
 		borderPane.setStyle("-fx-background-color: GREEN;");
 		borderPane.setBottom(hbox);
+		sc.setLayoutX(scene.getWidth()-sc.getWidth());
+        //sc.setMin(0);
+        sc.setOrientation(Orientation.VERTICAL);
+        //sc.setPrefHeight(900);
+        //sc.setMax(600);
+		borderPane.getChildren().add(sc);
+		sc.valueProperty().addListener((ov, old_val, new_val) -> {
+            sc.setLayoutY(-new_val.doubleValue());
+        });
 	}
 	private void press(ActionEvent event) {
 		//setLayout();

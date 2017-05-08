@@ -165,6 +165,8 @@ import javafx.scene.paint.*;
              xChange += 200;
              tl.getKeyFrames().add(makeKeyFrame(time, 40, 40, xChange, 1200, node));
          }
+
+
          return tl;
      }
 
@@ -185,17 +187,17 @@ import javafx.scene.paint.*;
      }
 
 
-     Timeline makeRoadTimeLine(int n) {
+     // Timeline makeRoadTimeLine(int n) {
 
-         Timeline tl = new Timeline();
+     //     Timeline tl = new Timeline();
 
-         ImageView road = new ImageView(new Image("road" + n + ".jpeg"));
-         root.getChildren().add(road);
-         tl.getKeyFrames().add(makeKeyFrame(n * 1000, 1, 1, 0, 0, road));
+     //     ImageView road = new ImageView(new Image("road" + n + ".jpeg"));
+     //     root.getChildren().add(road);
+     //     tl.getKeyFrames().add(makeKeyFrame(n * 1000, 1, 1, 0, 0, road));
 
-         return tl;
+     //     return tl;
 
-     }
+     // }
 
 
      void playerAnimation() {
