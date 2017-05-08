@@ -23,6 +23,7 @@ public class MUI{
     int x=275;
     int channel = 2;
     MGraphics mgraphics;
+Circle temp = null;
 
   /*Canvas canvas = new Canvas(400, 300);
   Image bg = new Image("road.jpeg");
@@ -39,13 +40,26 @@ public class MUI{
 
 
   public void checkWin(){
-      if (mgraphics.checkIntersect()){
-          mgraphics.getScore().set(mgraphics.getScore().get()+1);
-          System.out.println("collide");
+
+	Circle winningCircle = null;
+	try{ 
+		winningCircle = mgraphics.checkIntersect();
+	} catch (Exception e){
+	
+	}
+	mgraphics.restoreCheck1(temp);
+
+      if (winningCircle != null && winningCircle != temp){
+
+		temp = winningCircle;
+
+        mgraphics.getScore().set(mgraphics.getScore().get()+1);
+
+mgraphics.removeGraphic(winningCircle);
+ 
       }
 
   }
-
 
     public void handle(KeyEvent event) {
 
