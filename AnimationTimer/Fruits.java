@@ -12,8 +12,14 @@ public class Fruits {
   private int initialNumberFruit;
   private double fruitVelocity=1;
   Group allfruit;
+  ArrayList<Color> Colours = new ArrayList<Color>();
+
 
   Fruits(int numberFruit, Group G) {
+    Colours.add(Color.BLUE);
+    Colours.add(Color.GREEN);
+    Colours.add(Color.RED);
+    Colours.add(Color.YELLOW);
     for(int i=0;i<numberFruit;i++) {
       Fruit newFruit = new Fruit(140+i*70, 30, G, i);
       fruitArray.add(newFruit);
@@ -31,13 +37,23 @@ public class Fruits {
       currentFruit.remove(allfruit);
     }
     fruitArray=fruitSaLaD;
+    shuffleSalad(fruitArray);
+    //Collections.shuffle(fruitArray);
+    //fruitArray.();
     numberFruits = initialNumberFruit;
     for(int i=0;i<numberFruits;i++) {
       Fruit currentFruit = fruitArray.get(i);
-      currentFruit.setFill();
+      //currentFruit.setFill();
       currentFruit.addTo(allfruit);
     }
+  }
 
+  private void shuffleSalad(List<Fruit> fruit) {
+    Collections.shuffle(Colours);
+    for(int i=0;i<numberFruits;i++) {
+      Fruit currentFruit=fruit.get(i);
+      currentFruit.setFill(Colours.get(i));
+    }
   }
 
   void updatePositions(double timeElapsed, Player player) {
@@ -60,8 +76,8 @@ public class Fruits {
   void checkCollisions(Player player) {
     for(int i=0;i<numberFruits;i++) {
       Fruit currentFruit = fruitArray.get(i);
-      if(currentFruit.impacts(player.getBounds())) {
-        //currentFruit.remove(allfruit);
+      if(currentFruit.impacts(player.getBounds())&&currentFruit.getY()==640) {
+        currentFruit.remove(allfruit);
         //fruitArray.remove(currentFruit);
         //numberFruits-=1;
         resetSalad();

@@ -2,6 +2,7 @@ import javafx.scene.shape.*;
 import javafx.scene.paint.*;
 import javafx.scene.*;
 import javafx.geometry.*;
+import java.util.*;
 
 
 public class Fruit {
@@ -14,9 +15,17 @@ public class Fruit {
   private double initialY;
   private double initialRadius = 15;
 
+  ArrayList<Color> Colours = new ArrayList<Color>();
+
+
   Fruit(int x, int y, Group G, int i) {
+    Colours.add(Color.BLUE);
+    Colours.add(Color.GREEN);
+    Colours.add(Color.RED);
+    Colours.add(Color.YELLOW);
+
     fruit = new Circle(x, y, 15);
-    fruit.setFill(Color.RED);
+    fruit.setFill(Colours.get(i));
     G.getChildren().add(fruit);
     XPosition=x;
     YPosition=y;
@@ -26,19 +35,19 @@ public class Fruit {
   }
 
   public void update(double x, double y) {
-    if(!(YPosition>700)&&fruitNumber==3) {
+    if(!(YPosition>640)&&fruitNumber==3) {
       XPosition = XPosition+x/16;
       YPosition = YPosition+y;
     }
-    else if(!(YPosition>700)&&fruitNumber==0) {
+    else if(!(YPosition>640)&&fruitNumber==0) {
       XPosition = XPosition-x/16;
       YPosition = YPosition+y;
     }
-    else if(!(YPosition>700)&&fruitNumber==1) {
+    else if(!(YPosition>640)&&fruitNumber==1) {
       XPosition = XPosition-x/48;
       YPosition = YPosition+y;
     }
-    else if(!(YPosition>700)&&fruitNumber==2) {
+    else if(!(YPosition>640)&&fruitNumber==2) {
       XPosition = XPosition+x/48;
       YPosition = YPosition+y;
     }
@@ -73,8 +82,12 @@ public class Fruit {
     G.getChildren().add(fruit);
   }
 
-  public void setFill() {
-    fruit.setFill(Color.BLUE);
+  public void setFill(Color color) {
+    fruit.setFill(color);
+  }
+
+  public double getY() {
+    return YPosition;
   }
 
 }

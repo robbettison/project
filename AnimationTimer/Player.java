@@ -27,12 +27,6 @@ public class Player {
     collisionFruit=fruit;
   }
 
-  /*public void updatePlayerPosition() {
-
-  }*/
-
-
-
   public void leftright(KeyEvent e) {
     if(e.getCode()==KeyCode.LEFT&&XPosition>Channel1) {
       player.setX(player.getX()-98);
@@ -47,9 +41,4 @@ public class Player {
   public Bounds getBounds() {
     return player.getBoundsInLocal();
   }
-
-
-
-
-
 }

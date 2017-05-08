@@ -18,8 +18,6 @@ import javafx.scene.layout.*;
 import java.io.*;
 import javafx.scene.text.Font;
 
-
-
 public class Main extends Application {
 
   Group root = new Group();
@@ -47,9 +45,4 @@ public class Main extends Application {
        lastUpdateTime.set(now);
     }
   };
-
-
-
-
-
 }
