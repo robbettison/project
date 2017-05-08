@@ -1,4 +1,3 @@
-/*created by Jiafeng Zhong*/
 import java.util.*;
 import java.io.File;
 import java.io.InputStream;
@@ -47,7 +46,7 @@ public class MMenu extends Application{
     Label gameName = new Label("BUG BITS");
     List<Button> buttonList = new ArrayList<Button>();
     MGraphics mgraphics = new MGraphics();
-    mnew mn= new mnew(mgraphics);
+    MUI mn= new MUI(mgraphics);
 
     String[] name = {"Start", "Instructions", "Leader Board", "Quit"};
 

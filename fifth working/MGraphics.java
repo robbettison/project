@@ -1,10 +1,3 @@
-/**
- *This is the graphics class. Created by @rob.
- *
- *
- *
- *
- */
 import java.util.*;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -222,15 +215,16 @@ import javafx.scene.paint.*;
          SequentialTransition seq = new SequentialTransition();
          SequentialTransition try1 = new SequentialTransition();
          for (ImageView image : slides) {
-   if (i >=23){
-	i = 22;
-}
+           if (i >=23){
+	          i = 22;
 
-             FadeTransition show = new FadeTransition(Duration.millis(20), image);
+            }
+
+            FadeTransition show = new FadeTransition(Duration.millis(20), image);
             FadeTransition show2 = new FadeTransition(Duration.millis(1), slides[i+1]);
 
 
-                 FadeTransition gone = new FadeTransition(Duration.millis(1), image);
+            FadeTransition gone = new FadeTransition(Duration.millis(1), image);
 
              if (position == 0) {
                  show.setFromValue(1);
@@ -240,10 +234,10 @@ import javafx.scene.paint.*;
                  show.setFromValue(0);
                  show.setToValue(1);
 
-		show2.setFromValue(0);
-		show2.setToValue(1);
+		         show2.setFromValue(0);
+		         show2.setToValue(1);
                  gone.setFromValue(1);
-              gone.setToValue(0);
+                 gone.setToValue(0);
              }
 
              image.setOpacity(1);
@@ -258,8 +252,8 @@ import javafx.scene.paint.*;
              seq.getChildren().addAll(show, show2, gone);
 
 
-          
-i++;
+
+            i++;
 
          }
 
@@ -347,8 +341,5 @@ i++;
 
          return false;
      }
-
-
-
 
 }

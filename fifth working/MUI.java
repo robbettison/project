@@ -18,13 +18,12 @@ import javafx.scene.paint.*;
 
 
 
-public class mnew{
+public class MUI{
     private int n = 0;
     int x=275;
     int channel = 2;
     MGraphics mgraphics;
-    MTime mtime = new MTime();
-
+  
   /*Canvas canvas = new Canvas(400, 300);
   Image bg = new Image("road.jpeg");
   Image player = new Image ("player.png");
@@ -33,7 +32,7 @@ public class mnew{
   GraphicsContext g = canvas.getGraphicsContext2D();
   StackPane stackPane = new StackPane();
   IntegerProperty score = new SimpleIntegerProperty(0);*/
-  public mnew(MGraphics mgraphics){
+  public MUI (MGraphics mgraphics){
     this.mgraphics = mgraphics;
   }
 
