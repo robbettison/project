@@ -97,8 +97,31 @@ import javafx.scene.paint.*;
 
 
      Scene setUp(Stage stage) {
-         playerScore.textProperty().bind(score.asString());
-         scorePane.getChildren().addAll(whiteBox1, playerScore);
+         //playerScore.textProperty().bind(score.asString());
+         //scorePane.getChildren().addAll(whiteBox1, playerScore);
+         Timeline loop = new Timeline(new KeyFrame(Duration.millis(5), new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent t) {
+                Label labelInstructions = null;
+                try{
+                    File file = new File("Instructions.txt");
+                    out = new FileInputStream(file);
+                    int len;
+                    while((len = out.read(b)) != -1){
+                        s = new String(b, "utf-8");
+                    }
+                    labelInstructions = new Label(s);
+                    scorePane.getChildren().addAll(whiteBox1, playerScore);
+                } catch (Exception e){
+                    System.out.println(e.getMessage());
+                } finally{
+                    if(out != null){
+                        out.close();
+                    }
+                }
+            }
+          }));
 
 
          root.getChildren().add(scorePane);
@@ -165,6 +188,28 @@ import javafx.scene.paint.*;
              tl.getKeyFrames().add(makeKeyFrame(time, 40, 40, xChange, 1200, node));
          }
 
+         /*Timeline loop = new Timeline(new KeyFrame(Duration.millis(5), new EventHandler<ActionEvent>() {
+
+            @Override
+            public void handle(ActionEvent t) {
+                Label labelInstructions = null;
+                try{
+                    File file = new File("Instructions.txt");
+                    out = new FileInputStream(file);
+                    int len;
+                    while((len = out.read(b)) != -1){
+                        s = new String(b, "utf-8");
+                    }
+                    labelInstructions = new Label(s);
+                } catch (Exception e){
+                    System.out.println(e.getMessage());
+                } finally{
+                    if(out != null){
+                        out.close();
+                    }
+                }
+            }
+          }));*/
 
          return tl;
      }
@@ -357,7 +402,7 @@ import javafx.scene.paint.*;
 
 	void removeGraphic(Circle circle){
 		group.getChildren().remove(circle);
-System.out.println(group.getChildren());
+        System.out.println(group.getChildren());
 		System.out.println("removing");
 		System.out.println(circle);
 	}
