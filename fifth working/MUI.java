@@ -18,12 +18,11 @@ import javafx.scene.paint.*;
 
 
 
-public class mnew{
+public class MUI{
     private int n = 0;
     int x=275;
     int channel = 2;
     MGraphics mgraphics;
-    MTime mtime = new MTime();
 
   /*Canvas canvas = new Canvas(400, 300);
   Image bg = new Image("road.jpeg");
@@ -33,7 +32,7 @@ public class mnew{
   GraphicsContext g = canvas.getGraphicsContext2D();
   StackPane stackPane = new StackPane();
   IntegerProperty score = new SimpleIntegerProperty(0);*/
-  public mnew(MGraphics mgraphics){
+  public MUI (MGraphics mgraphics){
     this.mgraphics = mgraphics;
   }
 
@@ -42,14 +41,14 @@ public class mnew{
   public void checkWin(){
       if (mgraphics.checkIntersect()){
           mgraphics.getScore().set(mgraphics.getScore().get()+1);
-System.out.println("collide");
+          System.out.println("collide");
       }
 
   }
 
 
     public void handle(KeyEvent event) {
-checkWin();
+        checkWin();
 
         if(event.getCode() == KeyCode.RIGHT) {
             System.out.println("RIGHT");
