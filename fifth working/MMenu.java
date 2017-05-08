@@ -27,6 +27,7 @@ import javafx.animation.Timeline;
 import javafx.scene.effect.BlendMode;
 import javafx.scene.effect.BoxBlur;
 import javafx.util.Duration;
+import javafx.animation.*;
 
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
@@ -73,7 +74,18 @@ public class MMenu extends Application{
 	  		// goto game home to play game
 	        mgraphics.circleAnimation();
 	        starStage.setScene(mgraphics.setUp(starStage));
-	        mgraphics.getScene().setOnKeyPressed(mn::handle);
+
+
+    new AnimationTimer()
+    {
+
+        public void handle(long currentNanoTime)
+        {
+mn.checkWin();
+           mgraphics.getScene().setOnKeyPressed(mn::handle);
+        }
+    }.start();
+	       
 
 			System.out.println("start");
 	  		show(starStage);
