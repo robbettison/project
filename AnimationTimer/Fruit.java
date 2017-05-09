@@ -74,7 +74,7 @@ public class Fruit {
   }
 
   private void size(double radiusProportion) {
-    fruit.setRadius(fruit.getRadius() + radiusProportion/30);
+    fruit.setRadius(fruit.getRadius() + radiusProportion/20);
 
   }
 
