@@ -31,10 +31,12 @@ public class Main extends Application {
   Label scoreboard = new Label();
 
   public void start(Stage stage) {
+    scoreboard.textProperty().bind(score.asString());
     root.getChildren().add(fruit);
     allFruit = new Fruits(4, fruit);
     player = new Player(root, scene, fruit);
     background = new Background(root);
+    root.getChildren().add(scoreboard);
     stage.setScene(scene);
     stage.show();
     beginFruit.start();
