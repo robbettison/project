@@ -20,7 +20,7 @@ public class Player {
   429.6666666666596*/
 
 
-  double[] channel = {98, 196, 294, 391};
+  double[] channel = {120, 213, 292, 384};
 
   int currentChannel = 2;
   double XPosition = channel[currentChannel];
@@ -44,10 +44,14 @@ public class Player {
   public void leftright(KeyEvent e) {
     if(e.getCode()==KeyCode.LEFT && currentChannel > 0) {
 
-      currentChannel -=1;
+
+
+      currentChannel -= 1;
+
+System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 System.out.println(currentChannel);
 
-System.out.println()
+System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
 
 
       changePlayerPosition(channel[currentChannel], caterPillarY);
@@ -57,6 +61,10 @@ System.out.println()
     }
     else if(e.getCode()==KeyCode.RIGHT && currentChannel < 3){
       currentChannel+=1;
+System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+System.out.println(currentChannel);
+
+System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
       changePlayerPosition(channel[currentChannel], caterPillarY);
 
       XPosition=playerAnimation[0].getX();

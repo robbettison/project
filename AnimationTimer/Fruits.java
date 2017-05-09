@@ -116,6 +116,8 @@ ArrayList<Integer> temp = new ArrayList<>();
         currentFruit.remove(allfruit);
         //fruitArray.remove(currentFruit);
         //numberFruits-=1;
+
+//if banana
         if(currentFruit.getFruitAnswer()==2) {
           score.set(score.get()+10);
           System.out.println("collides");
