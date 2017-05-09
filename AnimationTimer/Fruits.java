@@ -15,7 +15,7 @@ public class Fruits {
   private double fruitVelocity=1;
   Group allfruit;
   //ArrayList<Color> Colours = new ArrayList<Color>();
-  ArrayList<Image> Fruits = new ArrayList<Image>();
+  ArrayList<Image> FruitImages = new ArrayList<Image>();
 
 
   Fruits(int numberFruit, Group G) {
@@ -23,12 +23,12 @@ public class Fruits {
     Colours.add(Color.GREEN);
     Colours.add(Color.RED);
     Colours.add(Color.YELLOW);*/
-    Fruits.add(new Image("Images/apple.png"));
-    Fruits.add(new Image("Images/pineapple.png"));
-    Fruits.add(new Image("Images/banana.png"));
-    Fruits.add(new Image("Images/pear.png"));
+    FruitImages.add(new Image("Images/apple.png"));
+    FruitImages.add(new Image("Images/pineapple.png"));
+    FruitImages.add(new Image("Images/banana.png"));
+    FruitImages.add(new Image("Images/pear.png"));
     for(int i=0;i<numberFruit;i++) {
-      Fruit newFruit = new Fruit(290+i*5, 267, G, i);
+      Fruit newFruit = new Fruit(290+i*5, 267, G, i, FruitImages.get(i));
       fruitArray.add(newFruit);
       fruitSaLaD.add(newFruit);
     }
@@ -50,6 +50,7 @@ public class Fruits {
     numberFruits = initialNumberFruit;
     for(int i=0;i<numberFruits;i++) {
       Fruit currentFruit = fruitArray.get(i);
+      //currentFruit.setFruitPosition(i);
       //currentFruit.setFill();
       currentFruit.addTo(allfruit);
     }
@@ -57,12 +58,38 @@ public class Fruits {
 
   private void shuffleSalad(List<Fruit> fruit) {
     //Collections.shuffle(Colours);
-    Collections.shuffle(Fruits);
+  //  List<Fruit> newList = new ArrayList<>();
+
+    //Collections.shuffle(fruit);
+    //Collections.shuffle(fruit);
+//position should be different, id stays the same
+ArrayList<Integer> temp = new ArrayList<>();
     for(int i=0;i<numberFruits;i++) {
       Fruit currentFruit=fruit.get(i);
+      //System.out.println(currentFruit.getImage());
       //currentFruit.setFill(Colours.get(i));
-      currentFruit.setFill(new ImagePattern(Fruits.get(i)));
+
+
+      int newPosition = setRandNum(temp);
+            System.out.println(newPosition);
+      currentFruit.setFruitPosition(newPosition);
+      currentFruit.setXstarting(newPosition*i+290);
+
+System.out.println(currentFruit.getfruitPosition());
+
+      //currentFruit.setFruitImage(FruitImages.get(i));
     }
+
+  }
+
+  int setRandNum(ArrayList<Integer> temp){
+    Random rand = new Random();
+    int x = rand.nextInt(4);
+    while(temp.contains(x)){
+      x = rand.nextInt(4);
+    }
+    temp.add(x);
+    return x;
   }
 
   void updatePositions(double timeElapsed, Player player, IntegerProperty score) {
@@ -89,10 +116,12 @@ public class Fruits {
         currentFruit.remove(allfruit);
         //fruitArray.remove(currentFruit);
         //numberFruits-=1;
-        //if(currentFruit.getColor()==Color.RED) score.set(score.get()+10);
-        //else score.set(score.get()-5);
+        if(currentFruit.getFruitAnswer()==2) {
+          score.set(score.get()+10);
+          System.out.println("collides");
+        }
+        else score.set(score.get()-5);
         resetSalad();
-        System.out.println("collides");
         break;
       }
     }
