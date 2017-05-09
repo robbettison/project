@@ -30,6 +30,9 @@ import javafx.util.Duration;
 import javafx.animation.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.KeyCode;
+import javafx.geometry.Orientation;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 
 
 
@@ -45,11 +48,12 @@ public class MMenu extends Application{
 	Scene scene = new Scene(borderPane,400,300);
     Label gameName = new Label("BUG BITS");
     List<Button> buttonList = new ArrayList<Button>();
+    ScrollPane sp = new ScrollPane();
     //MGraphics mgraphics = new MGraphics();
     //MUI mn= new MUI(mgraphics);
     Main m  = new Main();
 
-    String[] name = {"Start", "Instructions", "Leader Board", "Quit"};
+    String[] name = {"Start", "Instructions", "Binary", "Leader Board", "Quit"};
 
     // remember initial satge and create a new scene
     Stage starStage;
@@ -83,9 +87,41 @@ public class MMenu extends Application{
 	  		Instructions instruct = new Instructions(backScene, backStage, scene.getWidth(), scene.getHeight());
 	  		try {
 				starStage.setTitle("Instructions!");
+				Label content = instructionLabel("Instructions.txt");
 				// create a new scene
 	  			starStage.setScene(instruct.instructionShow());
-	  			instruct.borderPane.setTop(instructionLabel());
+	  			instruct.scroll(content);
+	  			/*sp.setPrefSize(200,200);
+	  			sp.setContent(content);
+		        sp.vvalueProperty().addListener(new ChangeListener<Number>() {
+	         		public void changed(ObservableValue<? extends Number> ov,
+	              	Number old_val, Number new_val) {
+	                  content.setLayoutY(-new_val.intValue());
+	                  System.out.println(new_val.intValue());
+	         	 	}
+        		});
+        		sp.hvalueProperty().addListener(new ChangeListener<Number>() {
+		          	public void changed(ObservableValue<? extends Number> ov,
+		              Number old_val, Number new_val) {
+		                  System.out.println(new_val.intValue());
+		        	}
+		    	});
+		    	instruct.borderPane.setCenter(sp);*/
+	  		} catch (IOException e) {
+	  			System.out.println("OH no!");
+	  		}
+
+	  		show(starStage);
+	  		System.out.println("Instructions");
+	  		break;
+	  	case "Binary":
+	  		Instructions instruct1 = new Instructions(backScene, backStage, scene.getWidth(), scene.getHeight());
+	  		try {
+				starStage.setTitle("Binary!");
+				Label content1 = instructionLabel("howtoplay.txt");
+				// create a new scene
+	  			starStage.setScene(instruct1.instructionShow());
+	  			instruct1.scroll(content1);
 	  		} catch (IOException e) {
 	  			System.out.println("OH no!");
 	  		}
@@ -104,13 +140,13 @@ public class MMenu extends Application{
 	  }
 	}
 
-	public Label instructionLabel() throws IOException{
+	public Label instructionLabel(String name) throws IOException{
 		byte[] b = new byte[2048];
 		String s = null;
 		InputStream out = null;
 		Label labelInstructions = null;
 		try{
-			File file = new File("Instructions.txt");
+			File file = new File(name);
 			out = new FileInputStream(file);
 			int len;
 			while((len = out.read(b)) != -1){

@@ -20,13 +20,15 @@ public class Instructions {
 	double width, height;
 	Canvas canvas = new Canvas(400, 300);
     Image bg = new Image("Bug.png");
+    //Group root = new Group();
     //ImageView bgView = new ImageView(bg);
     GraphicsContext g = canvas.getGraphicsContext2D();
 	BorderPane borderPane = new BorderPane();
+	BorderPane borderPane1 = new BorderPane();
 	Scene scene = new Scene(borderPane, 400, 300);
 	Button back = new Button("back");
 	MMenu menu = new MMenu();
-	ScrollBar sc = new ScrollBar();
+	ScrollPane sp = new ScrollPane();
 
 
 	public Instructions(){}
@@ -53,19 +55,12 @@ public class Instructions {
 		borderPane.getChildren().add(canvas);
 		borderPane.setStyle("-fx-background-color: GREEN;");
 		borderPane.setBottom(hbox);
-		sc.setLayoutX(scene.getWidth()-sc.getWidth());
-        //sc.setMin(0);
-        sc.setOrientation(Orientation.VERTICAL);
-        //sc.setPrefHeight(900);
-        //sc.setMax(600);
-		borderPane.getChildren().add(sc);
-		sc.valueProperty().addListener((ov, old_val, new_val) -> {
-            sc.setLayoutY(-new_val.doubleValue());
-        });
+		//root.getChildren().add(borderPane);
+		borderPane.setCenter(sp);
 	}
 	private void press(ActionEvent event) {
 		//setLayout();
-		// replace scene
+		//replace scene
 		//g.clearRect(0, 0, scene.getWidth(), scene.getHeight());
 		//menu.bindControl();
 		//menu.animate(scene.getWidth(),scene.getHeight());
@@ -85,8 +80,29 @@ public class Instructions {
 	}
 
 
+	public void scroll(Label content){
+		sp.setPrefSize(200,200);
+		borderPane1.setCenter(content);
+		borderPane1.setStyle("-fx-background-color: GREEN;");
+	  	sp.setContent(borderPane1);
+		sp.vvalueProperty().addListener(new ChangeListener<Number>() {
+     		public void changed(ObservableValue<? extends Number> ov,
+          	Number old_val, Number new_val) {
+              content.setLayoutY(-new_val.intValue());
+              System.out.println(new_val.intValue());
+     	 	}
+		});
+		sp.hvalueProperty().addListener(new ChangeListener<Number>() {
+          	public void changed(ObservableValue<? extends Number> ov,
+              Number old_val, Number new_val) {
+              	content.setLayoutY(-new_val.intValue());
+                System.out.println(new_val.intValue());
+        	}
+	    });
+	    setLayout();
+	}
+
 	public Scene instructionShow() {
-		setLayout();
 		back.setOnAction(this::press);
 		canvas.widthProperty().bind(scene.widthProperty());
         canvas.heightProperty().bind(scene.heightProperty());
