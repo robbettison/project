@@ -3,6 +3,7 @@ import javafx.scene.paint.*;
 import javafx.scene.*;
 import javafx.geometry.*;
 import java.util.*;
+import javafx.scene.image.*;
 
 
 public class Fruit {
@@ -15,17 +16,24 @@ public class Fruit {
   private double initialY;
   private double initialRadius = 15;
 
-  ArrayList<Color> Colours = new ArrayList<Color>();
+  //ArrayList<Color> Colours = new ArrayList<Color>();
+  ArrayList<Image> Fruits = new ArrayList<Image>();
 
 
   Fruit(int x, int y, Group G, int i) {
-    Colours.add(Color.BLUE);
+    Fruits.add(new Image("Images/apple.png"));
+    Fruits.add(new Image("Images/pineapple.png"));
+    Fruits.add(new Image("Images/banana.png"));
+    Fruits.add(new Image("Images/pear.png"));
+
+    /*Colours.add(Color.BLUE);
     Colours.add(Color.GREEN);
     Colours.add(Color.RED);
-    Colours.add(Color.YELLOW);
+    Colours.add(Color.YELLOW);*/
 
     fruit = new Circle(x, y, 15);
-    fruit.setFill(Colours.get(i));
+    //fruit.setFill(Colours.get(i));
+    fruit.setFill(new ImagePattern(Fruits.get(i)));
     G.getChildren().add(fruit);
     XPosition=x;
     YPosition=y;
@@ -82,12 +90,16 @@ public class Fruit {
     G.getChildren().add(fruit);
   }
 
-  public void setFill(Color color) {
+  public void setFill(ImagePattern color) {
     fruit.setFill(color);
   }
 
   public double getY() {
     return YPosition;
+  }
+
+  public Paint getImage() {
+    return fruit.getFill();
   }
 
 }
