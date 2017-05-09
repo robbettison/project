@@ -28,7 +28,7 @@ public class Fruits {
     Fruits.add(new Image("Images/banana.png"));
     Fruits.add(new Image("Images/pear.png"));
     for(int i=0;i<numberFruit;i++) {
-      Fruit newFruit = new Fruit(140+i*70, 30, G, i);
+      Fruit newFruit = new Fruit(290+i*5, 267, G, i);
       fruitArray.add(newFruit);
       fruitSaLaD.add(newFruit);
     }
