@@ -18,7 +18,7 @@ import javafx.scene.layout.*;
 import java.io.*;
 import javafx.scene.text.Font;
 
-public class Main extends Application {
+public class Main{
 
   Group root = new Group();
   Group fruit = new Group();
@@ -30,15 +30,27 @@ public class Main extends Application {
   IntegerProperty score = new SimpleIntegerProperty(0);
   Label scoreboard = new Label();
 
-  public void start(Stage stage) {
+  /*public void start(Stage stage) {
+    stage.show();
+    beginFruit.start();
+  }*/
+
+  Scene setUp(Stage stage) {
+
     root.getChildren().add(fruit);
     allFruit = new Fruits(4, fruit);
     player = new Player(root, scene, fruit);
     background = new Background(root);
     stage.setScene(scene);
+
+    return scene;
+  }
+
+  void show(Stage stage) {
     stage.show();
     beginFruit.start();
   }
+
 
   AnimationTimer beginFruit = new AnimationTimer() {
     public void handle(long now) {
