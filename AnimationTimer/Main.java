@@ -26,11 +26,15 @@ public class Main extends Application {
   Fruits allFruit;
   final LongProperty lastUpdateTime = new SimpleLongProperty();
   Player player;
+  Background background;
+  IntegerProperty score = new SimpleIntegerProperty(0);
+  Label scoreboard = new Label();
 
   public void start(Stage stage) {
     root.getChildren().add(fruit);
     allFruit = new Fruits(4, fruit);
     player = new Player(root, scene, fruit);
+    background = new Background(root);
     stage.setScene(scene);
     stage.show();
     beginFruit.start();
@@ -40,7 +44,7 @@ public class Main extends Application {
     public void handle(long now) {
        if(lastUpdateTime.get()>0) {
          final double elapsedTime = (now - lastUpdateTime.get()) / 10000000;
-         allFruit.updatePositions(elapsedTime, player);
+         allFruit.updatePositions(elapsedTime, player, score);
        }
        lastUpdateTime.set(now);
     }
