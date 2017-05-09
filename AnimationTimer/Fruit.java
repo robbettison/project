@@ -44,19 +44,19 @@ public class Fruit {
 
   public void update(double x, double y) {
     if(!(YPosition>640)&&fruitNumber==3) {
-      XPosition = XPosition+x/16;
+      XPosition = XPosition+x/3;
       YPosition = YPosition+y;
     }
     else if(!(YPosition>640)&&fruitNumber==0) {
-      XPosition = XPosition-x/16;
+      XPosition = XPosition-x/3;
       YPosition = YPosition+y;
     }
     else if(!(YPosition>640)&&fruitNumber==1) {
-      XPosition = XPosition-x/48;
+      XPosition = XPosition-x/10;
       YPosition = YPosition+y;
     }
     else if(!(YPosition>640)&&fruitNumber==2) {
-      XPosition = XPosition+x/48;
+      XPosition = XPosition+x/10;
       YPosition = YPosition+y;
     }
     else {
