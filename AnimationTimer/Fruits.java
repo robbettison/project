@@ -71,11 +71,11 @@ ArrayList<Integer> temp = new ArrayList<>();
 
 
       int newPosition = setRandNum(temp);
-            System.out.println(newPosition);
+
       currentFruit.setFruitPosition(newPosition);
       currentFruit.setXstarting(newPosition*i+290);
 
-System.out.println(currentFruit.getfruitPosition());
+
 
       //currentFruit.setFruitImage(FruitImages.get(i));
     }

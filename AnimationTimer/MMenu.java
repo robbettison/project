@@ -76,7 +76,7 @@ public class MMenu extends Application{
 	        starStage.setScene(m.setUp(starStage));
 
 			System.out.println("start");
-	  		show(starStage);
+	  		m.show(starStage);
 
 	  		break;
 	  	case "Instructions":
