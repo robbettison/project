@@ -1,0 +1,40 @@
+Intermediate Level
+
+Negative Numbers
+
+	In the last section, we worked out how to convert numbers into binary numbers but
+	we never mentioned how to do binary for a negative muber. (eg -4).
+
+	You may remember in the last section that every number begins with a zero but
+	the reason why wasn't explained fully.
+
+	in the last section 0011 means 2 + 1 = 3.
+
+	Notation
+
+	In binary, a number is determined positive by the first number, if it starts with
+	a 0 then it's postive or of it begins with a 1 then it's negative.
+
+	The simplest way to think about is to imagine the furthest number left as negative, 
+	then you can add on positive numbers to work out the exact negative value.
+
+		(-8) 4  2  1 
+	-------------------------------------------------------------------------------
+		 1   0  0  1		So the binary number 1001 means (-8) + 1, so -7.
+		 1   0  1  1		So the binary number 1011 means (-8) + 2 + 1, so -5.
+		 1   1  1  1		So the binary number 1111 means (-8) + 4+2+1, so -1.
+		 1   0  0  0		So the binary number 1000 means (-8) + 0, so -8.
+
+
+	Longer Examples:
+
+	For larger numbers it folllows the same structure and pattern.
+
+	Now 16 becomes the negative number since it's the largest/ furthest left.
+
+		if you wanted to work out -10, you would do:
+
+		(-16) 8  4  2  1  
+	------------------------	
+		  1   0	 1  1  0
+
