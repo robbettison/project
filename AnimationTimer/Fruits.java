@@ -16,13 +16,14 @@ public class Fruits {
   Group allfruit;
   //ArrayList<Color> Colours = new ArrayList<Color>();
   ArrayList<Image> FruitImages = new ArrayList<Image>();
-  Questions level1 = new Questions();
+  Questions level1;
 
   Fruits(int numberFruit, Group G) {
     /*Colours.add(Color.BLUE);
     Colours.add(Color.GREEN);
     Colours.add(Color.RED);
     Colours.add(Color.YELLOW);*/
+    level1 = new Questions(G);
     FruitImages.add(new Image("Images/apple.png"));
     FruitImages.add(new Image("Images/pineapple.png"));
     FruitImages.add(new Image("Images/banana.png"));
