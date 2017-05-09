@@ -30,6 +30,7 @@ public class Main{
   IntegerProperty score = new SimpleIntegerProperty(0);
   Label scoreboard = new Label();
 
+<<<<<<< HEAD
   /*public void start(Stage stage) {
     stage.show();
     beginFruit.start();
@@ -37,10 +38,15 @@ public class Main{
 
   Scene setUp(Stage stage) {
 
+=======
+  public void start(Stage stage) {
+    scoreboard.textProperty().bind(score.asString());
+>>>>>>> 9185c49ddf6606e952e253caa4a7102dbba5dde4
     root.getChildren().add(fruit);
     allFruit = new Fruits(4, fruit);
     player = new Player(root, scene, fruit);
     background = new Background(root);
+    root.getChildren().add(scoreboard);
     stage.setScene(scene);
 
     return scene;

@@ -12,6 +12,12 @@ public class Player {
   ImageView player;
   ImageView[] playerAnimation;
   AnimationSetup animationSetup;
+  final int caterPillarY = 590;
+
+  /*165.3333333333327
+  257.5999999999915
+  337.4000000000085
+  429.6666666666596*/
 
 
   double Channel1 = 98.06;
@@ -28,27 +34,27 @@ public class Player {
 
     animationSetup = new AnimationSetup();
 
-    playerAnimation = animationSetup.makeImageViewsArray("pic/frame", "png", 150, 250, 24);
+    playerAnimation = animationSetup.makeImageViewsArray("pic/frame", "png", 75, 125, 24);
     animationSetup.makeAnimation(playerAnimation, g, 1);
 //set initialPosition
-    changePlayerPosition(Channel2, 500);
-   
+    changePlayerPosition(Channel2, caterPillarY);
+
     scene.setOnKeyPressed(this::leftright);
     collisionFruit=fruit;
   }
 
   public void leftright(KeyEvent e) {
     if(e.getCode()==KeyCode.LEFT&&XPosition>Channel1) {
-      changePlayerPosition(playerAnimation[0].getX()-98, 500);
+      changePlayerPosition(playerAnimation[0].getX()-98, caterPillarY);
       XPosition=playerAnimation[0].getX();
     }
     else if(e.getCode()==KeyCode.RIGHT&&XPosition<Channel4){
-      changePlayerPosition(playerAnimation[0].getX()+98, 500);
+      changePlayerPosition(playerAnimation[0].getX()+98, caterPillarY);
       XPosition=playerAnimation[0].getX();
     }
   }
 
- 
+
 
   public Bounds getBounds() {
     return playerAnimation[0].getBoundsInLocal();
