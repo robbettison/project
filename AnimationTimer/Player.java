@@ -48,10 +48,7 @@ public class Player {
 
       currentChannel -= 1;
 
-System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-System.out.println(currentChannel);
 
-System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
 
 
       changePlayerPosition(channel[currentChannel], caterPillarY);
@@ -61,10 +58,7 @@ System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
     }
     else if(e.getCode()==KeyCode.RIGHT && currentChannel < 3){
       currentChannel+=1;
-System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-System.out.println(currentChannel);
 
-System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXx");
       changePlayerPosition(channel[currentChannel], caterPillarY);
 
       XPosition=playerAnimation[0].getX();

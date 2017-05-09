@@ -16,7 +16,7 @@ public class Fruits {
   Group allfruit;
   //ArrayList<Color> Colours = new ArrayList<Color>();
   ArrayList<Image> FruitImages = new ArrayList<Image>();
-
+  Questions level1 = new Questions();
 
   Fruits(int numberFruit, Group G) {
     /*Colours.add(Color.BLUE);
@@ -118,7 +118,7 @@ ArrayList<Integer> temp = new ArrayList<>();
         //numberFruits-=1;
 
 //if banana
-        if(currentFruit.getFruitAnswer()==2) {
+        if(currentFruit.getFruitAnswer()==level1.getNextAnswer()) {
           score.set(score.get()+10);
           System.out.println("collides");
         }
