@@ -80,14 +80,14 @@ currentFruit.setFill(new ImagePattern(FruitImages.get(newImage)));
 
 //setting answers to current fruit using current array
 	currentFruit.setFruitAnswer(level1.getNewFruitAnswers().get(i));
-        
+
 
 
 
 System.out.println("fruit " + i+ " has "+ currentFruit.getFruitAnswer());
       //currentFruit.setFruitImage(FruitImages.get(i));
     }
-	
+
 
   }
 
