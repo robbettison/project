@@ -37,6 +37,8 @@ public class Fruits {
     initialNumberFruit = numberFruit;
 
     allfruit = G;
+
+    resetSalad();
   }
 
   private void resetSalad() {
@@ -58,13 +60,10 @@ public class Fruits {
   }
 
   private void shuffleSalad(List<Fruit> fruit) {
-    //Collections.shuffle(Colours);
-  //  List<Fruit> newList = new ArrayList<>();
 
-    //Collections.shuffle(fruit);
-    //Collections.shuffle(fruit);
 //position should be different, id stays the same
 ArrayList<Integer> temp = new ArrayList<>();
+ArrayList<Integer> temp2 = new ArrayList<>();
     for(int i=0;i<numberFruits;i++) {
       Fruit currentFruit=fruit.get(i);
       //System.out.println(currentFruit.getImage());
@@ -72,14 +71,23 @@ ArrayList<Integer> temp = new ArrayList<>();
 
 
       int newPosition = setRandNum(temp);
+      int newImage = setRandNum(temp2);
 
       currentFruit.setFruitPosition(newPosition);
       currentFruit.setXstarting(newPosition*i+290);
 
+currentFruit.setFill(new ImagePattern(FruitImages.get(newImage)));
+
+//setting answers to current fruit using current array
+	currentFruit.setFruitAnswer(level1.getNewFruitAnswers().get(i));
+        
 
 
+
+System.out.println("fruit " + i+ " has "+ currentFruit.getFruitAnswer());
       //currentFruit.setFruitImage(FruitImages.get(i));
     }
+	
 
   }
 
@@ -98,6 +106,7 @@ ArrayList<Integer> temp = new ArrayList<>();
     for(int i=0;i<numberFruits;i++) {
       Fruit currentFruit = fruitArray.get(i);
       currentFruit.update(fruitMoved, fruitMoved);
+currentFruit.setLabel(currentFruit.getFruitAnswer());
     }
     checkCollisions(player, score);
     draw();
@@ -111,6 +120,8 @@ ArrayList<Integer> temp = new ArrayList<>();
   }
 
   void checkCollisions(Player player, IntegerProperty score) {
+
+
     for(int i=0;i<numberFruits;i++) {
       Fruit currentFruit = fruitArray.get(i);
       if(currentFruit.impacts(player.getBounds())&&currentFruit.getY()==640) {
@@ -118,8 +129,14 @@ ArrayList<Integer> temp = new ArrayList<>();
         //fruitArray.remove(currentFruit);
         //numberFruits-=1;
 
-//if banana
-        if(currentFruit.getFruitAnswer()==level1.getNextAnswer()) {
+
+//set currentFruit.fruitAnswer according to question
+String printtest = level1.getNextAnswer();
+
+System.out.println("touched   " + currentFruit.getFruitAnswer() + "correct answer " + printtest);
+        if(currentFruit.getFruitAnswer().equals(printtest)) {
+
+
           score.set(score.get()+10);
           System.out.println("collides");
         }

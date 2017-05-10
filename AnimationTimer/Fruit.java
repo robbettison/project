@@ -4,6 +4,7 @@ import javafx.scene.*;
 import javafx.geometry.*;
 import java.util.*;
 import javafx.scene.image.*;
+import javafx.scene.control.*;
 
 
 public class Fruit {
@@ -15,11 +16,12 @@ public class Fruit {
   private double initialX;
   private double initialY;
   private double initialRadius = 15;
+private Label label = new Label();
 
   //ArrayList<Color> Colours = new ArrayList<Color>();
   ArrayList<Image> Fruits = new ArrayList<Image>();
   Image fruitImage;
-  int fruitAnswer;
+  String fruitAnswer;
 
   Fruit(int x, int y, Group G, int i, Image fruitImage) {
     /*Fruits.add(new Image("Images/apple.png"));
@@ -36,14 +38,25 @@ public class Fruit {
     //fruit.setFill(Colours.get(i));
     fruit.setFill(new ImagePattern(fruitImage));
     this.fruitImage = fruitImage;
+
     G.getChildren().add(fruit);
+
+G.getChildren().add(label);
     XPosition=x;
     YPosition=y;
     initialX=x;
     initialY=y;
     fruitPosition = i;
-    fruitAnswer = i;
+    fruitAnswer = "asda";
   }
+
+void setLabel (String ans){
+label.setText(ans);
+label.setTextFill(Color.BLACK);
+label.setTranslateX(XPosition);
+label.setTranslateY(YPosition+20);
+}
+
 
   public void update(double x, double y) {
     if(!(YPosition>640)&&fruitPosition==3) {
@@ -113,9 +126,13 @@ public class Fruit {
     fruitImage = fruit;
   }
 
-  public int getFruitAnswer() {
+  public String getFruitAnswer() {
     return fruitAnswer;
   }
+
+void setFruitAnswer(String ans){
+fruitAnswer = ans;
+}
 
   public void setXstarting(int i) {
     initialX=i;
