@@ -63,7 +63,7 @@ public class Fruit {
       YPosition = YPosition+y;
     }
     else {
-System.out.println(XPosition);
+    System.out.println(XPosition);
       XPosition = initialX;
       YPosition = initialY;
       fruit.setRadius(initialRadius);

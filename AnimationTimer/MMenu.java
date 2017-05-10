@@ -40,7 +40,7 @@ public class MMenu extends Application{
 
 	// bakcground
     Canvas canvas = new Canvas(400, 300);
-    Image bg = new Image("Bug.png");
+    Image bg = new Image("pic/Bug.png");
     //ImageView bgView = new ImageView(bg);
     GraphicsContext g = canvas.getGraphicsContext2D();
     //Group root = new Group(canvas);
