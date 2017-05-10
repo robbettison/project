@@ -1,11 +1,17 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.Writer;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
+
 
 
 /**
@@ -13,14 +19,16 @@ import java.util.Scanner;
  */
 public class MFileReader {
 
+    private String filename;
     public MFileReader(String filename){
-        readFile(filename);
+	this.filename = filename;
+        
     }
     private Scanner scanner;
     private HashMap<String, ArrayList<String>> result = new HashMap<>();
 
 
-    void readFile(String filename){
+    void readFile(){
         String temp, question;
         ArrayList<String> answers = new ArrayList<>();
 
@@ -60,13 +68,16 @@ public class MFileReader {
 
         String temp = input.substring(input.indexOf("`")+1);
 
+System.out.println(temp);
+	
+
 
         tempArray = temp.split("`");
 
         for (String answer: tempArray){
             answers.add(answer);
         }
-
+System.out.println("answers"+answers);
 
         return answers;
 
@@ -75,6 +86,18 @@ public class MFileReader {
     HashMap<String, ArrayList<String>> getQAndA(){
         return result;
 
+
+    }
+
+    void writeFile(String string){
+
+	try(PrintWriter out = new PrintWriter(filename)){
+		out.println(string);
+	} catch (Exception e){
+		e.printStackTrace();
+	}
+
+System.out.println("writing file" + string);
 
     }
 

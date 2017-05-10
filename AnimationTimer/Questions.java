@@ -26,7 +26,7 @@ HashMap<String, ArrayList<String>> qAndA = new HashMap<String, ArrayList<String>
 
 
   Questions(Group G) {
-
+	mfr.readFile();
 	qAndA = mfr.getQAndA();
 
 
