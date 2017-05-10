@@ -16,6 +16,8 @@ public class Questions {
  // Map<Integer, String> myMap = new HashMap<Integer, String>();
   ArrayList<String> questionsArray = new ArrayList<>();
 
+  MFileReader mfr = new MFileReader("questions.txt");
+
 //make hashmap
 //hashmap of questions, and possible answers 
 
@@ -25,10 +27,7 @@ HashMap<String, ArrayList<String>> qAndA = new HashMap<String, ArrayList<String>
 
   Questions(Group G) {
 
-//set questions and answers: [0] is the correct answer
-qAndA.put("11 is the first letter", new ArrayList<>(Arrays.asList("A", "B", "C","D")));
-qAndA.put("22 is the second letter", new ArrayList<>(Arrays.asList("S", "E", "Q","W")));
-qAndA.put("33 is the third letter", new ArrayList<>(Arrays.asList("P", "Z", "X","V")));
+	qAndA = mfr.getQAndA();
 
 
     rand = new Random();
@@ -55,13 +54,13 @@ System.out.println(questionsArray.get(0) + "XXXXXXXXXXXXXXXXXXXXXXX");
 
 
     if(keepTrack<questionsArray.size()) {
-
+ keepTrack+=1;
 
 //print out next question
       /*if(currentAnswer!=0)*/ questionLabel.setText(questionsArray.get(keepTrack));
 
 //assuming the first input in array is the answer
-    keepTrack+=1;
+   
       return qAndA.get(questionsArray.get(keepTrack-1)).get(0);
     }
     else {
