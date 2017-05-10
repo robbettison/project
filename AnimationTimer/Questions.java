@@ -6,6 +6,7 @@ import javafx.scene.*;
 import javafx.scene.control.*;
 import javafx.beans.property.*;
 import javafx.scene.image.*;
+import java.lang.Object.*;
 
 
 public class Questions {
@@ -30,6 +31,8 @@ public class Questions {
     }
     currentFruit.setTranslateX(450);
     currentFruit.setText(myMap.get(answers[0]));
+    currentFruit.setStyle("-fx-background-color: green;"
+          + "-fx-background-radius: 40;-fx-border-color: white;");
     G.getChildren().add(currentFruit);
   }
 
