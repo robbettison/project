@@ -75,6 +75,10 @@ public class Player {
          for (ImageView iv : playerAnimation) {
              iv.setX(x);
              iv.setY(y);
+             if(currentChannel==0) iv.setRotate(20);
+             else if(currentChannel==3) iv.setRotate(-20);
+             else if(currentChannel==1) iv.setRotate(5);
+             else iv.setRotate(-5);
          }
 
      }
