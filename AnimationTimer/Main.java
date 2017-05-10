@@ -36,6 +36,7 @@ public class Main{
   }*/
 
   Scene setUp(Stage stage) {
+    scoreboard.textProperty().bind(score.asString());
 
     root.getChildren().add(fruit);
     allFruit = new Fruits(4, fruit);

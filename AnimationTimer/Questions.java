@@ -18,10 +18,10 @@ public class Questions {
 
 
   Questions(Group G) {
-    myMap.put(0, "apple");
-    myMap.put(1, "pineapple");
-    myMap.put(2, "banana");
-    myMap.put(3, "pear");
+    myMap.put(0, "00");
+    myMap.put(1, "01");
+    myMap.put(2, "10");
+    myMap.put(3, "11");
 
     rand = new Random();
     for(int i=0;i<30;i++) {
