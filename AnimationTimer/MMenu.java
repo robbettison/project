@@ -115,13 +115,13 @@ public class MMenu extends Application{
 	  		System.out.println("Instructions");
 	  		break;
 	  	case "Binary":
-	  		Instructions instruct1 = new Instructions(backScene, backStage, scene.getWidth(), scene.getHeight());
+	  		AddQuestions instruct1 = new AddQuestions(backScene, backStage, scene.getWidth(), scene.getHeight());
 	  		try {
 				starStage.setTitle("Binary!");
 				Label content1 = instructionLabel("howtoplay.txt");
 				// create a new scene
 	  			starStage.setScene(instruct1.instructionShow());
-	  			instruct1.scroll(content1);
+	  			
 	  		} catch (IOException e) {
 	  			System.out.println("OH no!");
 	  		}
