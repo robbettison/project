@@ -46,6 +46,7 @@ public class AddQuestions {
 	TextField tf5 = new TextField();
 
 	int finalRow = 2;
+	MFileReader mfr;
 		
 
 
@@ -61,6 +62,8 @@ public class AddQuestions {
 		this.width = width;
 		this.height = height;
 		setLayout();
+		mfr = new MFileReader("questions.txt");
+		updateTextFieldValue();
 
 	}
 
@@ -132,14 +135,65 @@ gridPane.getChildren().addAll(label1,label2,label3,label4,label5, tf1,tf2,tf3,tf
 
 	}
 
-	void updateTextFieldValue(){
-
+	private void addRow2(){
 
 		
+		TextField new1 = new TextField();
+		TextField new2 = new TextField();
+		TextField new3 = new TextField();
+		TextField new4 = new TextField();
+		TextField new5 = new TextField();
+
+		gridPane.getChildren().addAll(new1,new2,new3,new4,new5);
+		gridPane.setConstraints(new1, 0,finalRow,3,1);
+		gridPane.setConstraints(new2, 3,finalRow);
+		gridPane.setConstraints(new3, 4,finalRow);
+		gridPane.setConstraints(new4, 5,finalRow);
+		gridPane.setConstraints(new5, 6,finalRow);
+	
+		finalRow+=1;
+
+	}
+
+	void updateTextFieldValue(){
+
+		mfr.readFile();
+		HashMap<String, ArrayList<String>> temp = new HashMap<>();
+		TextField tf,tf2;
+		
+		ArrayList<String> tempArray = new ArrayList<>();
+		temp = mfr.getQAndA();
+		int i = 1;
+//add row to accomadate teh data
+System.out.println(temp.size());
+
+		for (String s: temp.keySet()){
+			tempArray.add(s);
+			addRow2();
+			tf = (TextField) getNodeFromGridPane(i,0);
+			tf.setText(s);
+			i++;
+		}	
+
+		
+		finalRow = temp.size() + 1;;
+//put text in answers
+
+
+		for (int k = 1; k < finalRow; k++){
+			for (int j = 3; j < 7; j++){
+				tf = (TextField) getNodeFromGridPane(k,j);
+				tf2 = (TextField) getNodeFromGridPane(k,0);
+				tf.setText(temp.get(tf2.getText()).get(j-3));
+			}	
+		System.out.println("added" + k);
+		}
+		
+
 	}
 
 	private void saveRecord(ActionEvent event){
-		MFileReader mfr = new MFileReader("questions.txt");
+		
 
 		StringBuilder sb = new StringBuilder();
 
