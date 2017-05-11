@@ -11,7 +11,7 @@ import javafx.scene.image.*;
 public class Questions {
   private int[] answers = new int[30];
   Random rand = new Random();
-  private int keepTrack = -1;
+  private int keepTrack = 0;
   Label questionLabel = new Label();
  // Map<Integer, String> myMap = new HashMap<Integer, String>();
   ArrayList<String> questionsArray = new ArrayList<>();
@@ -52,16 +52,23 @@ System.out.println(questionsArray.get(0) + "XXXXXXXXXXXXXXXXXXXXXXX");
 
   public String getNextAnswer() {
 
-
+System.out.println("keeptrack IS:"+keepTrack);
     if(keepTrack<questionsArray.size()) {
- keepTrack+=1;
+ 
 
-//print out next question
-      /*if(currentAnswer!=0)*/ questionLabel.setText(questionsArray.get(keepTrack));
+//prepare to print out next question as it collides
+      /*if(currentAnswer!=0)*/ 
+	try{
+		questionLabel.setText(questionsArray.get(keepTrack+1));
+	} catch (Exception e){
+		System.out.println("ended");
+		//GAME FINISH SCREEN
+	}
 
 //assuming the first input in array is the answer
+System.out.println("correct answer is:" + qAndA.get(questionsArray.get(keepTrack)).get(0));
    
-      return qAndA.get(questionsArray.get(keepTrack-1)).get(0);
+      return qAndA.get(questionsArray.get(keepTrack++)).get(0);
     }
     else {
       System.out.println("Level complete");
@@ -71,9 +78,7 @@ System.out.println(questionsArray.get(0) + "XXXXXXXXXXXXXXXXXXXXXXX");
   }
   ArrayList<String> getNewFruitAnswers(){
 //check inbound
-if (keepTrack == -1){
-keepTrack = 0;
-}
+
     return qAndA.get(questionsArray.get(keepTrack));
   }
 
