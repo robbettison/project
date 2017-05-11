@@ -140,7 +140,7 @@ ArrayList<Integer> temp = new ArrayList<>();
       }
     }
     if(fruitBitsValue()==level1.getcurrentAnswer()) {
-      System.out.println("Correct!");
+      System.out.println("Correct!" + fruitBitsValue());
       level1.getNextAnswer();
     }
   }
@@ -148,7 +148,7 @@ ArrayList<Integer> temp = new ArrayList<>();
   private double fruitBitsValue() {
     double x = 0;
     for(int i=0;i<4;i++) {
-      x = x + fruitArray.get(i).getfruitBit()* (Math.pow(2, i));
+      x = x + fruitArray.get(i).getfruitBit()* (Math.pow(2, 3-i));
     }
     return x;
   }
