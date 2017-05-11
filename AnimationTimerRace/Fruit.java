@@ -4,7 +4,6 @@ import javafx.scene.*;
 import javafx.geometry.*;
 import java.util.*;
 import javafx.scene.image.*;
-import javafx.scene.control.*;
 
 
 public class Fruit {
@@ -16,14 +15,13 @@ public class Fruit {
   private double initialX;
   private double initialY;
   private double initialRadius = 15;
-private Label label = new Label();
 
   //ArrayList<Color> Colours = new ArrayList<Color>();
   ArrayList<Image> Fruits = new ArrayList<Image>();
   Image fruitImage;
-  String fruitAnswer;
+  int fruitBit;
 
-  Fruit(int x, int y, Group G, int i, Image fruitImage) {
+  Fruit(int x, int y, Group G, int Position, int bitValue, Image fruitImage) {
     /*Fruits.add(new Image("Images/apple.png"));
     Fruits.add(new Image("Images/pineapple.png"));
     Fruits.add(new Image("Images/banana.png"));
@@ -38,25 +36,14 @@ private Label label = new Label();
     //fruit.setFill(Colours.get(i));
     fruit.setFill(new ImagePattern(fruitImage));
     this.fruitImage = fruitImage;
-
     G.getChildren().add(fruit);
-
-G.getChildren().add(label);
     XPosition=x;
     YPosition=y;
     initialX=x;
     initialY=y;
-    fruitPosition = i;
-    fruitAnswer = "asda";
+    fruitPosition = Position;
+    fruitBit = bitValue;
   }
-
-void setLabel (String ans){
-label.setText(ans);
-label.setTextFill(Color.BLACK);
-label.setTranslateX(XPosition);
-label.setTranslateY(YPosition+20);
-}
-
 
   public void update(double x, double y) {
     if(!(YPosition>640)&&fruitPosition==3) {
@@ -126,13 +113,13 @@ label.setTranslateY(YPosition+20);
     fruitImage = fruit;
   }
 
-  public String getFruitAnswer() {
-    return fruitAnswer;
+  public int getfruitBit() {
+    return fruitBit;
   }
 
-void setFruitAnswer(String ans){
-fruitAnswer = ans;
-}
+  public void setFruitBit(int i) {
+    fruitBit = i;
+  }
 
   public void setXstarting(int i) {
     initialX=i;
