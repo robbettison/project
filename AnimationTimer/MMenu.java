@@ -99,7 +99,7 @@ public class MMenu extends Application{
 	                  content.setLayoutY(-new_val.intValue());
 	                  System.out.println(new_val.intValue());
 	         	 	}
-        		});
+        		cene});
         		sp.hvalueProperty().addListener(new ChangeListener<Number>() {
 		          	public void changed(ObservableValue<? extends Number> ov,
 		              Number old_val, Number new_val) {
@@ -129,8 +129,14 @@ public class MMenu extends Application{
 	  		System.out.println("Instructions");
 	  		break;
 	  	case "Leader Board":
-	  		System.out.println("Leader Board");
-	  		break;
+	  		
+			Label lblabel = new Label(lb.readFile());
+			lb.scroll(lblabel);
+			starStage.setScene(lb.leaderBoardShow());
+			
+			show(starStage);
+
+			break;
 	  	case "Quit":
 			starStage.close();
 	  		System.out.println("Quit");

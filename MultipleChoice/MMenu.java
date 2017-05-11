@@ -51,7 +51,7 @@ public class MMenu extends Application{
     ScrollPane sp = new ScrollPane();
     //MGraphics mgraphics = new MGraphics();
     //MUI mn= new MUI(mgraphics);
-    Main m  = new Main();
+    Main m;
 
     String[] name = {"Start", "Instructions", "Binary", "Leader Board", "Quit"};
 
@@ -82,6 +82,7 @@ public class MMenu extends Application{
 	  	case "Start":
 	  		//goto game home to play game
 	        //mgraphics.circleAnimation();
+			m =  new Main(backStage,backScene);
 	        starStage.setScene(m.setUp(starStage));
 
 			System.out.println("start");
@@ -134,7 +135,12 @@ public class MMenu extends Application{
 	  		System.out.println("Instructions");
 	  		break;
 	  	case "Leader Board":
-	  		System.out.println("Leader Board");
+	  			  		LeaderBoard lb = new LeaderBoard(backScene,backStage,scene.getWidth(),scene.getHeight());
+			Label lblabel = new Label(lb.readFile());
+			lb.scroll(lblabel);
+			starStage.setScene(lb.leaderBoardShow());
+			
+			show(starStage);
 	  		break;
 	  	case "Quit":
 			starStage.close();
