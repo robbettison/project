@@ -142,6 +142,7 @@ ArrayList<Integer> temp = new ArrayList<>();
     if(fruitBitsValue()==level1.getcurrentAnswer()) {
       System.out.println("Correct!" + fruitBitsValue());
       level1.getNextAnswer();
+
     }
   }
 
