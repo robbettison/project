@@ -26,8 +26,8 @@ public class Fruits {
     Colours.add(Color.RED);
     Colours.add(Color.YELLOW);*/
     level1 = new Questions(G);
-    FruitImages.add(new Image("Images/apple.png"));//representing zero bit value
-    FruitImages.add(new Image("Images/pineapple.png"));//representing one bit value
+    FruitImages.add(new Image("Images/applecore0.png"));//representing zero bit value
+    FruitImages.add(new Image("Images/apple1.png"));//representing one bit value
     /*FruitImages.add(new Image("Images/banana.png"));
     FruitImages.add(new Image("Images/pear.png"));*/
     for(int i=0;i<numberFruit;i++) {
@@ -84,7 +84,7 @@ public class Fruits {
         else {
           score.set(score.get()-10);
         }
-        break;
+        //break;
       }
     }
     if(fruitBitsValue()==level1.getcurrentAnswer()) {

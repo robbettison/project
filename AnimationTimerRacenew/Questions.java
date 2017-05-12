@@ -10,6 +10,8 @@ import javafx.stage.*;
 import javafx.scene.*;
 import javafx.scene.Node;
 import javafx.scene.control.*;
+import java.io.*;
+import javafx.scene.text.Font;
 
 public class Questions {
   private int[] answers = new int[30];
@@ -19,6 +21,9 @@ public class Questions {
   Map<Integer, String> myMap = new HashMap<Integer, String>();
   Group root;
   inGameText Correct;
+  String currentFontFile = "CabinSketch-Bold.ttf";
+  InputStream fontStream = Main.class.getResourceAsStream(currentFontFile);
+  Font bgFont = Font.loadFont(fontStream, 50);
 
 
   Questions(Group G) {
@@ -29,11 +34,20 @@ public class Questions {
     root = G;
     rand = new Random();
     for(int i=0;i<5;i++) {
-      answers[i]=rand.nextInt(15);
+      int nextRandom;
+      if(i>0) {
+        do {
+          nextRandom = rand.nextInt(15);
+        } while(nextRandom==answers[i-1]);
+      }
+      else nextRandom=rand.nextInt(15);
+      answers[i] = nextRandom;
       System.out.println(answers[i]);
     }
-    currentFruit.setTranslateX(420);
-    currentFruit.setText("Target:" + Integer.toString(answers[0]));
+    currentFruit.setFont(bgFont);
+    currentFruit.setTextFill(Color.RED);
+    currentFruit.setTranslateX(290);
+    currentFruit.setText("Target: " + Integer.toString(answers[0]));
     G.getChildren().add(currentFruit);
   }
 
@@ -43,10 +57,10 @@ public class Questions {
 
   public int getNextAnswer() {
     currentAnswer+=1;
-    if(currentAnswer<5) {
+    if(currentAnswer<4) {
       //System.out.println(answers[currentAnswer]);
       Correct = new inGameText(root);
-      /*if(currentAnswer!=0)*/ currentFruit.setText(Integer.toString(answers[currentAnswer]));
+      /*if(currentAnswer!=0)*/ currentFruit.setText("Target: "+Integer.toString(answers[currentAnswer]));
       return answers[currentAnswer];
     }
     else {
@@ -64,22 +78,29 @@ public class Questions {
       target = target-8;
     }
     else bits[0]=0;
+    System.out.println(target);
+
     if(target-4>=0) {
       bits[1]=1;
       target = target-4;
     }
     else bits[1]=0;
+    System.out.println(target);
+
     if(target-2>=0) {
       bits[2]=1;
       target = target-2;
     }
     else bits[2]=0;
+    System.out.println(target);
+
     if(target-1>=0) {
       bits[3]=1;
       target = target-1;
     }
-    else bits[0]=0;
-
+    else bits[3]=0;
+    System.out.println(target);
+    System.out.println(bits);
 
     return bits[i];
   }

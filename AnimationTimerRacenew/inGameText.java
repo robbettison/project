@@ -34,8 +34,8 @@ public class inGameText {
     //g.getChildren().add(rect1);
     g.getChildren().add(text);
     text.setFill(Color.RED);
-    text.setX(240);
-    text.setY(50);
+    text.setX(250);
+    text.setY(300);
     text.setFont(Font.font("Verdana", FontWeight.BOLD, 40));
     text.setFontSmoothingType(FontSmoothingType.LCD);
 

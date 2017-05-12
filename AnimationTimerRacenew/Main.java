@@ -36,8 +36,10 @@ public class Main{
   StopWatch ST = new StopWatch();
   AnimationSetup Background1;
   IntegerProperty T = new SimpleIntegerProperty(0);
-
-
+  String currentFontFile = "CabinSketch-Bold.ttf";
+  InputStream fontStream = Main.class.getResourceAsStream(currentFontFile);
+  Font bgFont = Font.loadFont(fontStream, 36);
+  Label TIME = new Label("Time:");
   /*public void start(Stage stage) {
     stage.show();
     beginFruit.start();
@@ -45,14 +47,21 @@ public class Main{
 
   Scene setUp(Stage stage) {
     scoreboard.textProperty().bind(score.asString());
+    scoreboard.setFont(bgFont);
+    scoreboard.setTextFill(Color.YELLOW);
+    TIME.setFont(bgFont);
+    TIME.setTextFill(Color.GREEN);
+    timer.setFont(bgFont);
+    timer.setTextFill(Color.GREEN);
     timer.textProperty().bind(T.asString());
-    timer.setTranslateX(100);
+    TIME.setTranslateX(100);
+    timer.setTranslateX(200);
     root.getChildren().addAll(back, fruit, caterpillar);
     player = new Player(caterpillar, scene, fruit);
     allFruit = new Fruits(4, fruit);
     Background1 = new AnimationSetup("pic/Road_anim_3d_", "png", 607, 1080, 30, back);
     //background = new Background(root);
-    root.getChildren().addAll(scoreboard, timer);
+    root.getChildren().addAll(scoreboard, timer, TIME);
     stage.setScene(scene);
 
     return scene;
@@ -78,4 +87,6 @@ public class Main{
        lastUpdateTime.set(now);
     }
   };
+
+
 }
