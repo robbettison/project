@@ -54,4 +54,10 @@ public class Questions {
       return -1;
     }
   }
+
+  public int getTargetBit(int i) {
+    int[] bits = new int[4];
+    int target = answers[currentAnswer];
+    return bits[i];
+  }
 }

@@ -35,7 +35,7 @@ public class Main{
   Label timer = new Label();
   StopWatch ST = new StopWatch();
   AnimationSetup Background1;
-  IntegerProperty x1 = new SimpleIntegerProperty(0);
+  IntegerProperty T = new SimpleIntegerProperty(0);
 
 
   /*public void start(Stage stage) {
@@ -45,7 +45,7 @@ public class Main{
 
   Scene setUp(Stage stage) {
     scoreboard.textProperty().bind(score.asString());
-    timer.textProperty().bind(x1.asString());
+    timer.textProperty().bind(T.asString());
     timer.setTranslateX(100);
     root.getChildren().addAll(back, fruit, caterpillar);
     player = new Player(caterpillar, scene, fruit);
@@ -69,7 +69,7 @@ public class Main{
        //System.out.println(now/1000000000);
        if(lastUpdateTime.get()>0) {
          final double elapsedTime = (now - lastUpdateTime.get()) / 10000000;
-         if(ST.isRunning()) x1.set((int)ST.UpdateTimer()/1000);
+         if(ST.isRunning()) T.set((int)ST.UpdateTimer()/1000);
          else ST.start();
          player.updateCaterpillarAnimation(elapsedTime);
          Background1.updateAnimation(elapsedTime);

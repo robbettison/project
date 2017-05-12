@@ -42,50 +42,6 @@ public class Fruits {
     allfruit = G;
   }
 
-  private void resetSalad() {
-    for(int i=numberFruits-1;i>=0;i--) {
-      Fruit currentFruit = fruitArray.get(i);
-      currentFruit.remove(allfruit);
-    }
-    fruitArray=fruitSaLaD;
-    shuffleSalad(fruitArray);
-    //Collections.shuffle(fruitArray);
-    //fruitArray.();
-    numberFruits = initialNumberFruit;
-    for(int i=0;i<numberFruits;i++) {
-      Fruit currentFruit = fruitArray.get(i);
-      //currentFruit.setFruitPosition(i);
-      //currentFruit.setFill();
-      currentFruit.addTo(allfruit);
-    }
-  }
-
-  private void shuffleSalad(List<Fruit> fruit) {
-    //Collections.shuffle(Colours);
-  //  List<Fruit> newList = new ArrayList<>();
-
-    //Collections.shuffle(fruit);
-    //Collections.shuffle(fruit);
-//position should be different, id stays the same
-ArrayList<Integer> temp = new ArrayList<>();
-    for(int i=0;i<numberFruits;i++) {
-      Fruit currentFruit=fruit.get(i);
-      //System.out.println(currentFruit.getImage());
-      //currentFruit.setFill(Colours.get(i));
-
-
-      int newPosition = setRandNum(temp);
-
-      currentFruit.setFruitPosition(newPosition);
-      currentFruit.setXstarting(newPosition*i+290);
-
-
-
-      //currentFruit.setFruitImage(FruitImages.get(i));
-    }
-
-  }
-
   int setRandNum(ArrayList<Integer> temp){
     Random rand = new Random();
     int x = rand.nextInt(4);
@@ -117,25 +73,14 @@ ArrayList<Integer> temp = new ArrayList<>();
     for(int i=0;i<numberFruits;i++) {
       Fruit currentFruit = fruitArray.get(i);
       if(currentFruit.impacts(player.getBounds())&&currentFruit.getY()==640) {
-        if(currentFruit.getfruitBit()==0) {
+        if(currentFruit.getfruitBit()==0&&level1.getTargetBit(i)==1) {
           currentFruit.setFill(new ImagePattern(FruitImages.get(1)));
           currentFruit.setFruitBit(1);
         }
-        else if(currentFruit.getfruitBit()==1){
+        else if(currentFruit.getfruitBit()==1&&level1.getTargetBit(i)==0){
           currentFruit.setFill(new ImagePattern(FruitImages.get(0)));
           currentFruit.setFruitBit(0);
         }
-        //currentFruit.remove(allfruit);
-        //fruitArray.remove(currentFruit);
-        //numberFruits-=1;
-
-//if banana
-        /*if(currentFruit.getFruitAnswer()==level1.getNextAnswer()) {
-          score.set(score.get()+10);
-          System.out.println("collides");
-        }*/
-        //else score.set(score.get()-5);
-        //resetSalad();
         break;
       }
     }
