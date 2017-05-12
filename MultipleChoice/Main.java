@@ -29,12 +29,22 @@ public class Main{
   Background background;
   IntegerProperty score = new SimpleIntegerProperty(0);
   Label scoreboard = new Label();
-  Stage tempStage;
+  Stage tempStage,backStage;
+  Scene backScene;
+
+
+
 
   /*public void start(Stage stage) {
     stage.show();
     beginFruit.start();
   }*/
+
+  public Main (Stage stage, Scene scene){
+	backStage = stage;
+	backScene = scene;
+
+  }
 
   Scene setUp(Stage stage) {
     scoreboard.textProperty().bind(score.asString());
@@ -63,8 +73,12 @@ public class Main{
   void switchToLeaderBoard(){
 
 	Stage stage = new Stage();
-	stage.show();
-	tempStage.close();
+	LeaderBoard lb = new LeaderBoard(backScene,backStage,500,700);
+	Label lblabel = new Label(lb.readFile());
+	lb.scroll(lblabel);
+	tempStage.setScene(lb.leaderBoardShow());
+	tempStage.show();
+
 
   }
 
