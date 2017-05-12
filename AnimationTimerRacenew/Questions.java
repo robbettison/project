@@ -58,6 +58,29 @@ public class Questions {
   public int getTargetBit(int i) {
     int[] bits = new int[4];
     int target = answers[currentAnswer];
+
+    if(target-8>=0) {
+      bits[0]=1;
+      target = target-8;
+    }
+    else bits[0]=0;
+    if(target-4>=0) {
+      bits[1]=1;
+      target = target-4;
+    }
+    else bits[1]=0;
+    if(target-2>=0) {
+      bits[2]=1;
+      target = target-2;
+    }
+    else bits[2]=0;
+    if(target-1>=0) {
+      bits[3]=1;
+      target = target-1;
+    }
+    else bits[0]=0;
+
+
     return bits[i];
   }
 }
