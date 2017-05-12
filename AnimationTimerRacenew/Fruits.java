@@ -19,6 +19,7 @@ public class Fruits {
   ArrayList<Image> FruitImages = new ArrayList<Image>();
   Questions level1;
   Random rand = new Random();
+  boolean end = false;
 
   Fruits(int numberFruit, Group G) {
     /*Colours.add(Color.BLUE);
@@ -82,6 +83,7 @@ public class Fruits {
           currentFruit.setFruitBit(0);
         }
         else {
+System.out.println("wrong");
           score.set(score.get()-10);
         }
         break;
@@ -89,10 +91,16 @@ public class Fruits {
     }
     if(fruitBitsValue()==level1.getcurrentAnswer()) {
       score.set(score.get()+40);
+System.out.println("correct");
       level1.getNextAnswer();
+      end = level1.isEnd();
     }
+
   }
 
+  boolean isEnd(){
+    return end;
+  }
   private double fruitBitsValue() {
     double x = 0;
     for(int i=0;i<4;i++) {

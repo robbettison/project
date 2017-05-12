@@ -40,10 +40,17 @@ public class Main{
   InputStream fontStream = Main.class.getResourceAsStream(currentFontFile);
   Font bgFont = Font.loadFont(fontStream, 36);
   Label TIME = new Label("Time:");
+  Stage tempStage,backStage;
+  Scene backScene;
   /*public void start(Stage stage) {
     stage.show();
     beginFruit.start();
   }*/
+
+  public Main (Stage stage, Scene scene){
+	backStage = stage;
+	backScene = scene;
+  }
 
   Scene setUp(Stage stage) {
     scoreboard.textProperty().bind(score.asString());
@@ -69,9 +76,21 @@ public class Main{
 
   void show(Stage stage) {
     stage.show();
+    tempStage = stage;
     beginFruit.start();
   }
 
+  void switchToLeaderBoard(){
+
+	Stage stage = new Stage();
+	LeaderBoard lb = new LeaderBoard(backScene,backStage,500,700);
+	Label lblabel = new Label(lb.readFile());
+	lb.scroll(lblabel);
+	tempStage.setScene(lb.leaderBoardShow());
+	tempStage.show();
+
+
+  }
 
   AnimationTimer beginFruit = new AnimationTimer() {
     public void handle(long now) {
@@ -83,6 +102,11 @@ public class Main{
          player.updateCaterpillarAnimation(elapsedTime);
          Background1.updateAnimation(elapsedTime);
          allFruit.updatePositions(elapsedTime, player, score);
+        	 if (allFruit.isEnd()){
+			beginFruit.stop();
+			switchToLeaderBoard();
+		
+	 	}
        }
        lastUpdateTime.set(now);
     }

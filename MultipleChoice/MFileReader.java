@@ -97,6 +97,8 @@ public class MFileReader {
 
     }
 
+
+
     void checkExist(){
 	File file = new File(filename);
 	if(!file.exists()){

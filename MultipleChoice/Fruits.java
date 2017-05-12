@@ -16,7 +16,7 @@ public class Fruits {
   Group allfruit;
   //ArrayList<Color> Colours = new ArrayList<Color>();
   ArrayList<Image> FruitImages = new ArrayList<Image>();
-  Questions level1;
+  Questions questions;
   inGameText correct;
   Group root;
 
@@ -27,7 +27,7 @@ public class Fruits {
     Colours.add(Color.GREEN);
     Colours.add(Color.RED);
     Colours.add(Color.YELLOW);*/
-    level1 = new Questions(G);
+    questions = new Questions(G);
     FruitImages.add(new Image("Images/apple.png"));
     FruitImages.add(new Image("Images/pineapple.png"));
     FruitImages.add(new Image("Images/banana.png"));
@@ -71,8 +71,6 @@ ArrayList<Integer> temp = new ArrayList<>();
 ArrayList<Integer> temp2 = new ArrayList<>();
     for(int i=0;i<numberFruits;i++) {
       Fruit currentFruit=fruit.get(i);
-      //System.out.println(currentFruit.getImage());
-      //currentFruit.setFill(Colours.get(i));
 
 
       int newPosition = setRandNum(temp);
@@ -81,16 +79,11 @@ ArrayList<Integer> temp2 = new ArrayList<>();
       currentFruit.setFruitPosition(newPosition);
       currentFruit.setXstarting(newPosition*i+290);
 
-currentFruit.setFill(new ImagePattern(FruitImages.get(newImage)));
+		currentFruit.setFill(new ImagePattern(FruitImages.get(newImage)));
 
 //setting answers to current fruit using current array
-	currentFruit.setFruitAnswer(level1.getNewFruitAnswers().get(i));
+		currentFruit.setFruitAnswer(questions.getNewFruitAnswers().get(i));
 
-
-
-
-System.out.println("fruit " + i+ " has "+ currentFruit.getFruitAnswer());
-      //currentFruit.setFruitImage(FruitImages.get(i));
     }
 
 
@@ -105,13 +98,13 @@ System.out.println("fruit " + i+ " has "+ currentFruit.getFruitAnswer());
     temp.add(x);
     return x;
   }
-
+//didn't go into this function
   boolean updatePositions(double timeElapsed, Player player, IntegerProperty score) {
     final double fruitMoved = timeElapsed*fruitVelocity;
     for(int i=0;i<numberFruits;i++) {
       Fruit currentFruit = fruitArray.get(i);
       currentFruit.update(fruitMoved, fruitMoved);
-currentFruit.setLabel(currentFruit.getFruitAnswer());
+	  currentFruit.setLabel(currentFruit.getFruitAnswer());
     }
     checkCollisions(player, score);
     draw();
@@ -141,17 +134,22 @@ currentFruit.setLabel(currentFruit.getFruitAnswer());
 
 
 //set currentFruit.fruitAnswer according to question
-	nextAns = level1.getNextAnswer();
+	nextAns = questions.getNextAnswer();
+
+System.out.println("next Answer is: "+nextAns+"--");
 
         if(currentFruit.getFruitAnswer().equals(nextAns)) {
 			correct = new inGameText(root);
 
           score.set(score.get()+10);
-          System.out.println("collides");
+          System.out.println("correct answer");
         }
-        else score.set(score.get());
+        else {score.set(score.get());
+		System.out.println("wrong answer");
+	}
+	
         resetSalad();
-        break;
+        
       }
     }
   }

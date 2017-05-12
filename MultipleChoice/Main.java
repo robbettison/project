@@ -67,9 +67,6 @@ public class Main{
     stage.show();
     tempStage = stage;
     beginFruit.start();
-   
-    
-  
     
   }
 
@@ -99,7 +96,9 @@ boolean check = allFruit.updatePositions(elapsedTime, player, score);
 
 	 	beginFruit.stop();
                 switchToLeaderBoard();
-	}
+		}
+
+
        }
        lastUpdateTime.set(now);
     }

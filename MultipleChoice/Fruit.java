@@ -76,7 +76,6 @@ label.setTranslateY(YPosition+20);
       YPosition = YPosition+y;
     }
     else {
-    System.out.println(XPosition);
       XPosition = initialX;
       YPosition = initialY;
       fruit.setRadius(initialRadius);

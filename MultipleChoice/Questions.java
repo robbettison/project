@@ -32,6 +32,7 @@ HashMap<String, ArrayList<String>> qAndA = new HashMap<String, ArrayList<String>
 	qAndA = mfr.getQAndA();
 
 
+
     rand = new Random();
 
 
@@ -44,8 +45,6 @@ HashMap<String, ArrayList<String>> qAndA = new HashMap<String, ArrayList<String>
 //print out first question
     questionLabel.setText(questionsArray.get(0));
 
-System.out.println(questionsArray.get(0) + "XXXXXXXXXXXXXXXXXXXXXXX");
-
 //putting question on top right
     questionLabel.setTranslateX(100);
 
@@ -54,7 +53,21 @@ System.out.println(questionsArray.get(0) + "XXXXXXXXXXXXXXXXXXXXXXX");
 
   public String getNextAnswer() {
 
-System.out.println("keeptrack IS:"+keepTrack);
+System.out.println("qarray size: " + questionsArray.size());
+System.out.println("keeptrack is: "+ keepTrack);
+
+for (String s: questionsArray){
+System.out.println("question" + s);
+}
+
+for (String key: qAndA.keySet()){
+	for (String s: qAndA.get(key)){
+		System.out.printf( "answers" + s);
+	}
+	System.out.println("");
+}
+
+
     if(keepTrack<questionsArray.size()) {
  
 		try{
@@ -66,7 +79,6 @@ System.out.println("keeptrack IS:"+keepTrack);
 		
 		}
 
-//assuming the first input in array is the answer
 System.out.println("correct answer is:" + qAndA.get(questionsArray.get(keepTrack)).get(0));
 
    

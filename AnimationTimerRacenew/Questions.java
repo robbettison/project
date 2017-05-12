@@ -25,6 +25,7 @@ public class Questions {
   InputStream fontStream = Main.class.getResourceAsStream(currentFontFile);
   Font bgFont = Font.loadFont(fontStream, 50);
 
+  boolean end = false;
 
   Questions(Group G) {
     /*myMap.put(0, "00");
@@ -65,8 +66,13 @@ public class Questions {
     }
     else {
       System.out.println("Level complete");
+	end = true;
       return -1;
     }
+  }
+
+  boolean isEnd(){
+	return end;
   }
 
   public int getTargetBit(int i) {
