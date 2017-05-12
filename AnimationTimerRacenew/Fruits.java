@@ -82,17 +82,14 @@ public class Fruits {
           currentFruit.setFruitBit(0);
         }
         else {
-          System.out.println("here");
-          System.out.println(score);
           score.set(score.get()-10);
         }
         break;
       }
     }
     if(fruitBitsValue()==level1.getcurrentAnswer()) {
-      System.out.println("Correct!");
-      level1.getNextAnswer();
       score.set(score.get()+40);
+      level1.getNextAnswer();
     }
   }
 
