@@ -84,7 +84,7 @@ public class Fruits {
         else {
           score.set(score.get()-10);
         }
-        //break;
+        break;
       }
     }
     if(fruitBitsValue()==level1.getcurrentAnswer()) {
