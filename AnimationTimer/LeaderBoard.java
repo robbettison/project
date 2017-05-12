@@ -13,10 +13,11 @@ import javafx.geometry.Orientation;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import java.io.*;
+import java.util.*;
 
 
 
-public class LeaderBoard{
+public class LeaderBoard implements Comparator<LeaderBoard> {
 
 	Stage leaderStage;
 	double width, height;
@@ -31,6 +32,9 @@ public class LeaderBoard{
 	MMenu menu = new MMenu();
 	InputStream is = null;
 	OutputStream os = null;
+	// s1 keep the value that firstly appear from file
+	String s1, user;
+	int score;
 
 	// The name of the file where the highscores will be saved
     private static final String HIGHSCORE_FILE = "test.txt";
@@ -44,6 +48,41 @@ public class LeaderBoard{
 		this.height = height;
 	}
 
+	void setUser(String user){
+		this.user = user;
+	}
+
+	void setScore(int score){
+		this.score = score;
+	}
+
+
+	String getUser(){
+		return user;
+	}
+
+	int getScore(){
+		return score;
+	}
+
+	@Override
+	public int compare(LeaderBoard lb, LeaderBoard lb1){
+		return lb.getScore() - lb1.getScore();
+	}
+
+	public int hashCode(){
+       int result = 17;
+       result = 37 * result + score;
+       result = 37 * result + user.hashCode();
+       return result;
+    }
+
+    public boolean equals(Object o) {
+       if (!(o instanceof LeaderBoard))
+           return false ;
+       LeaderBoard lb = (LeaderBoard) o;
+       return ( score == lb.score ) && ( user.equals(lb.user));
+    }
 
 
 	private void press(ActionEvent event) {
@@ -116,13 +155,16 @@ public class LeaderBoard{
     }
 
 
-    public void fillFile(){
+    public void fillFile(String str){
+		byte bt[] = new byte[1024];
+        bt = str.getBytes();
 
 	    try{
-	    // create a new output stream
-	         os = new FileOutputStream(new File("test.txt"));
+	    	// create a new output stream
+	         os = new FileOutputStream(new File(HIGHSCORE_FILE));
   	         // write something
-	         os.write('A');
+			 os.write(bt, 0, bt.length);
+             os.close();
 	         // flush the stream but it does nothing
 	         os.flush();
 		}catch (Exception ex) {
@@ -138,7 +180,6 @@ public class LeaderBoard{
       	}
 
     }
-
 
 
 	public Scene leaderBoardShow() {
