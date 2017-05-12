@@ -22,15 +22,18 @@ public class Main{
 
   Group root = new Group();
   Group fruit = new Group();
+  Group back = new Group();
+  Group caterpillar = new Group();
   Scene scene = new Scene(root, 500, 700, Color.WHITE);
   Fruits allFruit;
   final LongProperty lastUpdateTime = new SimpleLongProperty();
   Player player;
-  Background background;
+
   IntegerProperty score = new SimpleIntegerProperty(0);
   Label scoreboard = new Label();
   Stage tempStage,backStage;
   Scene backScene;
+  AnimationSetup Background1;
 
 
 
@@ -49,11 +52,12 @@ public class Main{
   Scene setUp(Stage stage) {
     scoreboard.textProperty().bind(score.asString());
 
-    root.getChildren().add(fruit);
+    root.getChildren().addAll(back,fruit,caterpillar);
     allFruit = new Fruits(4, fruit);
-    player = new Player(root, scene, fruit);
-    background = new Background(root);
-    root.getChildren().add(scoreboard);
+    player = new Player(caterpillar, scene, fruit);
+  Background1 = new AnimationSetup("pic/Road_anim_3d_", "png", 607, 1080, 30, back);
+
+    root.getChildren().addAll(scoreboard);
     stage.setScene(scene);
 
     return scene;
@@ -87,7 +91,8 @@ public class Main{
     public void handle(long now) {
        if(lastUpdateTime.get()>0) {
          final double elapsedTime = (now - lastUpdateTime.get()) / 10000000;
-
+         player.updateCaterpillarAnimation(elapsedTime);
+         Background1.updateAnimation(elapsedTime);
 boolean check = allFruit.updatePositions(elapsedTime, player, score);
 
          if ( check== false){

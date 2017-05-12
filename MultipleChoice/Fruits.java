@@ -17,6 +17,8 @@ public class Fruits {
   //ArrayList<Color> Colours = new ArrayList<Color>();
   ArrayList<Image> FruitImages = new ArrayList<Image>();
   Questions level1;
+  inGameText correct;
+  Group root;
 
   String nextAns = "hold";
 
@@ -37,6 +39,7 @@ public class Fruits {
     }
     numberFruits = numberFruit;
     initialNumberFruit = numberFruit;
+    root = G;
 
     allfruit = G;
 
@@ -112,7 +115,9 @@ currentFruit.setLabel(currentFruit.getFruitAnswer());
     }
     checkCollisions(player, score);
     draw();
+
     if (nextAns.isEmpty()){
+	
 	return false;
     }
     else return true;
@@ -127,7 +132,6 @@ currentFruit.setLabel(currentFruit.getFruitAnswer());
 
   void checkCollisions(Player player, IntegerProperty score) {
 
-
     for(int i=0;i<numberFruits;i++) {
       Fruit currentFruit = fruitArray.get(i);
       if(currentFruit.impacts(player.getBounds())&&currentFruit.getY()==640) {
@@ -140,12 +144,12 @@ currentFruit.setLabel(currentFruit.getFruitAnswer());
 	nextAns = level1.getNextAnswer();
 
         if(currentFruit.getFruitAnswer().equals(nextAns)) {
-
+			correct = new inGameText(root);
 
           score.set(score.get()+10);
           System.out.println("collides");
         }
-        else score.set(score.get()-5);
+        else score.set(score.get());
         resetSalad();
         break;
       }

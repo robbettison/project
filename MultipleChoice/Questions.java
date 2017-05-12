@@ -17,6 +17,7 @@ public class Questions {
  // Map<Integer, String> myMap = new HashMap<Integer, String>();
   ArrayList<String> questionsArray = new ArrayList<>();
 
+
   MFileReader mfr = new MFileReader("questions.txt");
 
 //make hashmap
@@ -56,24 +57,20 @@ System.out.println(questionsArray.get(0) + "XXXXXXXXXXXXXXXXXXXXXXX");
 System.out.println("keeptrack IS:"+keepTrack);
     if(keepTrack<questionsArray.size()) {
  
-
-//prepare to print out next question as it collides
-      /*if(currentAnswer!=0)*/ 
-	try{
-		questionLabel.setText(questionsArray.get(keepTrack+1));
-	} catch (Exception e){
-		System.out.println("ended");
-		return "";
-
-	
-		//GAME FINISH SCREEN
+		try{
+			questionLabel.setText(questionsArray.get(keepTrack+1));
+		} catch (Exception e){
+			System.out.println("ended");
+			questionLabel.setText("Game has ended");
+			return "";
 		
-	}
+		}
 
 //assuming the first input in array is the answer
 System.out.println("correct answer is:" + qAndA.get(questionsArray.get(keepTrack)).get(0));
+
    
-      return qAndA.get(questionsArray.get(keepTrack++)).get(0);
+    	  return qAndA.get(questionsArray.get(keepTrack++)).get(0);
     }
     else {
       System.out.println("Level complete");

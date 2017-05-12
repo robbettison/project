@@ -30,10 +30,8 @@ public class Player {
 
   Player(Group g, Scene scene, Group fruit) {
 
-    animationSetup = new AnimationSetup();
-
-    playerAnimation = animationSetup.makeImageViewsArray("pic/frame", "png", 75, 125, 24);
-    animationSetup.makeAnimation(playerAnimation, g, 1);
+    /*playerAnimation = */animationSetup = new AnimationSetup("pic/frame", "png", 75, 125, 24, g);
+    //animationSetup.makeAnimation(playerAnimation, g);
 //set initialPosition
     changePlayerPosition(294, caterPillarY);
 
@@ -52,7 +50,7 @@ public class Player {
 
 
       changePlayerPosition(channel[currentChannel], caterPillarY);
-      XPosition=playerAnimation[0].getX();
+      XPosition=animationSetup.getX();
 
 
     }
@@ -61,25 +59,33 @@ public class Player {
 
       changePlayerPosition(channel[currentChannel], caterPillarY);
 
-      XPosition=playerAnimation[0].getX();
+      XPosition=animationSetup.getX();
     }
+  }
+
+  public void updateCaterpillarAnimation(double elapsedTime) {
+    animationSetup.updateAnimation(elapsedTime);
   }
 
 
 
   public Bounds getBounds() {
-    return playerAnimation[0].getBoundsInLocal();
+    return animationSetup.getBounds();
   }
 
      void changePlayerPosition(double x, double y) {
-         for (ImageView iv : playerAnimation) {
-             iv.setX(x);
-             iv.setY(y);
-             if(currentChannel==0) iv.setRotate(20);
-             else if(currentChannel==3) iv.setRotate(-20);
-             else if(currentChannel==1) iv.setRotate(5);
-             else iv.setRotate(-5);
-         }
+
+        // for (ImageView iv : playerAnimation) {
+          //   iv.setX(x);
+            // iv.setY(y);
+            int angle;
+             if(currentChannel==0) angle = 20;
+             else if(currentChannel==3) angle =-20;
+             else if(currentChannel==1) angle = 5;
+             else angle=-5;
+
+
+         animationSetup.changeCaterpillarChannel(x, y, angle);
 
      }
 
