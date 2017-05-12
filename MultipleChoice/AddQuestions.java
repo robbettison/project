@@ -182,7 +182,9 @@ System.out.println(temp.size());
 
 		for (String s: temp.keySet()){
 			tempArray.add(s);
+		if (i >= 2){
 			addRow2();
+}
 			tf = (TextField) getNodeFromGridPane(i,0);
 			tf.setText(s);
 			i++;
@@ -195,10 +197,12 @@ System.out.println(temp.size());
 
 
 		for (int k = 1; k < finalRow; k++){
-			for (int j = 0; j < 5; j++){
+			for (int j = 1; j < 5; j++){
 				tf = (TextField) getNodeFromGridPane(k,j);
 				tf2 = (TextField) getNodeFromGridPane(k,0);
-				tf.setText(temp.get(tf2.getText()).get(j));
+				
+				tf.setText(temp.get(tf2.getText()).get(j-1));
+				
 			}	
 		System.out.println("added" + k);
 		}
@@ -207,7 +211,6 @@ System.out.println(temp.size());
 		if (finalRow < 2){
 			finalRow = 2;
 		}
-
 	}
 
 	private void saveRecord(ActionEvent event){

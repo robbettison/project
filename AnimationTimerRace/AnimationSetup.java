@@ -9,7 +9,7 @@ import javafx.util.*;
 
 public class AnimationSetup {
 
-  
+
 
 
   AnimationSetup() {
