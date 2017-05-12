@@ -28,7 +28,7 @@ public class Questions {
     myMap.put(3, "11");*/
     root = G;
     rand = new Random();
-    for(int i=0;i<10;i++) {
+    for(int i=0;i<5;i++) {
       answers[i]=rand.nextInt(15);
       System.out.println(answers[i]);
     }
@@ -43,7 +43,7 @@ public class Questions {
 
   public int getNextAnswer() {
     currentAnswer+=1;
-    if(currentAnswer<10) {
+    if(currentAnswer<5) {
       //System.out.println(answers[currentAnswer]);
       Correct = new inGameText(root);
       /*if(currentAnswer!=0)*/ currentFruit.setText(Integer.toString(answers[currentAnswer]));
@@ -58,7 +58,7 @@ public class Questions {
   public int getTargetBit(int i) {
     int[] bits = new int[4];
     int target = answers[currentAnswer];
-
+    System.out.println(target);
     if(target-8>=0) {
       bits[0]=1;
       target = target-8;
