@@ -1,0 +1,45 @@
+What is Binary?
+
+   -There are only two numbers in binary (1 and 0).
+   - numbers look like this: 001100101
+
+	Why are there only two numbers (0 and 1)?
+
+	Bases:
+	Base 10 has 10 numbers (0-9)
+	Base 5 has 5 numbers (0-4)
+	base 2 is also known as binary, it has 2 numbers (0-1).
+
+
+Why is the binary system known as a ‘base 2’ system?
+
+In binary the numbers are converted using the power of two.
+
+Power of 2?
+
+This means the number of times we multiply 2 by 2.
+
+	- For example, 2 to the power of 3 is (2 x 2 x 2)
+	  times 2 by 2, 3 times, which equals 8.
+
+Here is a list of the first few power numbers of 2:
+
+	2^0 = 1 (Maths rule, if you multiply any number zero it also equals one)
+	2^1 = 2 (Maths rule, if you multiply any number 1 it always stays the same)
+	2^2 = 4
+	2^3 = 8
+	2^4 = 16
+	2^5 = 32 and so on...
+
+Can also be written as:
+ 8  4  2  1
+ 0  0  0  1		So the binary number 0001 means you just have a 1, so 1.
+ 0  1  0  1		So the binary number 0101 means you have a 4 and 1, so 5.
+ 1  1  1  1		So the binary number 1111 means you have 8,4,2 and 1, so 15.
+ 1  0  0  1		So the binary number 1001 means you have an 8 and 1, so 9.
+
+
+
+
+
+
