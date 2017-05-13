@@ -94,6 +94,8 @@ boolean check = allFruit.updatePositions(elapsedTime, player, score);
 
          if ( check== false){
 
+
+
 	 	beginFruit.stop();
                 switchToLeaderBoard();
 		}

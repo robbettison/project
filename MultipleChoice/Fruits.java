@@ -108,7 +108,7 @@ ArrayList<Integer> temp2 = new ArrayList<>();
     }
     checkCollisions(player, score);
     draw();
-
+System.out.println("nextAns is : " + nextAns);
     if (nextAns.isEmpty()){
 	
 	return false;
@@ -127,6 +127,8 @@ ArrayList<Integer> temp2 = new ArrayList<>();
 
     for(int i=0;i<numberFruits;i++) {
       Fruit currentFruit = fruitArray.get(i);
+
+System.out.println("currentFruit y" + currentFruit.getY());
       if(currentFruit.impacts(player.getBounds())&&currentFruit.getY()==640) {
         currentFruit.remove(allfruit);
         //fruitArray.remove(currentFruit);
@@ -135,7 +137,7 @@ ArrayList<Integer> temp2 = new ArrayList<>();
 
 //set currentFruit.fruitAnswer according to question
 	nextAns = questions.getNextAnswer();
-
+System.out.println("changing next answer");
 System.out.println("next Answer is: "+nextAns+"--");
 
         if(currentFruit.getFruitAnswer().equals(nextAns)) {
