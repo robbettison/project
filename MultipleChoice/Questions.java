@@ -7,6 +7,8 @@ import javafx.scene.control.*;
 import javafx.beans.property.*;
 import javafx.scene.image.*;
 import javafx.stage.*;
+import java.io.*;
+import javafx.scene.text.Font;
 
 
 public class Questions {
@@ -16,6 +18,9 @@ public class Questions {
   Label questionLabel = new Label();
  // Map<Integer, String> myMap = new HashMap<Integer, String>();
   ArrayList<String> questionsArray = new ArrayList<>();
+  String currentFontFile = "CabinSketch-Bold.ttf";
+  InputStream fontStream = Main.class.getResourceAsStream(currentFontFile);
+  Font bgFont = Font.loadFont(fontStream, 30);
 
 
   MFileReader mfr = new MFileReader("questions.txt");
@@ -44,6 +49,8 @@ HashMap<String, ArrayList<String>> qAndA = new HashMap<String, ArrayList<String>
 
 //print out first question
     questionLabel.setText(questionsArray.get(0));
+    questionLabel.setFont(bgFont);
+
 
 //putting question on top right
     questionLabel.setTranslateX(100);
@@ -53,19 +60,6 @@ HashMap<String, ArrayList<String>> qAndA = new HashMap<String, ArrayList<String>
 
   public String getNextAnswer() {
 
-System.out.println("qarray size: " + questionsArray.size());
-System.out.println("keeptrack is: "+ keepTrack);
-
-for (String s: questionsArray){
-System.out.println("question" + s);
-}
-
-for (String key: qAndA.keySet()){
-	for (String s: qAndA.get(key)){
-		System.out.printf( "answers" + s);
-	}
-	System.out.println("");
-}
 
 
     if(keepTrack<questionsArray.size()) {

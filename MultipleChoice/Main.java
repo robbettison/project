@@ -35,6 +35,10 @@ public class Main{
   Scene backScene;
   AnimationSetup Background1;
 
+  String currentFontFile = "CabinSketch-Bold.ttf";
+  InputStream fontStream = Main.class.getResourceAsStream(currentFontFile);
+  Font bgFont = Font.loadFont(fontStream, 36);
+
 
 
 
@@ -51,6 +55,8 @@ public class Main{
 
   Scene setUp(Stage stage) {
     scoreboard.textProperty().bind(score.asString());
+    scoreboard.setFont(bgFont);
+    scoreboard.setTextFill(Color.YELLOW);
 
     root.getChildren().addAll(back,fruit,caterpillar);
     allFruit = new Fruits(4, fruit);

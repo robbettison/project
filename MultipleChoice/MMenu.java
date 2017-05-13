@@ -53,7 +53,7 @@ public class MMenu extends Application{
     //MUI mn= new MUI(mgraphics);
     Main m;
 
-    String[] name = {"Start", "Instructions", "Binary", "Leader Board", "Quit"};
+    String[] name = {"Start", "Instructions", "Set Questions", "Leader Board", "Quit"};
 
     // remember initial satge and create a new scene
     Stage starStage;
@@ -120,10 +120,10 @@ public class MMenu extends Application{
 	  		show(starStage);
 	  		System.out.println("Instructions");
 	  		break;
-	  	case "Binary":
+	  	case "Set Questions":
 	  		AddQuestions instruct1 = new AddQuestions(backScene, backStage, scene.getWidth(), scene.getHeight());
 	  		try {
-				starStage.setTitle("Binary!");
+				starStage.setTitle("Set Instructions!");
 				Label content1 = instructionLabel("howtoplay.txt");
 				// create a new scene
 	  			starStage.setScene(instruct1.instructionShow());

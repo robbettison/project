@@ -5,6 +5,8 @@ import javafx.geometry.*;
 import java.util.*;
 import javafx.scene.image.*;
 import javafx.scene.control.*;
+import javafx.scene.text.Font;
+import java.io.*;
 
 
 public class Fruit {
@@ -17,6 +19,9 @@ public class Fruit {
   private double initialY;
   private double initialRadius = 15;
 private Label label = new Label();
+  String currentFontFile = "CabinSketch-Bold.ttf";
+  InputStream fontStream = Main.class.getResourceAsStream(currentFontFile);
+  Font bgFont = Font.loadFont(fontStream, 17);
 
   //ArrayList<Color> Colours = new ArrayList<Color>();
   ArrayList<Image> Fruits = new ArrayList<Image>();
@@ -51,10 +56,29 @@ G.getChildren().add(label);
   }
 
 void setLabel (String ans){
+
+
+
+
+
 label.setText(ans);
-label.setTextFill(Color.BLACK);
-label.setTranslateX(XPosition);
+label.setFont(bgFont);
+if (fruitPosition == 0){
+label.setTextFill(Color.BLUE);
+}
+else if (fruitPosition == 1){
+label.setTextFill(Color.RED);
+}
+else if (fruitPosition == 2){
+label.setTextFill(Color.GREEN);
+}
+else if (fruitPosition == 3){
+label.setTextFill(Color.PURPLE);
+}
+label.setTranslateX(XPosition-10);
 label.setTranslateY(YPosition+20);
+label.toFront();
+
 }
 
 
