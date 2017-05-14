@@ -42,6 +42,7 @@ public class Main{
   Label TIME = new Label("Time:");
   Stage tempStage,backStage;
   Scene backScene;
+  Soundtrack S = new Soundtrack();
   /*public void start(Stage stage) {
     stage.show();
     beginFruit.start();
@@ -77,11 +78,12 @@ public class Main{
   void show(Stage stage) {
     stage.show();
     tempStage = stage;
+    S.backgroundMusic();
     beginFruit.start();
   }
 
   void switchToLeaderBoard(){
-
+  S.stopbackgroundMusic();
 	Stage stage = new Stage();
 	LeaderBoard lb = new LeaderBoard(backScene,backStage,500,700);
 	Label lblabel = new Label(lb.readFile());
