@@ -24,7 +24,7 @@ public class Main{
   Group fruit = new Group();
   Group caterpillar = new Group();
   Group back = new Group();
-  Scene scene = new Scene(root, 500, 700, Color.WHITE);
+  Scene scene = new Scene(root, 600, 700, Color.WHITE);
   Fruits allFruit;
   final LongProperty lastUpdateTime = new SimpleLongProperty();
   Player player;
@@ -103,7 +103,7 @@ public class Main{
          else ST.start();
          player.updateCaterpillarAnimation(elapsedTime, 1/allFruit.getQuestionMomentum());
          Background1.updateAnimation(elapsedTime, 1/allFruit.getQuestionMomentum());
-         allFruit.updatePositions(elapsedTime, player, score);
+         allFruit.updatePositions(elapsedTime, player, score, S);
         	 if (allFruit.isEnd()){
 			beginFruit.stop();
 			switchToLeaderBoard();

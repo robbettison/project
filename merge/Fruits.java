@@ -21,6 +21,7 @@ public class Fruits {
   Random rand = new Random();
   boolean end = false;
   private int QuestionMomentum=1;
+  Soundtrack S1;
 
   Fruits(int numberFruit, Group G) {
     /*Colours.add(Color.BLUE);
@@ -54,13 +55,14 @@ public class Fruits {
     return x;
   }
 
-  void updatePositions(double timeElapsed, Player player, IntegerProperty score) {
+  void updatePositions(double timeElapsed, Player player, IntegerProperty score, Soundtrack S) {
     final double fruitMoved = timeElapsed*fruitVelocity;
     for(int i=0;i<numberFruits;i++) {
       Fruit currentFruit = fruitArray.get(i);
       currentFruit.update(fruitMoved, fruitMoved);
     }
     checkCollisions(player, score);
+    S1=S;
     draw();
   }
 
@@ -89,10 +91,12 @@ public class Fruits {
         if(currentFruit.getfruitBit()==0&&level1.getTargetBit(i)==1) {
           currentFruit.setFill(new ImagePattern(FruitImages.get(1)));
           currentFruit.setFruitBit(1);
+          S1.burp();
         }
         else if(currentFruit.getfruitBit()==1&&level1.getTargetBit(i)==0){
           currentFruit.setFill(new ImagePattern(FruitImages.get(0)));
           currentFruit.setFruitBit(0);
+          S1.apple();
         }
         else {
           if(QuestionMomentum>1) {

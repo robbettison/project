@@ -20,6 +20,20 @@ public class Soundtrack {
   MediaPlayer player = new MediaPlayer(soundTrack);
   MediaView mediaView = new MediaView(player);
 
+  private static File file1=new File("burp.mp3");
+  private static final String source1=file1.toURI().toString();
+
+  Media burp = new Media(source1);
+  MediaPlayer burpplayer = new MediaPlayer(burp);
+  MediaView burpmediaView = new MediaView(burpplayer);
+
+  private static File file2=new File("apple_eat.mp3");
+  private static final String source2=file2.toURI().toString();
+
+  Media apple = new Media(source2);
+  MediaPlayer appleplayer = new MediaPlayer(apple);
+  MediaView applemediaView = new MediaView(appleplayer);
+
   /*public Soundtrack(Group g) {
     //g.getChildren().addAll(mediaView, shootView);
     //player.play();
@@ -36,4 +50,16 @@ public class Soundtrack {
   public void stop() {
     player.stop();
   }
+
+  public void burp() {
+    burpplayer.play();
+    burpplayer.seek(burpplayer.getStartTime());
+  }
+
+  public void apple() {
+    appleplayer.play();
+    appleplayer.seek(appleplayer.getStartTime());
+  }
+
+
 }
