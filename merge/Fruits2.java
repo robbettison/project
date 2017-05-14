@@ -10,6 +10,7 @@ public class Fruits2 {
 
   List<Fruit2> fruitArray = new ArrayList<>();
   List<Fruit2> fruitSaLaD = new ArrayList<>();
+  ArrayList<String> endGame = new ArrayList<>();
   private int numberFruits;
   private int initialNumberFruit;
   private double fruitVelocity=1;
@@ -40,6 +41,10 @@ public class Fruits2 {
     numberFruits = numberFruit;
     initialNumberFruit = numberFruit;
     root = G;
+endGame.add("Thanks");
+endGame.add("For");
+endGame.add("Playing");
+endGame.add("!!!");
 
     allfruit = G;
 
@@ -69,6 +74,8 @@ public class Fruits2 {
 //position should be different, id stays the same
 ArrayList<Integer> temp = new ArrayList<>();
 ArrayList<Integer> temp2 = new ArrayList<>();
+
+
     for(int i=0;i<numberFruits;i++) {
       Fruit2 currentFruit=fruit.get(i);
 
@@ -82,8 +89,10 @@ ArrayList<Integer> temp2 = new ArrayList<>();
 		currentFruit.setFill(new ImagePattern(FruitImages.get(newImage)));
 
 //setting answers to current fruit using current array
+try{
 		currentFruit.setFruitAnswer(questions.getNewFruitAnswers().get(i));
-
+}catch(Exception e){
+currentFruit.setFruitAnswer(endGame.get(i));}
     }
 
 
@@ -108,7 +117,7 @@ ArrayList<Integer> temp2 = new ArrayList<>();
     }
     checkCollisions(player, score);
     draw();
-System.out.println("nextAns is : " + nextAns);
+
     if (nextAns.isEmpty()){
 	
 	return false;
@@ -128,7 +137,6 @@ System.out.println("nextAns is : " + nextAns);
     for(int i=0;i<numberFruits;i++) {
       Fruit2 currentFruit = fruitArray.get(i);
 
-System.out.println("currentFruit y" + currentFruit.getY());
       if(currentFruit.impacts(player.getBounds())&&currentFruit.getY()==640) {
         currentFruit.remove(allfruit);
         //fruitArray.remove(currentFruit);
@@ -137,19 +145,19 @@ System.out.println("currentFruit y" + currentFruit.getY());
 
 //set currentFruit.fruitAnswer according to question
 	nextAns = questions.getNextAnswer();
-System.out.println("changing next answer");
-System.out.println("next Answer is: "+nextAns+"--");
+
 
         if(currentFruit.getFruitAnswer().equals(nextAns)) {
 			correct = new inGameText(root);
 
           score.set(score.get()+10);
           System.out.println("correct answer");
+System.out.println("SCORE IS:" +  score.get());
         }
         else {score.set(score.get());
 		System.out.println("wrong answer");
 	}
-	
+	questions.setNewQuestion();
         resetSalad();
         
       }

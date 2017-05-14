@@ -74,6 +74,7 @@ public class Fruits {
   void checkCollisions(Player player, IntegerProperty score) {
     for(int i=0;i<numberFruits;i++) {
       Fruit currentFruit = fruitArray.get(i);
+
       if(currentFruit.impacts(player.getBounds())&&(currentFruit.getY()>=650&&currentFruit.getY()<=651)) {
         System.out.println("here");
         if(currentFruit.getfruitBit()==0&&level1.getTargetBit(i)==1) {

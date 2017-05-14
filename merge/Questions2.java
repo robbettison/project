@@ -59,35 +59,29 @@ HashMap<String, ArrayList<String>> qAndA = new HashMap<String, ArrayList<String>
   }
 
   public String getNextAnswer() {
+	String nextAns = "";
+	try{ nextAns = qAndA.get(questionsArray.get(keepTrack++)).get(0);
+	} catch (Exception e){
+		System.out.println("no more answer");
+	}
+	return nextAns;
 
-
-
-    if(keepTrack<questionsArray.size()) {
- 
-		try{
-			questionLabel.setText(questionsArray.get(keepTrack+1));
-		} catch (Exception e){
-			System.out.println("ended");
-			questionLabel.setText("Game has ended");
-			return "";
-		
-		}
-
-System.out.println("correct answer is:" + qAndA.get(questionsArray.get(keepTrack)).get(0));
-
-   
-    	  return qAndA.get(questionsArray.get(keepTrack++)).get(0);
-    }
-    else {
-      System.out.println("Level complete");
-
-      return "";
-    }
   }
   ArrayList<String> getNewFruitAnswers(){
 //check inbound
 
     return qAndA.get(questionsArray.get(keepTrack));
+  }
+
+  void setNewQuestion(){
+		try{
+			questionLabel.setText(questionsArray.get(keepTrack+1));
+		} catch (Exception e){
+			System.out.println("ended");
+			questionLabel.setText("Game has ended");
+	
+		}
+
   }
 
 }
