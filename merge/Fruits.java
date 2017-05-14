@@ -28,13 +28,13 @@ public class Fruits {
     Colours.add(Color.RED);
     Colours.add(Color.YELLOW);*/
     level1 = new Questions(G);
-    FruitImages.add(new Image("Images/applecore0.png"));//representing zero bit value
-    FruitImages.add(new Image("Images/apple1.png"));//representing one bit value
+    FruitImages.add(new Image("Images/apple.png"));//representing zero bit value
+    FruitImages.add(new Image("Images/pear.png"));//representing one bit value
     /*FruitImages.add(new Image("Images/banana.png"));
     FruitImages.add(new Image("Images/pear.png"));*/
     for(int i=0;i<numberFruit;i++) {
       int random = rand.nextInt(10)%2;
-      Fruit newFruit = new Fruit(290+i*5, 267, G, i, random, FruitImages.get(random));
+      Fruit newFruit = new Fruit(290+i*5, 267, G, i, 0, FruitImages.get(0));
       fruitArray.add(newFruit);
       fruitSaLaD.add(newFruit);
     }
@@ -71,12 +71,21 @@ public class Fruits {
     }
   }
 
+  private boolean impacted() {
+    int noimpact=0;
+    for(int i=0;i<numberFruits;i++) {
+      Fruit currentFruit = fruitArray.get(i);
+      if(currentFruit.getImpacted()==false) noimpact = noimpact + 1;
+    }
+    if(noimpact==4) return true;
+    else return false;
+  }
+
   void checkCollisions(Player player, IntegerProperty score) {
     for(int i=0;i<numberFruits;i++) {
       Fruit currentFruit = fruitArray.get(i);
-
-      if(currentFruit.impacts(player.getBounds())&&(currentFruit.getY()>=650&&currentFruit.getY()<=651)) {
-        System.out.println("here");
+      if(currentFruit.impacts(player.getBounds())&&currentFruit.getImpacted()==false&&impacted()&&currentFruit.getY()>649) {
+        currentFruit.setImpacted();
         if(currentFruit.getfruitBit()==0&&level1.getTargetBit(i)==1) {
           currentFruit.setFill(new ImagePattern(FruitImages.get(1)));
           currentFruit.setFruitBit(1);
@@ -86,26 +95,21 @@ public class Fruits {
           currentFruit.setFruitBit(0);
         }
         else {
-System.out.println("wrong");
           if(QuestionMomentum>1) {
-            QuestionMomentum=1;
-            //fruitVelocity=1;
+            QuestionMomentum-=0.5;
+            fruitVelocity-=0.5;
           }
           score.set(score.get()-10);
         }
         break;
       }
-      else {
-
-      }
     }
     if(fruitBitsValue()==level1.getcurrentAnswer()) {
       score.set(score.get()+40);
-System.out.println("correct");
       level1.getNextAnswer();
       if(QuestionMomentum<10) {
         QuestionMomentum+=0.5;
-        fruitVelocity+=0.1;
+        fruitVelocity+=0.5;
       }
       end = level1.isEnd();
     }

@@ -15,6 +15,7 @@ public class Fruit {
   private double initialX;
   private double initialY;
   private double initialRadius = 15;
+  boolean impacted = false;
 
   //ArrayList<Color> Colours = new ArrayList<Color>();
   ArrayList<Image> Fruits = new ArrayList<Image>();
@@ -46,26 +47,27 @@ public class Fruit {
   }
 
   public void update(double x, double y) {
-    if(!(YPosition>700)&&fruitPosition==3) {
+    if(!(YPosition>650)&&fruitPosition==3) {
       XPosition = XPosition+x/3;
       YPosition = YPosition+y;
     }
-    else if(!(YPosition>700)&&fruitPosition==0) {
+    else if(!(YPosition>650)&&fruitPosition==0) {
       XPosition = XPosition-x/3;
       YPosition = YPosition+y;
     }
-    else if(!(YPosition>700)&&fruitPosition==1) {
+    else if(!(YPosition>650)&&fruitPosition==1) {
       XPosition = XPosition-x/10;
       YPosition = YPosition+y;
     }
-    else if(!(YPosition>700)&&fruitPosition==2) {
+    else if(!(YPosition>650)&&fruitPosition==2) {
       XPosition = XPosition+x/10;
       YPosition = YPosition+y;
     }
     else {
-    //System.out.println(XPosition);
+    System.out.println(XPosition);
       XPosition = initialX;
       YPosition = initialY;
+      impacted =false;
       fruit.setRadius(initialRadius);
     }
     size(y);
@@ -77,12 +79,11 @@ public class Fruit {
   }
 
   private void size(double radiusProportion) {
-    fruit.setRadius(fruit.getRadius() + radiusProportion/20);
+    fruit.setRadius(fruit.getRadius() + radiusProportion/40);
 
   }
 
   public boolean impacts(Bounds b) {
-    System.out.println(fruit.intersects(b));
     return fruit.intersects(b);
   }
 
@@ -124,5 +125,13 @@ public class Fruit {
 
   public void setXstarting(int i) {
     initialX=i;
+  }
+
+  public boolean getImpacted() {
+    return impacted;
+  }
+
+  public void setImpacted() {
+    impacted = true;
   }
 }

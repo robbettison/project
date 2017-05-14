@@ -75,7 +75,7 @@ HashMap<String, ArrayList<String>> qAndA = new HashMap<String, ArrayList<String>
 
   void setNewQuestion(){
 		try{
-			questionLabel.setText(questionsArray.get(keepTrack+1));
+			questionLabel.setText(questionsArray.get(keepTrack));
 		} catch (Exception e){
 			System.out.println("ended");
 			questionLabel.setText("Game has ended");

@@ -22,6 +22,7 @@ private Label label = new Label();
   String currentFontFile = "CabinSketch-Bold.ttf";
   InputStream fontStream = Main2.class.getResourceAsStream(currentFontFile);
   Font bgFont = Font.loadFont(fontStream, 17);
+  boolean impacted = false;
 
   //ArrayList<Color> Colours = new ArrayList<Color>();
   ArrayList<Image> Fruits = new ArrayList<Image>();
@@ -159,5 +160,14 @@ fruitAnswer = ans;
 
   public void setXstarting(int i) {
     initialX=i;
+  }
+
+  public boolean getImpacted() {
+    return impacted;
+  }
+
+  public void setImpacted(boolean impact) {
+    impacted = impact;
+	
   }
 }

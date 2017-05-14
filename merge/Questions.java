@@ -36,12 +36,17 @@ public class Questions {
     rand = new Random();
     for(int i=0;i<5;i++) {
       int nextRandom;
-      if(i>0) {
+      if(i==0) {
+        do {
+          nextRandom = rand.nextInt(15);
+        } while (nextRandom==0);
+      }
+      else {
         do {
           nextRandom = rand.nextInt(15);
         } while(nextRandom==answers[i-1]);
       }
-      else nextRandom=rand.nextInt(15);
+      //else nextRandom=rand.nextInt(15);
       answers[i] = nextRandom;
       System.out.println(answers[i]);
     }

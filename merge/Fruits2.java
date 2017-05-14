@@ -132,12 +132,14 @@ currentFruit.setFruitAnswer(endGame.get(i));}
     }
   }
 
+
   void checkCollisions(Player2 player, IntegerProperty score) {
 
     for(int i=0;i<numberFruits;i++) {
       Fruit2 currentFruit = fruitArray.get(i);
 
       if(currentFruit.impacts(player.getBounds())&&currentFruit.getY()==640) {
+
         currentFruit.remove(allfruit);
         //fruitArray.remove(currentFruit);
         //numberFruits-=1;

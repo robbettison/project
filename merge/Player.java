@@ -20,7 +20,7 @@ public class Player {
   429.6666666666596*/
 
 
-  double[] channel = {120, 213, 292, 384};
+  double[] channel = {161, 256, 338, 432};
 
   int currentChannel = 2;
   double XPosition = channel[currentChannel];
@@ -30,10 +30,10 @@ public class Player {
 
   Player(Group g, Scene scene, Group fruit) {
 
-    /*playerAnimation = */animationSetup = new AnimationSetup("pic/frame", "png", 75, 125, 24, g);
+    /*playerAnimation = */animationSetup = new AnimationSetup("pic/frame", "png", 60, 100, 24, g);
     //animationSetup.makeAnimation(playerAnimation, g);
 //set initialPosition
-    changePlayerPosition(294, caterPillarY);
+    changePlayerPosition(338 - 20, caterPillarY);
 
     scene.setOnKeyPressed(this::leftright);
     collisionFruit=fruit;
@@ -49,7 +49,7 @@ public class Player {
 
 
 
-      changePlayerPosition(channel[currentChannel], caterPillarY);
+      changePlayerPosition(channel[currentChannel]-20, caterPillarY);
       XPosition=animationSetup.getX();
 
 
@@ -57,7 +57,7 @@ public class Player {
     else if(e.getCode()==KeyCode.RIGHT && currentChannel < 3){
       currentChannel+=1;
 
-      changePlayerPosition(channel[currentChannel], caterPillarY);
+      changePlayerPosition(channel[currentChannel]-20, caterPillarY);
 
       XPosition=animationSetup.getX();
     }

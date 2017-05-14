@@ -51,10 +51,10 @@ public class MMenu extends Application{
     ScrollPane sp = new ScrollPane();
     //MGraphics mgraphics = new MGraphics();
     //MUI mn= new MUI(mgraphics);
-    Main2 m2;
-	Main m;
+    Main m;
+	Main2 m2;
 
-    String[] name = {"Start", "Instructions", "Multiple Choice", "Set Questions", "Leader Board", "Quit"};
+    String[] name = {"Start", "Instructions","Multiple Choice", "Set Questions", "Leader Board", "Quit"};
 
     // remember initial satge and create a new scene
     Stage starStage;
@@ -83,12 +83,11 @@ public class MMenu extends Application{
 	  	case "Start":
 	  		//goto game home to play game
 	        //mgraphics.circleAnimation();
-	        m = new Main(backStage,backScene);
+			m =  new Main(backStage,backScene);
 	        starStage.setScene(m.setUp(starStage));
 
 			System.out.println("start");
 	  		m.show(starStage);
-
 
 	  		break;
 	  	case "Instructions":
@@ -122,14 +121,16 @@ public class MMenu extends Application{
 	  		show(starStage);
 	  		System.out.println("Instructions");
 	  		break;
-
 		case "Multiple Choice":
+	  		//goto game home to play game
+	        //mgraphics.circleAnimation();
 			m2 =  new Main2(backStage,backScene);
 	        starStage.setScene(m2.setUp(starStage));
 
 			System.out.println("start");
 	  		m2.show(starStage);
 			break;
+
 
 	  	case "Set Questions":
 	  		AddQuestions instruct1 = new AddQuestions(backScene, backStage, scene.getWidth(), scene.getHeight());
