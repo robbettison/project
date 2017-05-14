@@ -30,7 +30,7 @@ public class Player {
 
   Player(Group g, Scene scene, Group fruit) {
 
-    /*playerAnimation = */animationSetup = new AnimationSetup("pic/frame", "png", 60, 100, 24, g);
+    /*playerAnimation = */animationSetup = new AnimationSetup("pic/caterpillar", "png", 60, 100, 24, g);
     //animationSetup.makeAnimation(playerAnimation, g);
 //set initialPosition
     changePlayerPosition(338 - 20, caterPillarY);

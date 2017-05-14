@@ -39,7 +39,7 @@ import javafx.beans.value.ObservableValue;
 public class MMenu extends Application{
 
 	// bakcground
-    Canvas canvas = new Canvas(400, 400);
+    Canvas canvas = new Canvas(500, 700);
     Image bg = new Image("pic/Bug.png");
     //ImageView bgView = new ImageView(bg);
     GraphicsContext g = canvas.getGraphicsContext2D();
@@ -47,6 +47,7 @@ public class MMenu extends Application{
     BorderPane borderPane = new BorderPane();
 	Scene scene = new Scene(borderPane,400,400);
     Label gameName = new Label("BUG BITS");
+  //  gamename.setFont(bgFont);
     List<Button> buttonList = new ArrayList<Button>();
     ScrollPane sp = new ScrollPane();
     //MGraphics mgraphics = new MGraphics();
@@ -139,7 +140,7 @@ public class MMenu extends Application{
 				Label content1 = instructionLabel("howtoplay.txt");
 				// create a new scene
 	  			starStage.setScene(instruct1.instructionShow());
-	  			
+
 	  		} catch (IOException e) {
 	  			System.out.println("OH no!");
 	  		}
@@ -151,7 +152,7 @@ public class MMenu extends Application{
 			Label lblabel = new Label(lb.readFile());
 			lb.scroll(lblabel);
 			starStage.setScene(lb.leaderBoardShow());
-			
+
 			show(starStage);
 	  		break;
 	  	case "Quit":
@@ -281,7 +282,7 @@ public class MMenu extends Application{
 
 		// put all into BorderPane and then put into parent root
 		borderPane.getChildren().add(canvas);
-		borderPane.setCenter(vbox);
+		borderPane.setRight(vbox);
 		borderPane.setTop(hbox);
 		//root.getChildren().add(borderPane);
 	}
@@ -296,7 +297,8 @@ public class MMenu extends Application{
 		// set style and add EventLstener
 		String cssButton = "-fx-border-radius: 20.0;-fx-background-color: green;"
 					+ "-fx-background-radius: 20;"
-					+ "-fx-border-color: white;";
+					+ "-fx-border-color: white;"
+          + "-fx-padding: 30 30 30 30";
 		for(int i=0;i<name.length;i++){
 			Button b = buttonList.get(i);
 			b.setStyle(cssButton);
