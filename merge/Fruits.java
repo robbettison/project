@@ -28,8 +28,8 @@ public class Fruits {
     Colours.add(Color.RED);
     Colours.add(Color.YELLOW);*/
     level1 = new Questions(G);
-    FruitImages.add(new Image("Images/apple.png"));//representing zero bit value
-    FruitImages.add(new Image("Images/pear.png"));//representing one bit value
+    FruitImages.add(new Image("Images/applebit0.png"));//representing zero bit value
+    FruitImages.add(new Image("Images/applebit1.png"));//representing one bit value
     /*FruitImages.add(new Image("Images/banana.png"));
     FruitImages.add(new Image("Images/pear.png"));*/
     for(int i=0;i<numberFruit;i++) {

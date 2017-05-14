@@ -45,7 +45,7 @@ public class MMenu extends Application{
     GraphicsContext g = canvas.getGraphicsContext2D();
     //Group root = new Group(canvas);
     BorderPane borderPane = new BorderPane();
-	Scene scene = new Scene(borderPane,400,400);
+	Scene scene = new Scene(borderPane,500,700);
     Label gameName = new Label("BUG BITS");
   //  gamename.setFont(bgFont);
     List<Button> buttonList = new ArrayList<Button>();
