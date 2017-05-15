@@ -99,10 +99,10 @@ public class Fruits {
           S1.apple();
         }
         else {
-          if(QuestionMomentum>1) {
-            QuestionMomentum-=0.5;
-            fruitVelocity-=0.5;
-          }
+          //if(QuestionMomentum>1) {
+            QuestionMomentum=1;
+            fruitVelocity=1;
+          //}
           score.set(score.get()-10);
         }
         break;

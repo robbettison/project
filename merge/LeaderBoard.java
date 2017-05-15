@@ -30,9 +30,10 @@ Scanner scanner;
 	double width, height;
 	MMenu menu = new MMenu();
         ObservableList<TopScore> topScores = FXCollections.observableArrayList();
+	boolean showConfirm;
 
 
-    public LeaderBoard(Scene scene, Stage stage, double width, double height) {
+    public LeaderBoard(Scene scene, Stage stage, double width, double height, boolean showConfirm) {
         window = stage;
         window.setTitle("Leaderboard");
 		this.oldScene = scene;
@@ -63,9 +64,11 @@ Scanner scanner;
 	readFile();
 
         table = new TableView<>();
+	scoreColumn.setSortType(TableColumn.SortType.DESCENDING);
         table.setItems(getTopScore());
         table.getColumns().add(nameColumn);
         table.getColumns().add(scoreColumn);
+	table.getSortOrder().add(scoreColumn);
 
 
         VBox vBox = new VBox();
@@ -73,10 +76,14 @@ Scanner scanner;
 
         BorderPane bp = new BorderPane();
         bp.setCenter(vBox);
-        bp.setTop(nameInput);
+
 
 		HBox hBox = new HBox();
-		hBox.getChildren().addAll(confirm, back);
+		hBox.getChildren().add(back);
+if (showConfirm){
+	hBox.getChildren().add(confirm);
+        bp.setTop(nameInput);
+}
         bp.setBottom(hBox);
 
         newScene = new Scene(bp, 800, 600);
