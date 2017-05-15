@@ -76,12 +76,13 @@ Scanner scanner;
 
         BorderPane bp = new BorderPane();
         bp.setCenter(vBox);
-        bp.setTop(nameInput);
+
 
 		HBox hBox = new HBox();
 		hBox.getChildren().add(back);
 if (showConfirm){
 	hBox.getChildren().add(confirm);
+        bp.setTop(nameInput);
 }
         bp.setBottom(hBox);
 
