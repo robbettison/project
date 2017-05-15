@@ -40,7 +40,7 @@ public class Main2{
   Font bgFont = Font.loadFont(fontStream, 36);
  // Soundtrack S = new Soundtrack();
 
-
+  Cows cowField;
 
 
   /*public void start(Stage stage) {
@@ -65,6 +65,7 @@ public class Main2{
   Background1 = new AnimationSetup2("pic/Main_Project_File_output", "png", 607, 1080, 30, back);
 
     root.getChildren().addAll(scoreboard);
+    cowField = new Cows(root);
     stage.setScene(scene);
 
     return scene;
@@ -84,6 +85,7 @@ public class Main2{
 //	S.stopbackgroundMusic();
 	Stage stage = new Stage();
 	LeaderBoard lb = new LeaderBoard(backScene,backStage,500,700);
+	lb.setSc(score.get());
 	tempStage.setScene(lb.leaderBoardShow());
 	tempStage.show();
 
@@ -98,10 +100,8 @@ public class Main2{
          player.updateCaterpillarAnimation(elapsedTime);
          Background1.updateAnimation(elapsedTime);
 boolean check = allFruit.updatePositions(elapsedTime, player, score);
-
+cowField.updateCow(elapsedTime);
          if ( check== false){
-
-
 
 	 	beginFruit.stop();
                 switchToLeaderBoard();
