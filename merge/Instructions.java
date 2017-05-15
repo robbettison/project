@@ -12,23 +12,28 @@ import javafx.scene.canvas.*;
 import javafx.geometry.Orientation;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import java.io.*;
+import javafx.scene.text.Font;
 
 
 public class Instructions {
 	Stage instructStage;
 	Scene instructScene;
 	double width, height;
-	Canvas canvas = new Canvas(400, 300);
+	Canvas canvas = new Canvas(1000, 700);
     Image bg = new Image("Bug.png");
     //Group root = new Group();
     //ImageView bgView = new ImageView(bg);
     GraphicsContext g = canvas.getGraphicsContext2D();
 	BorderPane borderPane = new BorderPane();
 	BorderPane borderPane1 = new BorderPane();
-	Scene scene = new Scene(borderPane, 400, 300);
+	Scene scene = new Scene(borderPane, 1000,700);
 	Button back = new Button("back");
 	MMenu menu = new MMenu();
 	ScrollPane sp = new ScrollPane();
+	String currentFontFile = "CabinSketch-Bold.ttf";
+  	InputStream fontStream = Main.class.getResourceAsStream(currentFontFile);
+  	Font bgFont = Font.loadFont(fontStream, 36);
 
 
 	public Instructions(){}

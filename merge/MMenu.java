@@ -33,7 +33,8 @@ import javafx.scene.input.KeyCode;
 import javafx.geometry.Orientation;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-
+import java.io.*;
+import javafx.scene.text.Font;
 
 
 public class MMenu extends Application{
@@ -47,9 +48,11 @@ public class MMenu extends Application{
     BorderPane borderPane = new BorderPane();
 	Scene scene = new Scene(borderPane,500,700);
     Label gameName = new Label("BUG BITS");
-  //  gamename.setFont(bgFont);
     List<Button> buttonList = new ArrayList<Button>();
     ScrollPane sp = new ScrollPane();
+    String currentFontFile = "CabinSketch-Bold.ttf";
+  	InputStream fontStream = MMenu.class.getResourceAsStream(currentFontFile);
+  	Font bgFont = Font.loadFont(fontStream, 36);
     //MGraphics mgraphics = new MGraphics();
     //MUI mn= new MUI(mgraphics);
     Main m;
@@ -62,6 +65,9 @@ public class MMenu extends Application{
     Stage backStage;
     Scene backScene;
 
+    
+
+  //  gameName.setFont(bgFont);
     // animation time
     public static final long duration = 40000;
 
@@ -96,6 +102,8 @@ public class MMenu extends Application{
 	  		try {
 				starStage.setTitle("Instructions!");
 				Label content = instructionLabel("Instructions.txt");
+				content.setFont(bgFont);
+				content.setStyle("-fx-text-fill: yellow;"); 
 				// create a new scene
 	  			starStage.setScene(instruct.instructionShow());
 	  			instruct.scroll(content);
@@ -273,6 +281,8 @@ public class MMenu extends Application{
 		vbox.setAlignment(Pos.CENTER);
 		//root.getChildren().add(vbox);
 
+	//gameName.setFont(bgFont);
+
 		// set horizontal layout off buttons
 		HBox hbox = new HBox();
 		hbox.getChildren().add(gameName);
@@ -296,12 +306,13 @@ public class MMenu extends Application{
 
 		// set style and add EventLstener
 		String cssButton = "-fx-border-radius: 20.0;-fx-background-color: green;"
-					+ "-fx-background-radius: 20;"
-					+ "-fx-border-color: white;"
-          + "-fx-padding: 30 30 30 30";
+					+ "-fx-background-radius: 20;-fx-text-fill: yellow; "
+					+ "-fx-border-color: white;-fx-padding: 15 15 15 15";
+
 		for(int i=0;i<name.length;i++){
 			Button b = buttonList.get(i);
 			b.setStyle(cssButton);
+			b.setFont(bgFont);
 			b.setOnAction(this::press);
 		}
 		gameName.setStyle("-fx-font-size: 80px;-fx-text-fill: greenyellow;");
