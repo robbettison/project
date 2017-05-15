@@ -10,6 +10,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.scene.canvas.*;
+import javafx.scene.image.Image;
+
+import java.util.Scanner;
+import java.io.*;
+
 
 public class LeaderBoard {
 
@@ -19,9 +25,12 @@ public class LeaderBoard {
     private Button confirm;
 	private Button back;
     private int sc = 99;
+Scanner scanner;
     Scene newScene, oldScene;
 	double width, height;
 	MMenu menu = new MMenu();
+        ObservableList<TopScore> topScores = FXCollections.observableArrayList();
+
 
     public LeaderBoard(Scene scene, Stage stage, double width, double height) {
         window = stage;
@@ -51,6 +60,7 @@ public class LeaderBoard {
 		back = new Button("Back");
 		back.setTranslateX(140);
         back.setOnAction(e -> backFunc());
+	readFile();
 
         table = new TableView<>();
         table.setItems(getTopScore());
@@ -75,21 +85,29 @@ public class LeaderBoard {
     }
 
     //Get all of the TopScores
+
     public ObservableList<TopScore> getTopScore(){
-        ObservableList<TopScore> topScores = FXCollections.observableArrayList();
+	//readFile();
+/*
         topScores.add(new TopScore("Kev", 100));
         topScores.add(new TopScore("Jiafeng", 80));
         topScores.add(new TopScore("Hugo", 50));
         topScores.add(new TopScore("Rob", 9));
         topScores.add(new TopScore("Oli", 22));
+*/
         return topScores;
     }
 
+
     void confirmFunc(){
+
       TopScore newScore = new TopScore();
       newScore.setName(nameInput.getText());
       newScore.setScore(sc);
       table.getItems().add(newScore);
+
+writeFile( nameInput.getText() + "`" +sc);
+	
       confirm.setOnAction(null);
     }
 
@@ -100,13 +118,50 @@ public class LeaderBoard {
 				
 
 	}
+public void writeFile(String string) {
+    try (BufferedWriter bw = new BufferedWriter(new FileWriter("leaderboard.txt", true))) {
+ 
+          
+   bw.write(string);
+    bw.newLine();
+         
+    } catch (IOException e) {
+        e.printStackTrace();
 
+    }
+}
+void readFile(){
+	String temp, name;
+	try{
+		scanner = new Scanner(new FileReader("leaderboard.txt"));
+
+		while(scanner.hasNext()){
+			temp = scanner.nextLine();
+			topScores.add(putToTopScore(temp));
+
+System.out.println("adding");
+			
+		}
+	}catch (Exception e){e.printStackTrace();}
+}
+
+TopScore putToTopScore(String temp){
+	TopScore ts;
+	String name = temp.substring(0,temp.indexOf("`"));
+	int score = Integer.parseInt(temp.substring(temp.indexOf("`") + 1));
+	ts = new TopScore(name, score);
+	return ts;
+
+}
 
     void setSc(int sc1){
       sc = sc1;
     }
 
-	Scene leaderBoardShow(){
+	Scene leaderBoardShow(int score){
+		sc = score;
 		return newScene;
 	}
+
+
 }
