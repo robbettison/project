@@ -239,7 +239,7 @@ public class MMenu extends Application{
 
 	    Group circles = new Group();
 	    for (int i = 0; i < count; i++) {
-	        Circle circle = new Circle(Math.random() * 30 + 5, Color.web("blue", 0.45)); //create circle, color:white, opacity:15%
+	        Circle circle = new Circle(Math.random() * 30 + 30, Color.web("blue", 0.45)); //create circle, color:white, opacity:15%
 	        circle.setStroke(Color.web("white", 0.2)); //border_color: white, opacity: 20%
 	        circle.setStrokeWidth(2); //boder-width
 	        //circles.setEffect(new BoxBlur(10, 10, 3));
@@ -263,6 +263,7 @@ public class MMenu extends Application{
 	    borderPane.getChildren().add(circles);
 	    borderPane.getChildren().add(colors);
 
+
 	}
 
 	private void redraw() {
@@ -280,7 +281,7 @@ public class MMenu extends Application{
 		vbox.setAlignment(Pos.CENTER);
 		//root.getChildren().add(vbox);
 
-	//gameName.setFont(bgFont);
+	 	gameName.setFont(bgFont);
 
 		// set horizontal layout off buttons
 		HBox hbox = new HBox();
@@ -293,6 +294,7 @@ public class MMenu extends Application{
 		borderPane.getChildren().add(canvas);
 		borderPane.setRight(vbox);
 		borderPane.setTop(hbox);
+		//borderPane.setFont(bgFont);
 		//root.getChildren().add(borderPane);
 	}
 
@@ -314,7 +316,7 @@ public class MMenu extends Application{
 			b.setFont(bgFont);
 			b.setOnAction(this::press);
 		}
-		gameName.setStyle("-fx-font-size: 80px;-fx-text-fill: greenyellow;");
+		//gameName.setStyle("-fx-font-size: 80px;-fx-text-fill: greenyellow;");
 		borderPane.setStyle("-fx-background: ORANGE");
 	}
 
