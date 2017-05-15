@@ -156,7 +156,7 @@ public class MMenu extends Application{
 	  		System.out.println("Instructions");
 	  		break;
 	  	case "Leader Board":
-	  			  		LeaderBoard lb = new LeaderBoard(backScene,backStage,scene.getWidth(),scene.getHeight());
+	  			  		LeaderBoard lb = new LeaderBoard(backScene,backStage,scene.getWidth(),scene.getHeight(),false);
 			
 			starStage.setScene(lb.leaderBoardShow());
 

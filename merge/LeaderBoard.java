@@ -30,9 +30,10 @@ Scanner scanner;
 	double width, height;
 	MMenu menu = new MMenu();
         ObservableList<TopScore> topScores = FXCollections.observableArrayList();
+	boolean showConfirm;
 
 
-    public LeaderBoard(Scene scene, Stage stage, double width, double height) {
+    public LeaderBoard(Scene scene, Stage stage, double width, double height, boolean showConfirm) {
         window = stage;
         window.setTitle("Leaderboard");
 		this.oldScene = scene;
@@ -78,7 +79,10 @@ Scanner scanner;
         bp.setTop(nameInput);
 
 		HBox hBox = new HBox();
-		hBox.getChildren().addAll(confirm, back);
+		hBox.getChildren().add(back);
+if (showConfirm){
+	hBox.getChildren().add(confirm);
+}
         bp.setBottom(hBox);
 
         newScene = new Scene(bp, 800, 600);

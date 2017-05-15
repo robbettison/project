@@ -84,7 +84,7 @@ public class Main2{
 
 	S.stopbackgroundMusic();
 	Stage stage = new Stage();
-	LeaderBoard lb = new LeaderBoard(backScene,backStage,500,700);
+	LeaderBoard lb = new LeaderBoard(backScene,backStage,500,700,true);
 	lb.setSc(score.get());
 	tempStage.setScene(lb.leaderBoardShow());
 	tempStage.show();

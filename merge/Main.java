@@ -87,7 +87,7 @@ public class Main{
   void switchToLeaderBoard(){
   S.stopbackgroundMusic();
 	Stage stage = new Stage();
-	LeaderBoard lb = new LeaderBoard(backScene,backStage,500,700);
+	LeaderBoard lb = new LeaderBoard(backScene,backStage,500,700, true);
   int time = 100;
   int timeBonus = 100 - T.get();
   int tBonus = 0;
