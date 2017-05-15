@@ -63,9 +63,11 @@ Scanner scanner;
 	readFile();
 
         table = new TableView<>();
+	scoreColumn.setSortType(TableColumn.SortType.DESCENDING);
         table.setItems(getTopScore());
         table.getColumns().add(nameColumn);
         table.getColumns().add(scoreColumn);
+	table.getSortOrder().add(scoreColumn);
 
 
         VBox vBox = new VBox();
