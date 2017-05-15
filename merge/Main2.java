@@ -62,7 +62,7 @@ public class Main2{
     root.getChildren().addAll(back,fruit,caterpillar);
     allFruit = new Fruits2(4, fruit);
     player = new Player2(caterpillar, scene, fruit);
-  Background1 = new AnimationSetup2("pic/Road_anim_3d_", "png", 607, 1080, 30, back);
+  Background1 = new AnimationSetup2("pic/Main_Project_File_output", "png", 607, 1080, 30, back);
 
     root.getChildren().addAll(scoreboard);
     stage.setScene(scene);
