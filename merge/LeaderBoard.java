@@ -78,12 +78,14 @@ Scanner scanner;
         bp.setCenter(vBox);
 
 
-		HBox hBox = new HBox();
-		hBox.getChildren().add(back);
-if (showConfirm){
-	hBox.getChildren().add(confirm);
-        bp.setTop(nameInput);
-}
+	HBox hBox = new HBox();
+	if (showConfirm){
+		hBox.getChildren().addAll(confirm,back);
+ 		bp.setTop(nameInput);
+	}
+	else {
+		hBox.getChildren().add(back);       
+	}
         bp.setBottom(hBox);
 
         newScene = new Scene(bp, 800, 600);
