@@ -160,14 +160,7 @@ public class MMenu extends Application{
 	  		LeaderBoard lb = new LeaderBoard(backScene, backStage, scene.getWidth(), scene.getHeight());
 			List<String> list = lb.seperate();
 
-			for(int i=0;i<list.size();i++){
-	            int len = list.get(i).indexOf(" ");
-	            String s = list.get(i);
-	            String username = s.substring(0, len);
-	            int score = Integer.valueOf(s.substring(len+1)).intValue();
-	            lb.table.setItems(lb.getTopScore(username, score));
-	        }
-
+	        lb.table.setItems(lb.getTopScore(list));
 	        starStage.setScene(lb.leaderBoardShow());
 
 	        show(starStage);

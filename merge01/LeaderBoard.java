@@ -38,7 +38,7 @@ import java.util.Comparator;
 public class LeaderBoard {
 
     Stage leaderStage;
-    TableView<TopScore> table;
+    private TableView<TopScore> table;
     private TextField nameInput;
     private Button confirm;
     private Button back;
@@ -102,9 +102,16 @@ public class LeaderBoard {
     }
 
     //Get all of the TopScores
-    public ObservableList<TopScore> getTopScore(String username, int score){
+    public ObservableList<TopScore> getTopScore(List<String> list){
         ObservableList<TopScore> topScores = FXCollections.observableArrayList();
-        topScores.add(new TopScore(username, score));
+        for(int i=0;i<list.size();i++){
+                int len = list.get(i).indexOf(" ");
+                String s = list.get(i);
+                String username = s.substring(0, len);
+                int score = Integer.valueOf(s.substring(len+1)).intValue();
+                topScores.add(new TopScore(username,score));
+        }
+        table.setItems(topScores);
         return topScores;
     }
 
