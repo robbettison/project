@@ -105,7 +105,7 @@ public class Main{
          player.updateCaterpillarAnimation(elapsedTime, 1/allFruit.getQuestionMomentum());
          Background1.updateAnimation(elapsedTime, 1/allFruit.getQuestionMomentum());
          allFruit.updatePositions(elapsedTime, player, score, S);
-         cows.updateCow(elapsedTime);
+         cowField.updateCow(elapsedTime);
         	 if (allFruit.isEnd()){
 			beginFruit.stop();
 			switchToLeaderBoard();
