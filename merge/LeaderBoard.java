@@ -107,7 +107,7 @@ Scanner scanner;
       table.getItems().add(newScore);
 
 writeFile( nameInput.getText() + "`" +sc);
-	
+
       confirm.setOnAction(null);
     }
 
@@ -115,16 +115,16 @@ writeFile( nameInput.getText() + "`" +sc);
 	void backFunc(){
 		window.setScene(oldScene);
 		menu.show(window);
-				
+
 
 	}
 public void writeFile(String string) {
     try (BufferedWriter bw = new BufferedWriter(new FileWriter("leaderboard.txt", true))) {
- 
-          
+
+
    bw.write(string);
     bw.newLine();
-         
+
     } catch (IOException e) {
         e.printStackTrace();
 
@@ -140,7 +140,7 @@ void readFile(){
 			topScores.add(putToTopScore(temp));
 
 System.out.println("adding");
-			
+
 		}
 	}catch (Exception e){e.printStackTrace();}
 }
@@ -158,8 +158,7 @@ TopScore putToTopScore(String temp){
       sc = sc1;
     }
 
-	Scene leaderBoardShow(int score){
-		sc = score;
+	Scene leaderBoardShow(){
 		return newScene;
 	}
 
