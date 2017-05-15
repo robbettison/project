@@ -34,7 +34,7 @@ public class Questions {
     myMap.put(3, "11");*/
     root = G;
     rand = new Random();
-    for(int i=0;i<5;i++) {
+    for(int i=0;i<10;i++) {
       int nextRandom;
       if(i==0) {
         do {
@@ -63,7 +63,7 @@ public class Questions {
 
   public int getNextAnswer() {
     currentAnswer+=1;
-    if(currentAnswer<4) {
+    if(currentAnswer<9) {
       //System.out.println(answers[currentAnswer]);
       Correct = new inGameText(root);
 
