@@ -88,7 +88,13 @@ public class Main{
   S.stopbackgroundMusic();
 	Stage stage = new Stage();
 	LeaderBoard lb = new LeaderBoard(backScene,backStage,500,700);
-  lb.setSc(T.get()+score.get());
+  int time = 100;
+  int timeBonus = 100 - T.get();
+  int tBonus = 0;
+  if(timeBonus>0) {
+    tBonus = 10*timeBonus;
+  }
+  lb.setSc(tBonus+score.get());
 	tempStage.setScene(lb.leaderBoardShow());
 	tempStage.show();
 
