@@ -19,14 +19,15 @@ public class LeaderBoard {
     private Button confirm;
 	private Button back;
     private int sc = 99;
-    Scene newScene, oldScene;
+    Scene scene;
 	double width, height;
-	MMenu menu = new MMenu();
 
+
+    @Override
     public LeaderBoard(Scene scene, Stage stage, double width, double height) {
         window = stage;
         window.setTitle("Leaderboard");
-		this.oldScene = scene;
+		this.scene = scene;
 		this.width = width;
 		this.height = height;
 
@@ -64,14 +65,11 @@ public class LeaderBoard {
         BorderPane bp = new BorderPane();
         bp.setCenter(vBox);
         bp.setTop(nameInput);
+        bp.setBottom(confirm);
 
-		HBox hBox = new HBox();
-		hBox.getChildren().addAll(confirm, back);
-        bp.setBottom(hBox);
-
-        newScene = new Scene(bp, 800, 600);
-      //  window.setScene(scene);
-        //window.show();
+        scene = new Scene(bp, 800, 600);
+        window.setScene(scene);
+        window.show();
     }
 
     //Get all of the TopScores
@@ -95,9 +93,6 @@ public class LeaderBoard {
 
 
 	void backFunc(){
-		window.setScene(oldScene);
-		menu.show(window);
-				
 
 	}
 
@@ -105,8 +100,4 @@ public class LeaderBoard {
     void setSc(int sc1){
       sc = sc1;
     }
-
-	Scene leaderBoardShow(){
-		return newScene;
-	}
 }

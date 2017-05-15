@@ -86,8 +86,7 @@ public class Main{
   S.stopbackgroundMusic();
 	Stage stage = new Stage();
 	LeaderBoard lb = new LeaderBoard(backScene,backStage,500,700);
-	Label lblabel = new Label(lb.readFile());
-	lb.scroll(lblabel);
+
 	tempStage.setScene(lb.leaderBoardShow());
 	tempStage.show();
 

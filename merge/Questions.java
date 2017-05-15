@@ -66,6 +66,7 @@ public class Questions {
     if(currentAnswer<4) {
       //System.out.println(answers[currentAnswer]);
       Correct = new inGameText(root);
+
       /*if(currentAnswer!=0)*/ currentFruit.setText("Target: "+Integer.toString(answers[currentAnswer]));
       return answers[currentAnswer];
     }

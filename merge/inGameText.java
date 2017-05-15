@@ -22,11 +22,12 @@ import javafx.util.*;
 public class inGameText {
 
   Group root;
+  Text text;
 
   inGameText(Group g) {
     root = g;
     //final Rectangle rect1 = new Rectangle(10, 10, 100, 100);
-    Text text = new Text("Correct!");
+    text = new Text("Correct!");
     //StackPane stack = new StackPane();
     //stack.getChildren().addAll(rect1, text);
 
@@ -49,6 +50,7 @@ public class inGameText {
     ft.setAutoReverse(true);
     ft.play();
   }
+
 
 
 

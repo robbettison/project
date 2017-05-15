@@ -38,7 +38,7 @@ public class Main2{
   String currentFontFile = "CabinSketch-Bold.ttf";
   InputStream fontStream = Main2.class.getResourceAsStream(currentFontFile);
   Font bgFont = Font.loadFont(fontStream, 36);
-  Soundtrack S = new Soundtrack();
+ // Soundtrack S = new Soundtrack();
 
 
 
@@ -73,7 +73,7 @@ public class Main2{
   void show(Stage stage) {
     stage.show();
     tempStage = stage;
-	S.backgroundMusic();
+//	S.backgroundMusic();
     beginFruit.start();
     
   }
@@ -81,11 +81,9 @@ public class Main2{
 
   void switchToLeaderBoard(){
 
-	S.stopbackgroundMusic();
+//	S.stopbackgroundMusic();
 	Stage stage = new Stage();
 	LeaderBoard lb = new LeaderBoard(backScene,backStage,500,700);
-	Label lblabel = new Label(lb.readFile());
-	lb.scroll(lblabel);
 	tempStage.setScene(lb.leaderBoardShow());
 	tempStage.show();
 
