@@ -43,6 +43,7 @@ public class Main{
   Stage tempStage,backStage;
   Scene backScene;
   Soundtrack S = new Soundtrack();
+  Cows cowField;
   /*public void start(Stage stage) {
     stage.show();
     beginFruit.start();
@@ -70,6 +71,7 @@ public class Main{
     Background1 = new AnimationSetup("pic/Main_Project_File_output", "png", 607, 1080, 30, back);
     //background = new Background(root);
     root.getChildren().addAll(scoreboard, timer, TIME);
+    cowField = new Cows(root);
     stage.setScene(scene);
 
     return scene;
@@ -103,6 +105,7 @@ public class Main{
          player.updateCaterpillarAnimation(elapsedTime, 1/allFruit.getQuestionMomentum());
          Background1.updateAnimation(elapsedTime, 1/allFruit.getQuestionMomentum());
          allFruit.updatePositions(elapsedTime, player, score, S);
+         cows.updateCow(elapsedTime);
         	 if (allFruit.isEnd()){
 			beginFruit.stop();
 			switchToLeaderBoard();
