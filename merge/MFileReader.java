@@ -9,7 +9,7 @@ import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.LinkedHashMap;	
 import java.util.Scanner;
 
 
@@ -21,7 +21,7 @@ public class MFileReader {
 
     private String filename;
     private Scanner scanner;
-    private HashMap<String, ArrayList<String>> result = new HashMap<>();
+    private LinkedHashMap<String, ArrayList<String>> result = new LinkedHashMap<>();
 
 
     public MFileReader(String filename){
@@ -78,7 +78,7 @@ public class MFileReader {
 
     }
 
-    HashMap<String, ArrayList<String>> getQAndA(){
+    LinkedHashMap<String, ArrayList<String>> getQAndA(){
         return result;
 
     }
