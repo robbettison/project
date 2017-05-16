@@ -18,7 +18,7 @@ import javafx.scene.layout.*;
 import java.io.*;
 import javafx.scene.text.Font;
 
-public class Main{
+public class Main {
 
   Group root = new Group();
   Group fruit = new Group();
@@ -68,7 +68,7 @@ public class Main{
     root.getChildren().addAll(back, fruit, caterpillar);
     player = new Player(caterpillar, scene, fruit);
     allFruit = new Fruits(4, fruit);
-    Background1 = new AnimationSetup("pic/Main_Project_File_output", "png", 607, 1080, 30, back);
+    Background1 = new AnimationSetup("finalImages/Main_Project_File_output", "png", 607, 1080, 30, back);
     //background = new Background(root);
     root.getChildren().addAll(scoreboard, timer, TIME);
     cowField = new Cows(root);

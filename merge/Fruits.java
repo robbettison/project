@@ -22,6 +22,7 @@ public class Fruits {
   boolean end = false;
   private int QuestionMomentum=1;
   Soundtrack S1;
+  Sun Sunny;
 
   Fruits(int numberFruit, Group G) {
     /*Colours.add(Color.BLUE);
@@ -41,7 +42,7 @@ public class Fruits {
     }
     numberFruits = numberFruit;
     initialNumberFruit = numberFruit;
-
+    Sunny = new Sun(G);
     allfruit = G;
   }
 
@@ -92,11 +93,15 @@ public class Fruits {
           currentFruit.setFill(new ImagePattern(FruitImages.get(1)));
           currentFruit.setFruitBit(1);
           S1.burp();
+          Sunny.happy();
+
         }
         else if(currentFruit.getfruitBit()==1&&level1.getTargetBit(i)==0){
           currentFruit.setFill(new ImagePattern(FruitImages.get(0)));
           currentFruit.setFruitBit(0);
           S1.apple();
+          Sunny.happy();
+
         }
         else {
           //if(QuestionMomentum>1) {
@@ -104,6 +109,7 @@ public class Fruits {
             fruitVelocity=1;
           //}
           score.set(score.get()-10);
+          Sunny.sad();
         }
         break;
       }
