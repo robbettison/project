@@ -1,6 +1,6 @@
-what is ten`ten`tw`23`we`
-why is 2`2`3`43`4`
-why is 3`rew`12`1`134`
-why is 4`qwer`123`fdsv`qw`
-helllop`sd`sds`sdd`ssa`
+What is 2?`0010`0001`0110`0111`
+What is 3?`0011`0110`0001`0111`
+What is 0101?`5`3`7`6`
+What is -5?`1011`0101`1001`1101`
+What is -3?`1101`1011`0011`1110`
 
