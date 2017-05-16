@@ -30,9 +30,10 @@ Scanner scanner;
 	double width, height;
 	MMenu menu = new MMenu();
         ObservableList<TopScore> topScores = FXCollections.observableArrayList();
+	boolean showConfirm;
 
 
-    public LeaderBoard(Scene scene, Stage stage, double width, double height) {
+    public LeaderBoard(Scene scene, Stage stage, double width, double height, boolean showConfirm) {
         window = stage;
         window.setTitle("Leaderboard");
 		this.oldScene = scene;
@@ -63,9 +64,11 @@ Scanner scanner;
 	readFile();
 
         table = new TableView<>();
+	scoreColumn.setSortType(TableColumn.SortType.DESCENDING);
         table.setItems(getTopScore());
         table.getColumns().add(nameColumn);
         table.getColumns().add(scoreColumn);
+	table.getSortOrder().add(scoreColumn);
 
 
         VBox vBox = new VBox();
@@ -73,10 +76,16 @@ Scanner scanner;
 
         BorderPane bp = new BorderPane();
         bp.setCenter(vBox);
-        bp.setTop(nameInput);
 
-		HBox hBox = new HBox();
-		hBox.getChildren().addAll(confirm, back);
+
+	HBox hBox = new HBox();
+	if (showConfirm){
+		hBox.getChildren().addAll(confirm,back);
+ 		bp.setTop(nameInput);
+	}
+	else {
+		hBox.getChildren().add(back);       
+	}
         bp.setBottom(hBox);
 
         newScene = new Scene(bp, 800, 600);
@@ -107,7 +116,7 @@ Scanner scanner;
       table.getItems().add(newScore);
 
 writeFile( nameInput.getText() + "`" +sc);
-	
+
       confirm.setOnAction(null);
     }
 
@@ -115,16 +124,16 @@ writeFile( nameInput.getText() + "`" +sc);
 	void backFunc(){
 		window.setScene(oldScene);
 		menu.show(window);
-				
+
 
 	}
 public void writeFile(String string) {
     try (BufferedWriter bw = new BufferedWriter(new FileWriter("leaderboard.txt", true))) {
- 
-          
+
+
    bw.write(string);
     bw.newLine();
-         
+
     } catch (IOException e) {
         e.printStackTrace();
 
@@ -140,7 +149,7 @@ void readFile(){
 			topScores.add(putToTopScore(temp));
 
 System.out.println("adding");
-			
+
 		}
 	}catch (Exception e){e.printStackTrace();}
 }
@@ -158,8 +167,7 @@ TopScore putToTopScore(String temp){
       sc = sc1;
     }
 
-	Scene leaderBoardShow(int score){
-		sc = score;
+	Scene leaderBoardShow(){
 		return newScene;
 	}
 

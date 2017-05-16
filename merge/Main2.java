@@ -38,9 +38,9 @@ public class Main2{
   String currentFontFile = "CabinSketch-Bold.ttf";
   InputStream fontStream = Main2.class.getResourceAsStream(currentFontFile);
   Font bgFont = Font.loadFont(fontStream, 36);
- // Soundtrack S = new Soundtrack();
+  Soundtrack S = new Soundtrack();
 
-
+  Cows cowField;
 
 
   /*public void start(Stage stage) {
@@ -65,6 +65,7 @@ public class Main2{
   Background1 = new AnimationSetup2("pic/Main_Project_File_output", "png", 607, 1080, 30, back);
 
     root.getChildren().addAll(scoreboard);
+    cowField = new Cows(root);
     stage.setScene(scene);
 
     return scene;
@@ -73,7 +74,7 @@ public class Main2{
   void show(Stage stage) {
     stage.show();
     tempStage = stage;
-//	S.backgroundMusic();
+    S.backgroundMusic();
     beginFruit.start();
     
   }
@@ -81,9 +82,10 @@ public class Main2{
 
   void switchToLeaderBoard(){
 
-//	S.stopbackgroundMusic();
+	S.stopbackgroundMusic();
 	Stage stage = new Stage();
-	LeaderBoard lb = new LeaderBoard(backScene,backStage,500,700);
+	LeaderBoard lb = new LeaderBoard(backScene,backStage,500,700,true);
+	lb.setSc(score.get());
 	tempStage.setScene(lb.leaderBoardShow());
 	tempStage.show();
 
@@ -98,10 +100,8 @@ public class Main2{
          player.updateCaterpillarAnimation(elapsedTime);
          Background1.updateAnimation(elapsedTime);
 boolean check = allFruit.updatePositions(elapsedTime, player, score);
-
+cowField.updateCow(elapsedTime);
          if ( check== false){
-
-
 
 	 	beginFruit.stop();
                 switchToLeaderBoard();
