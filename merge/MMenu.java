@@ -65,7 +65,7 @@ public class MMenu extends Application{
     Stage backStage;
     Scene backScene;
 
-    
+
 
   //  gameName.setFont(bgFont);
     // animation time
@@ -103,7 +103,7 @@ public class MMenu extends Application{
 				starStage.setTitle("Instructions!");
 				Label content = instructionLabel("Instructions.txt");
 				content.setFont(bgFont);
-				content.setStyle("-fx-text-fill: yellow;"); 
+				content.setStyle("-fx-text-fill: yellow;");
 				// create a new scene
 	  			starStage.setScene(instruct.instructionShow());
 	  			instruct.scroll(content);
@@ -157,7 +157,7 @@ public class MMenu extends Application{
 	  		break;
 	  	case "Leader Board":
 	  			  		LeaderBoard lb = new LeaderBoard(backScene,backStage,scene.getWidth(),scene.getHeight(),false);
-			
+
 			starStage.setScene(lb.leaderBoardShow());
 
 			show(starStage);
