@@ -23,21 +23,24 @@ public class inGameText {
 
   Group root;
   Text text;
+  String currentFontFile = "CabinSketch-Bold.ttf";
+  InputStream fontStream = Main.class.getResourceAsStream(currentFontFile);
+  Font bgFont = Font.loadFont(fontStream, 45);
 
   inGameText(Group g) {
     root = g;
     //final Rectangle rect1 = new Rectangle(10, 10, 100, 100);
-    text = new Text("Correct!");
+    text = new Text("Yum");
     //StackPane stack = new StackPane();
     //stack.getChildren().addAll(rect1, text);
 
     //rect1.setText("Correct!");
     //g.getChildren().add(rect1);
     g.getChildren().add(text);
-    text.setFill(Color.RED);
-    text.setX(250);
-    text.setY(300);
-    text.setFont(Font.font("Verdana", FontWeight.BOLD, 40));
+    text.setFill(Color.ORANGE);
+    text.setX(265);
+    text.setY(230);
+    text.setFont(bgFont);
     text.setFontSmoothingType(FontSmoothingType.LCD);
 
     //rect1.setArcHeight(20);
