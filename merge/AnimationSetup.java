@@ -38,7 +38,7 @@ public class AnimationSetup {
   }
 
   public void changeCaterpillarChannel(double x, double y, int angle) {
-    for (ImageView iv : playerImages/*Rectangle iv : playerImages*/) {
+    for (ImageView iv : playerImages) {
       iv.setX(x);
       iv.setY(y);
       iv.setRotate(angle);
