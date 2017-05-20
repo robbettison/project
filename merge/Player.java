@@ -10,7 +10,6 @@ import javafx.util.*;
 public class Player {
 
   ImageView player;
-  ImageView[] playerAnimation;
   AnimationSetup animationSetup;
   final int caterPillarY = 590;
 

@@ -76,7 +76,8 @@ public class MMenu extends Application{
 
 
 	public MMenu (){
-		scene.getStylesheets().add("Bug.css");
+		//scene.getStylesheets().add("Bug.css");
+    gameName.setFont(bgFont);
 	}
 
 	private void draw(GraphicsContext g, Image bg) {
@@ -206,7 +207,8 @@ public class MMenu extends Application{
 	}
 
   	public void animate(double endX, double endY) {
-  		/**
+      gameName.setFont(bgFont);
+      /**
   		 * @param [parameter-name]
          * public LinearGradient(
          *		double startX,
@@ -281,7 +283,7 @@ public class MMenu extends Application{
 		vbox.setAlignment(Pos.CENTER);
 		//root.getChildren().add(vbox);
 
-	 	gameName.setFont(bgFont);
+	 //	gameName.setFont(bgFont);
 
 		// set horizontal layout off buttons
 		HBox hbox = new HBox();
