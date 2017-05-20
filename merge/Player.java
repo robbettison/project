@@ -13,12 +13,6 @@ public class Player {
   AnimationSetup animationSetup;
   final int caterPillarY = 590;
 
-  /*165.3333333333327
-  257.5999999999915
-  337.4000000000085
-  429.6666666666596*/
-
-
   double[] channel = {161, 256, 338, 432};
 
   int currentChannel = 2;
