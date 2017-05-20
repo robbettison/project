@@ -16,16 +16,12 @@ public class Fruit {
   private double initialY;
   private double initialRadius = 15;
   boolean impacted = false;
-
-  ArrayList<Image> Fruits = new ArrayList<Image>();
-  Image fruitImage;
   int fruitBit;
 
   Fruit(int x, int y, Group G, int Position, int bitValue, Image fruitImage) {
 
     fruit = new Circle(x, y, 15);
     fruit.setFill(new ImagePattern(fruitImage));
-    this.fruitImage = fruitImage;
     G.getChildren().add(fruit);
     XPosition=x;
     YPosition=y;

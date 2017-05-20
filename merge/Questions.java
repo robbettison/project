@@ -28,10 +28,7 @@ public class Questions {
   boolean end = false;
 
   Questions(Group G) {
-    /*myMap.put(0, "00");
-    myMap.put(1, "01");
-    myMap.put(2, "10");
-    myMap.put(3, "11");*/
+
     root = G;
     rand = new Random();
     for(int i=0;i<10;i++) {
@@ -46,7 +43,6 @@ public class Questions {
           nextRandom = rand.nextInt(15);
         } while(nextRandom==answers[i-1]);
       }
-      //else nextRandom=rand.nextInt(15);
       answers[i] = nextRandom;
       System.out.println(answers[i]);
     }
