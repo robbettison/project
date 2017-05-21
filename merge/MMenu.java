@@ -53,6 +53,7 @@ public class MMenu extends Application{
     String currentFontFile = "CabinSketch-Bold.ttf";
   	InputStream fontStream = MMenu.class.getResourceAsStream(currentFontFile);
   	Font bgFont = Font.loadFont(fontStream, 36);
+Font bgFont2 = Font.loadFont(fontStream, 100);
     //MGraphics mgraphics = new MGraphics();
     //MUI mn= new MUI(mgraphics);
     Main m;
@@ -66,8 +67,6 @@ public class MMenu extends Application{
     Scene backScene;
 
 
-
-  //  gameName.setFont(bgFont);
     // animation time
     public static final long duration = 40000;
 
@@ -76,7 +75,9 @@ public class MMenu extends Application{
 
 
 	public MMenu (){
-		scene.getStylesheets().add("Bug.css");
+		//scene.getStylesheets().add("Bug.css");
+    gameName.setFont(bgFont2);
+
 	}
 
 	private void draw(GraphicsContext g, Image bg) {
@@ -217,6 +218,7 @@ public class MMenu extends Application{
          *     	CycleMethod cycleMethod,
          *		java.util.List<Stop> stops)
   		 */
+    gameName.setFont(bgFont);
   		Rectangle colors = new Rectangle(0, 0, endX, endY);
 	    LinearGradient lg2 = new LinearGradient(0f, 1f, 1f, 1f, true, CycleMethod.NO_CYCLE, new Stop[]{
 	            new Stop(0, Color.web("#f8bd55")),     // web color
