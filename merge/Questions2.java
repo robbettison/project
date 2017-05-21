@@ -19,7 +19,7 @@ public class Questions2 {
  // Map<Integer, String> myMap = new HashMap<Integer, String>();
   ArrayList<String> questionsArray = new ArrayList<>();
   String currentFontFile = "CabinSketch-Bold.ttf";
-  InputStream fontStream = Main2.class.getResourceAsStream(currentFontFile);
+  InputStream fontStream = Main.class.getResourceAsStream(currentFontFile);
   Font bgFont = Font.loadFont(fontStream, 30);
 
 

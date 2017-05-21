@@ -8,8 +8,8 @@ import javafx.scene.image.*;
 
 public class Fruits2 {
 
-  List<Fruit2> fruitArray = new ArrayList<>();
-  List<Fruit2> fruitSaLaD = new ArrayList<>();
+  List<Fruit> fruitArray = new ArrayList<>();
+  List<Fruit> fruitSaLaD = new ArrayList<>();
   ArrayList<String> endGame = new ArrayList<>();
   private int numberFruits;
   private int initialNumberFruit;
@@ -34,7 +34,7 @@ public class Fruits2 {
     FruitImages.add(new Image("Images/banana.png"));
     FruitImages.add(new Image("Images/pear.png"));
     for(int i=0;i<numberFruit;i++) {
-      Fruit2 newFruit = new Fruit2(290+i*5, 267, G, i, FruitImages.get(i));
+      Fruit newFruit = new Fruit(290+i*5, 267, G, i, FruitImages.get(i));
       fruitArray.add(newFruit);
       fruitSaLaD.add(newFruit);
     }
@@ -53,7 +53,7 @@ endGame.add("!!!");
 
   private void resetSalad() {
     for(int i=numberFruits-1;i>=0;i--) {
-      Fruit2 currentFruit = fruitArray.get(i);
+      Fruit currentFruit = fruitArray.get(i);
       currentFruit.remove(allfruit);
     }
     fruitArray=fruitSaLaD;
@@ -62,14 +62,14 @@ endGame.add("!!!");
     //fruitArray.();
     numberFruits = initialNumberFruit;
     for(int i=0;i<numberFruits;i++) {
-      Fruit2 currentFruit = fruitArray.get(i);
+      Fruit currentFruit = fruitArray.get(i);
       //currentFruit.setFruitPosition(i);
       //currentFruit.setFill();
       currentFruit.addTo(allfruit);
     }
   }
 
-  private void shuffleSalad(List<Fruit2> fruit) {
+  private void shuffleSalad(List<Fruit> fruit) {
 
 //position should be different, id stays the same
 ArrayList<Integer> temp = new ArrayList<>();
@@ -77,7 +77,7 @@ ArrayList<Integer> temp2 = new ArrayList<>();
 
 
     for(int i=0;i<numberFruits;i++) {
-      Fruit2 currentFruit=fruit.get(i);
+      Fruit currentFruit=fruit.get(i);
 
 
       int newPosition = setRandNum(temp);
@@ -108,10 +108,10 @@ currentFruit.setFruitAnswer(endGame.get(i));}
     return x;
   }
 //didn't go into this function
-  boolean updatePositions(double timeElapsed, Player2 player, IntegerProperty score) {
+  boolean updatePositions(double timeElapsed, Player player, IntegerProperty score) {
     final double fruitMoved = timeElapsed*fruitVelocity;
     for(int i=0;i<numberFruits;i++) {
-      Fruit2 currentFruit = fruitArray.get(i);
+      Fruit currentFruit = fruitArray.get(i);
       currentFruit.update(fruitMoved, fruitMoved);
 	  currentFruit.setLabel(currentFruit.getFruitAnswer());
     }
@@ -127,24 +127,20 @@ currentFruit.setFruitAnswer(endGame.get(i));}
 
   void draw() {
     for(int i=0;i<numberFruits;i++) {
-      Fruit2 currentFruit = fruitArray.get(i);
+      Fruit currentFruit = fruitArray.get(i);
       currentFruit.draw();
     }
   }
 
 
-  void checkCollisions(Player2 player, IntegerProperty score) {
+  void checkCollisions(Player player, IntegerProperty score) {
 
     for(int i=0;i<numberFruits;i++) {
-      Fruit2 currentFruit = fruitArray.get(i);
+      Fruit currentFruit = fruitArray.get(i);
 
       if(currentFruit.impacts(player.getBounds())&&currentFruit.getY()==640) {
 
         currentFruit.remove(allfruit);
-        //fruitArray.remove(currentFruit);
-        //numberFruits-=1;
-
-
 //set currentFruit.fruitAnswer according to question
 	nextAns = questions.getNextAnswer();
 

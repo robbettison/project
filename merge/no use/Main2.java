@@ -27,13 +27,13 @@ public class Main2{
   Scene scene = new Scene(root, 500, 700, Color.WHITE);
   Fruits2 allFruit;
   final LongProperty lastUpdateTime = new SimpleLongProperty();
-  Player2 player;
+  Player player;
 
   IntegerProperty score = new SimpleIntegerProperty(0);
   Label scoreboard = new Label();
   Stage tempStage,backStage;
   Scene backScene;
-  AnimationSetup2 Background1;
+  AnimationSetup Background1;
 
   String currentFontFile = "CabinSketch-Bold.ttf";
   InputStream fontStream = Main2.class.getResourceAsStream(currentFontFile);
@@ -61,8 +61,8 @@ public class Main2{
 
     root.getChildren().addAll(back,fruit,caterpillar);
     allFruit = new Fruits2(4, fruit);
-    player = new Player2(caterpillar, scene, fruit);
-  Background1 = new AnimationSetup2("pic/Main_Project_File_output", "png", 607, 1080, 30, back);
+    player = new Player(caterpillar, scene, fruit);
+  Background1 = new AnimationSetup("pic/Main_Project_File_output", "png", 607, 1080, 30, back);
 
     root.getChildren().addAll(scoreboard);
     cowField = new Cows(root);
@@ -97,8 +97,8 @@ public class Main2{
     public void handle(long now) {
        if(lastUpdateTime.get()>0) {
          final double elapsedTime = (now - lastUpdateTime.get()) / 10000000;
-         player.updateCaterpillarAnimation(elapsedTime);
-         Background1.updateAnimation(elapsedTime);
+         player.updateCaterpillarAnimation(elapsedTime, 1);
+         Background1.updateAnimation(elapsedTime, 1);
 boolean check = allFruit.updatePositions(elapsedTime, player, score);
 cowField.updateCow(elapsedTime);
          if ( check== false){

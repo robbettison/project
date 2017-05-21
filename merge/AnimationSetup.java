@@ -45,6 +45,11 @@ public class AnimationSetup {
     }
   }
 
+  public Bounds getBounds() {
+    return playerImages[0].getBoundsInLocal();
+  }
+
+
   public double getX() {
     return playerImages[0].getX();
   }

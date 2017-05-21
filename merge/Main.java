@@ -26,6 +26,7 @@ public class Main {
   Group back = new Group();
   Scene scene = new Scene(root, 600, 700, Color.WHITE);
   Fruits allFruit;
+  Fruits2 allFruit2;
   final LongProperty lastUpdateTime = new SimpleLongProperty();
   Player player;
   Background background;
@@ -42,7 +43,9 @@ public class Main {
   Label TIME = new Label("Time:");
   Stage tempStage,backStage;
   Scene backScene;
+
   Soundtrack S = new Soundtrack();
+
   Cows cowField;
   /*public void start(Stage stage) {
     stage.show();
@@ -54,38 +57,55 @@ public class Main {
 	backScene = scene;
   }
 
-  Scene setUp(Stage stage) {
+  Scene setUp(Stage stage, int gameMode) {
     scoreboard.textProperty().bind(score.asString());
     scoreboard.setFont(bgFont);
     scoreboard.setTextFill(Color.YELLOW);
-    TIME.setFont(bgFont);
-    TIME.setTextFill(Color.GREEN);
-    timer.setFont(bgFont);
-    timer.setTextFill(Color.GREEN);
-    timer.textProperty().bind(T.asString());
-    TIME.setTranslateX(100);
-    timer.setTranslateX(200);
+	if (gameMode == 1){
+		TIME.setFont(bgFont);
+		TIME.setTextFill(Color.GREEN);
+		timer.setFont(bgFont);
+		timer.setTextFill(Color.GREEN);
+		timer.textProperty().bind(T.asString());
+		TIME.setTranslateX(100);
+		timer.setTranslateX(200);
+		allFruit = new Fruits(4, fruit, S);
+		root.getChildren().addAll(scoreboard, timer, TIME);
+	}
+	if (gameMode == 2){
+		allFruit2 = new Fruits2(4,fruit);
+		root.getChildren().add(scoreboard);
+	}
     root.getChildren().addAll(back, fruit, caterpillar);
     player = new Player(caterpillar, scene, fruit);
-    allFruit = new Fruits(4, fruit, S);
+    
     Background1 = new AnimationSetup("finalImages/Main_Project_File_output", "png", 607, 1080, 30, back);
     //background = new Background(root);
-    root.getChildren().addAll(scoreboard, timer, TIME);
+    
     cowField = new Cows(root);
     stage.setScene(scene);
 
     return scene;
   }
 
-  void show(Stage stage) {
+  void show(Stage stage, int gameMode) {
     stage.show();
     tempStage = stage;
+
     S.backgroundMusic();
-    beginFruit.start();
+
+	if (gameMode == 1){
+      beginFruit.start();
+	}
+	if (gameMode==2){
+	  beginFruit2.start();
+    }
   }
 
   void switchToLeaderBoard(){
-  S.stopbackgroundMusic();
+  
+    S.stopbackgroundMusic();
+
 	Stage stage = new Stage();
 	LeaderBoard lb = new LeaderBoard(backScene,backStage,500,700, true);
   int time = 100;
@@ -120,6 +140,27 @@ public class Main {
        }
        lastUpdateTime.set(now);
     }
+  };
+
+  AnimationTimer beginFruit2 = new AnimationTimer() {
+    public void handle(long now) {
+       if(lastUpdateTime.get()>0) {
+         final double elapsedTime = (now - lastUpdateTime.get()) / 10000000;
+         player.updateCaterpillarAnimation(elapsedTime, 1);
+         Background1.updateAnimation(elapsedTime, 1);
+  		 boolean check = allFruit2.updatePositions(elapsedTime, player, score);
+         cowField.updateCow(elapsedTime);
+         if ( check== false){
+
+	 			beginFruit.stop();
+                switchToLeaderBoard();
+		}
+
+
+       }
+       lastUpdateTime.set(now);
+    }
+
   };
 
 

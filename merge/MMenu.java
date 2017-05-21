@@ -57,7 +57,7 @@ Font bgFont2 = Font.loadFont(fontStream, 100);
     //MGraphics mgraphics = new MGraphics();
     //MUI mn= new MUI(mgraphics);
     Main m;
-	Main2 m2;
+
 
     String[] name = {"Start", "Instructions","Multiple Choice", "Set Questions", "Leader Board", "Quit"};
 
@@ -75,13 +75,9 @@ Font bgFont2 = Font.loadFont(fontStream, 100);
 
 
 	public MMenu (){
-		//scene.getStylesheets().add("Bug.css");
-<<<<<<< HEAD
+
     gameName.setFont(bgFont2);
 
-=======
-    gameName.setFont(bgFont);
->>>>>>> ae59ff30368b6e94edfbe37e7867f1b11f8c6132
 	}
 
 	private void draw(GraphicsContext g, Image bg) {
@@ -96,10 +92,10 @@ Font bgFont2 = Font.loadFont(fontStream, 100);
 	  		//goto game home to play game
 	        //mgraphics.circleAnimation();
 			m =  new Main(backStage,backScene);
-	        starStage.setScene(m.setUp(starStage));
+	        starStage.setScene(m.setUp(starStage,1));
 
 			System.out.println("start");
-	  		m.show(starStage);
+	  		m.show(starStage,1);
 
 	  		break;
 	  	case "Instructions":
@@ -138,11 +134,11 @@ Font bgFont2 = Font.loadFont(fontStream, 100);
 		case "Multiple Choice":
 	  		//goto game home to play game
 	        //mgraphics.circleAnimation();
-			m2 =  new Main2(backStage,backScene);
-	        starStage.setScene(m2.setUp(starStage));
+			m =  new Main(backStage,backScene);
+	        starStage.setScene(m.setUp(starStage,2));
 
 			System.out.println("start");
-	  		m2.show(starStage);
+	  		m.show(starStage,2);
 			break;
 
 
