@@ -10,18 +10,15 @@ import javafx.event.*;
 
 public class AnimationSetup {
   ImageView[] playerImages;
-  //Rectangle[] playerImages;
   Group G;
   double time=0;
   int j=0;
 
   AnimationSetup(String source, String extension, int width, int height, int slides, Group root) {
     playerImages = new ImageView[slides];
-    //playerImages = new Rectangle[slides];
     for (int j = 0; j < slides; j++) {
       Image image = new Image(source + j + "." + extension);
       playerImages[j] = new ImageView(image);
-      //playerImages[j] = new Rectangle(width, height, Color.BLUE);
       playerImages[j].setFitWidth(width);
       playerImages[j].setFitHeight(height);
     }
@@ -41,15 +38,11 @@ public class AnimationSetup {
   }
 
   public void changeCaterpillarChannel(double x, double y, int angle) {
-    for (ImageView iv : playerImages/*Rectangle iv : playerImages*/) {
+    for (ImageView iv : playerImages) {
       iv.setX(x);
       iv.setY(y);
       iv.setRotate(angle);
     }
-  }
-
-  public Bounds getBounds() {
-    return playerImages[0].getBoundsInLocal();
   }
 
   public double getX() {
