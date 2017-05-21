@@ -46,16 +46,4 @@ public class StopWatch {
   public boolean isRunning() {
     return this.running;
   }
-
-  public long getTotalTimeMillis() {
-    return totalTimeMillis;
-  }
-
-  public double getTotalTimeSeconds() {
-    return totalTimeMillis / 1000.0;
-  }
-
-  public String shortSummary() {
-    return "StopWatch '" + "': running time (millis) = " + getTotalTimeMillis();
-  }
 }

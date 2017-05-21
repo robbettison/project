@@ -76,8 +76,12 @@ Font bgFont2 = Font.loadFont(fontStream, 100);
 
 	public MMenu (){
 		//scene.getStylesheets().add("Bug.css");
+<<<<<<< HEAD
     gameName.setFont(bgFont2);
 
+=======
+    gameName.setFont(bgFont);
+>>>>>>> ae59ff30368b6e94edfbe37e7867f1b11f8c6132
 	}
 
 	private void draw(GraphicsContext g, Image bg) {
@@ -207,7 +211,8 @@ Font bgFont2 = Font.loadFont(fontStream, 100);
 	}
 
   	public void animate(double endX, double endY) {
-  		/**
+      gameName.setFont(bgFont);
+      /**
   		 * @param [parameter-name]
          * public LinearGradient(
          *		double startX,
@@ -283,7 +288,7 @@ Font bgFont2 = Font.loadFont(fontStream, 100);
 		vbox.setAlignment(Pos.CENTER);
 		//root.getChildren().add(vbox);
 
-	 	gameName.setFont(bgFont);
+	 //	gameName.setFont(bgFont);
 
 		// set horizontal layout off buttons
 		HBox hbox = new HBox();

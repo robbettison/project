@@ -67,7 +67,7 @@ public class Main {
     timer.setTranslateX(200);
     root.getChildren().addAll(back, fruit, caterpillar);
     player = new Player(caterpillar, scene, fruit);
-    allFruit = new Fruits(4, fruit);
+    allFruit = new Fruits(4, fruit, S);
     Background1 = new AnimationSetup("finalImages/Main_Project_File_output", "png", 607, 1080, 30, back);
     //background = new Background(root);
     root.getChildren().addAll(scoreboard, timer, TIME);
@@ -110,7 +110,7 @@ public class Main {
          else ST.start();
          player.updateCaterpillarAnimation(elapsedTime, 1/allFruit.getQuestionMomentum());
          Background1.updateAnimation(elapsedTime, 1/allFruit.getQuestionMomentum());
-         allFruit.updatePositions(elapsedTime, player, score, S);
+         allFruit.updatePositions(elapsedTime, player, score);
          cowField.updateCow(elapsedTime);
         	 if (allFruit.isEnd()){
 			beginFruit.stop();

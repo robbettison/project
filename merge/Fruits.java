@@ -15,7 +15,6 @@ public class Fruits {
   private int initialNumberFruit;
   private double fruitVelocity=1;
   Group allfruit;
-  //ArrayList<Color> Colours = new ArrayList<Color>();
   ArrayList<Image> FruitImages = new ArrayList<Image>();
   Questions level1;
   Random rand = new Random();
@@ -24,16 +23,11 @@ public class Fruits {
   Soundtrack S1;
   Sun Sunny;
 
-  Fruits(int numberFruit, Group G) {
-    /*Colours.add(Color.BLUE);
-    Colours.add(Color.GREEN);
-    Colours.add(Color.RED);
-    Colours.add(Color.YELLOW);*/
+  Fruits(int numberFruit, Group G, Soundtrack S) {
+
     level1 = new Questions(G);
     FruitImages.add(new Image("Images/applebit0.png"));//representing zero bit value
     FruitImages.add(new Image("Images/applebit1.png"));//representing one bit value
-    /*FruitImages.add(new Image("Images/banana.png"));
-    FruitImages.add(new Image("Images/pear.png"));*/
     for(int i=0;i<numberFruit;i++) {
       int random = rand.nextInt(10)%2;
       Fruit newFruit = new Fruit(290+i*5, 267, G, i, 0, FruitImages.get(0));
@@ -44,34 +38,18 @@ public class Fruits {
     initialNumberFruit = numberFruit;
     Sunny = new Sun(G);
     allfruit = G;
+    S1=S;
+
   }
 
-  int setRandNum(ArrayList<Integer> temp){
-    Random rand = new Random();
-    int x = rand.nextInt(4);
-    while(temp.contains(x)){
-      x = rand.nextInt(4);
-    }
-    temp.add(x);
-    return x;
-  }
-
-  void updatePositions(double timeElapsed, Player player, IntegerProperty score, Soundtrack S) {
+  void updatePositions(double timeElapsed, Player player, IntegerProperty score) {
     final double fruitMoved = timeElapsed*fruitVelocity;
     for(int i=0;i<numberFruits;i++) {
       Fruit currentFruit = fruitArray.get(i);
       currentFruit.update(fruitMoved, fruitMoved);
-    }
-    checkCollisions(player, score);
-    S1=S;
-    draw();
-  }
-
-  void draw() {
-    for(int i=0;i<numberFruits;i++) {
-      Fruit currentFruit = fruitArray.get(i);
       currentFruit.draw();
     }
+    checkCollisions(player, score);
   }
 
   private boolean impacted() {
@@ -101,13 +79,10 @@ public class Fruits {
           currentFruit.setFruitBit(0);
           S1.apple();
           Sunny.happy();
-
         }
         else {
-          //if(QuestionMomentum>1) {
             QuestionMomentum=1;
             fruitVelocity=1;
-          //}
           score.set(score.get()-10);
           Sunny.sad();
         }
@@ -133,6 +108,7 @@ public class Fruits {
   boolean isEnd(){
     return end;
   }
+
   private double fruitBitsValue() {
     double x = 0;
     for(int i=0;i<4;i++) {
