@@ -173,7 +173,7 @@ Font bgFont2 = Font.loadFont(fontStream, 100);
 	}
 
 	public Label instructionLabel(String name) throws IOException{
-		byte[] b = new byte[2048];
+		byte[] b = new byte[20048];
 		String s = null;
 		InputStream out = null;
 		Label labelInstructions = null;
