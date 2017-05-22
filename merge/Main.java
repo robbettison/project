@@ -47,10 +47,6 @@ public class Main {
   Soundtrack S = new Soundtrack();
 
   Cows cowField;
-  /*public void start(Stage stage) {
-    stage.show();
-    beginFruit.start();
-  }*/
 
   public Main (Stage stage, Scene scene){
 	backStage = stage;
@@ -123,7 +119,6 @@ public class Main {
 
   AnimationTimer beginFruit = new AnimationTimer() {
     public void handle(long now) {
-       //System.out.println(now/1000000000);
        if(lastUpdateTime.get()>0) {
          final double elapsedTime = (now - lastUpdateTime.get()) / 10000000;
          if(ST.isRunning()) T.set((int)ST.UpdateTimer()/1000);

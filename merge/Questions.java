@@ -60,15 +60,14 @@ public class Questions {
   public int getNextAnswer() {
     currentAnswer+=1;
     if(currentAnswer<9) {
-      //System.out.println(answers[currentAnswer]);
       Correct = new inGameText(root);
 
-      /*if(currentAnswer!=0)*/ currentFruit.setText("Target: "+Integer.toString(answers[currentAnswer]));
+      currentFruit.setText("Target: "+Integer.toString(answers[currentAnswer]));
       return answers[currentAnswer];
     }
     else {
       System.out.println("Level complete");
-	end = true;
+	    end = true;
       return -1;
     }
   }

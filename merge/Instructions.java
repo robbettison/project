@@ -22,8 +22,6 @@ public class Instructions {
 	double width, height;
 	Canvas canvas = new Canvas(1000, 700);
     Image bg = new Image("Bug.png");
-    //Group root = new Group();
-    //ImageView bgView = new ImageView(bg);
     GraphicsContext g = canvas.getGraphicsContext2D();
 	BorderPane borderPane = new BorderPane();
 	BorderPane borderPane1 = new BorderPane();
@@ -60,21 +58,10 @@ public class Instructions {
 		borderPane.getChildren().add(canvas);
 		borderPane.setStyle("-fx-background-color: GREEN;");
 		borderPane.setBottom(hbox);
-		//root.getChildren().add(borderPane);
 		borderPane.setCenter(sp);
 	}
 	private void press(ActionEvent event) {
-		//setLayout();
-		//replace scene
-		//g.clearRect(0, 0, scene.getWidth(), scene.getHeight());
-		//menu.bindControl();
-		//menu.animate(scene.getWidth(),scene.getHeight());
-	    //menu.setButton();
-		//menu.fixPosition();
-		System.out.println(instructScene);
-		//Scene backScene = new Scene(menu.borderPane, 400, 300);
 		instructStage.setScene(instructScene);
-		//instructStage.setTitle("Bug Bits!");
 		menu.show(instructStage);
 	}
 

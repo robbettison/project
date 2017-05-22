@@ -34,11 +34,6 @@ public class Soundtrack {
   MediaPlayer appleplayer = new MediaPlayer(apple);
   MediaView applemediaView = new MediaView(appleplayer);
 
-  /*public Soundtrack(Group g) {
-    //g.getChildren().addAll(mediaView, shootView);
-    //player.play();
-  }*/
-
   public void backgroundMusic() {
     player.play();
   }

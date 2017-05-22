@@ -117,10 +117,9 @@ gridPane.getChildren().addAll(label1,label2,label3,label4,label5, tf1,tf2,tf3,tf
 	}
 	private void backPress(ActionEvent event) {
 
-		System.out.println(instructScene);
-		instructStage.setScene(instructScene);
+	instructStage.setScene(instructScene);
 
-		menu.show(instructStage);
+	menu.show(instructStage);
 	}
 
 
@@ -139,9 +138,6 @@ gridPane.getChildren().addAll(label1,label2,label3,label4,label5, tf1,tf2,tf3,tf
 		gridPane.setConstraints(new3, 2,finalRow);
 		gridPane.setConstraints(new4, 3,finalRow);
 		gridPane.setConstraints(new5, 4,finalRow);
-
-System.out.println("adding on line" + finalRow);
-
 
 		finalRow+=1;
 
@@ -178,7 +174,6 @@ System.out.println("adding on line" + finalRow);
 		temp = mfr.getQAndA();
 		int i = 1;
 //add row to accomadate teh data
-System.out.println(temp.size());
 
 		for (String s: temp.keySet()){
 			tempArray.add(s);
@@ -204,7 +199,6 @@ System.out.println(temp.size());
 				tf.setText(temp.get(tf2.getText()).get(j-1));
 				
 			}	
-		System.out.println("added" + k);
 		}
 		
 
@@ -265,7 +259,6 @@ System.out.println(temp.size());
 	}
 
 	private void redraw() {
-		System.out.println("start redraw");
 		g.clearRect(0, 0, scene.getWidth(), scene.getHeight());
 	    g.drawImage(bg, canvas.getWidth()/4, canvas.getHeight()/4);
 	}
@@ -286,7 +279,6 @@ System.out.println(temp.size());
 					
 				
 			}	
-		System.out.println("added" + k);
 		}
 		
 	}

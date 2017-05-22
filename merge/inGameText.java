@@ -29,13 +29,7 @@ public class inGameText {
 
   inGameText(Group g) {
     root = g;
-    //final Rectangle rect1 = new Rectangle(10, 10, 100, 100);
     text = new Text("Yum");
-    //StackPane stack = new StackPane();
-    //stack.getChildren().addAll(rect1, text);
-
-    //rect1.setText("Correct!");
-    //g.getChildren().add(rect1);
     g.getChildren().add(text);
     text.setFill(Color.ORANGE);
     text.setX(265);
@@ -43,23 +37,11 @@ public class inGameText {
     text.setFont(bgFont);
     text.setFontSmoothingType(FontSmoothingType.LCD);
 
-    //rect1.setArcHeight(20);
-    //rect1.setArcWidth(20);
-    //rect1.setFill(Color.RED);
-    FadeTransition ft = new FadeTransition(Duration.millis(3000), text);
+  FadeTransition ft = new FadeTransition(Duration.millis(3000), text);
     ft.setFromValue(1.0);
     ft.setToValue(0.0);
     ft.setCycleCount(1);
     ft.setAutoReverse(true);
     ft.play();
   }
-
-
-
-
-  /*public void answerCorrect() {
-    g.getChildren().add();
-  }*/
-
-
 }

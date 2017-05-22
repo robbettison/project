@@ -39,12 +39,9 @@ import javafx.scene.text.Font;
 
 public class MMenu extends Application{
 
-	// bakcground
     Canvas canvas = new Canvas(500, 700);
     Image bg = new Image("pic/Bug.png");
-    //ImageView bgView = new ImageView(bg);
     GraphicsContext g = canvas.getGraphicsContext2D();
-    //Group root = new Group(canvas);
     BorderPane borderPane = new BorderPane();
 	Scene scene = new Scene(borderPane,500,700);
     Label gameName = new Label("BUG BITS");
@@ -53,11 +50,8 @@ public class MMenu extends Application{
     String currentFontFile = "CabinSketch-Bold.ttf";
   	InputStream fontStream = MMenu.class.getResourceAsStream(currentFontFile);
   	Font bgFont = Font.loadFont(fontStream, 36);
-Font bgFont2 = Font.loadFont(fontStream, 100);
-    //MGraphics mgraphics = new MGraphics();
-    //MUI mn= new MUI(mgraphics);
+	Font bgFont2 = Font.loadFont(fontStream, 100);
     Main m;
-
 
     String[] name = {"Start", "Instructions","Multiple Choice", "Set Questions", "Leader Board", "Quit"};
 
@@ -66,13 +60,11 @@ Font bgFont2 = Font.loadFont(fontStream, 100);
     Stage backStage;
     Scene backScene;
 
-
     // animation time
     public static final long duration = 40000;
 
     // num of circle
     public static final int count = 20;
-
 
 	public MMenu (){
 
@@ -84,17 +76,12 @@ Font bgFont2 = Font.loadFont(fontStream, 100);
 	  g.drawImage(bg, 0, 0);
 	}
 
-
 	private void press(ActionEvent event) {
 	  String text = ((Button)event.getSource()).getText();
 	  switch(text){
 	  	case "Start":
-	  		//goto game home to play game
-	        //mgraphics.circleAnimation();
 			m =  new Main(backStage,backScene);
 	        starStage.setScene(m.setUp(starStage,1));
-
-			System.out.println("start");
 	  		m.show(starStage,1);
 
 	  		break;
@@ -108,40 +95,18 @@ Font bgFont2 = Font.loadFont(fontStream, 100);
 				// create a new scene
 	  			starStage.setScene(instruct.instructionShow());
 	  			instruct.scroll(content);
-	  			/*sp.setPrefSize(200,200);
-	  			sp.setContent(content);
-		        sp.vvalueProperty().addListener(new ChangeListener<Number>() {
-	         		public void changed(ObservableValue<? extends Number> ov,
-	              	Number old_val, Number new_val) {
-	                  content.setLayoutY(-new_val.intValue());
-	                  System.out.println(new_val.intValue());
-	         	 	}
-        		});
-        		sp.hvalueProperty().addListener(new ChangeListener<Number>() {
-		          	public void changed(ObservableValue<? extends Number> ov,
-		              Number old_val, Number new_val) {
-		                  System.out.println(new_val.intValue());
-		        	}
-		    	});
-		    	instruct.borderPane.setCenter(sp);*/
 	  		} catch (IOException e) {
-	  			System.out.println("OH no!");
 	  		}
 
 	  		show(starStage);
-	  		System.out.println("Instructions");
 	  		break;
 		case "Multiple Choice":
 	  		//goto game home to play game
-	        //mgraphics.circleAnimation();
 			m =  new Main(backStage,backScene);
 	        starStage.setScene(m.setUp(starStage,2));
 
-			System.out.println("start");
 	  		m.show(starStage,2);
 			break;
-
-
 	  	case "Set Questions":
 	  		AddQuestions instruct1 = new AddQuestions(backScene, backStage, scene.getWidth(), scene.getHeight());
 	  		try {
@@ -151,21 +116,16 @@ Font bgFont2 = Font.loadFont(fontStream, 100);
 	  			starStage.setScene(instruct1.instructionShow());
 
 	  		} catch (IOException e) {
-	  			System.out.println("OH no!");
 	  		}
 	  		show(starStage);
-	  		System.out.println("Instructions");
 	  		break;
 	  	case "Leader Board":
-	  			  		LeaderBoard lb = new LeaderBoard(backScene,backStage,scene.getWidth(),scene.getHeight(),false);
-
+	  		LeaderBoard lb = new LeaderBoard(backScene,backStage,scene.getWidth(),scene.getHeight(),false);
 			starStage.setScene(lb.leaderBoardShow());
-
 			show(starStage);
 	  		break;
 	  	case "Quit":
 			starStage.close();
-	  		System.out.println("Quit");
 	  		break;
 	  	default:
 	  		break;
@@ -203,23 +163,11 @@ Font bgFont2 = Font.loadFont(fontStream, 100);
 	private void reDrawRectangle(){
 		g.clearRect(0, 0, scene.getWidth(), scene.getHeight());
 		animate(scene.getWidth(),scene.getHeight());
-		System.out.println("redraw");
 	}
 
   	public void animate(double endX, double endY) {
       gameName.setFont(bgFont);
-      /**
-  		 * @param [parameter-name]
-         * public LinearGradient(
-         *		double startX,
-         *   	double startY,
-         *     	double endX,
-         *      double endY,
-         *      boolean proportional,
-         *     	CycleMethod cycleMethod,
-         *		java.util.List<Stop> stops)
-  		 */
-    gameName.setFont(bgFont);
+      gameName.setFont(bgFont);
   		Rectangle colors = new Rectangle(0, 0, endX, endY);
 	    LinearGradient lg2 = new LinearGradient(0f, 1f, 1f, 1f, true, CycleMethod.NO_CYCLE, new Stop[]{
 	            new Stop(0, Color.web("#f8bd55")),     // web color
@@ -234,18 +182,11 @@ Font bgFont2 = Font.loadFont(fontStream, 100);
 	    colors.widthProperty().bind(scene.widthProperty());
 	    colors.heightProperty().bind(scene.heightProperty());
 
-
-	    //to be discussed
-		//colors.widthProperty().addListener(event -> reDrawRectangle());
-        //colors.heightProperty().addListener(event -> reDrawRectangle());
-
-
 	    Group circles = new Group();
 	    for (int i = 0; i < count; i++) {
 	        Circle circle = new Circle(Math.random() * 30 + 30, Color.web("blue", 0.45)); //create circle, color:white, opacity:15%
 	        circle.setStroke(Color.web("white", 0.2)); //border_color: white, opacity: 20%
 	        circle.setStrokeWidth(2); //boder-width
-	        //circles.setEffect(new BoxBlur(10, 10, 3));
 	        circles.getChildren().add(circle);
 	    }
 
@@ -270,9 +211,7 @@ Font bgFont2 = Font.loadFont(fontStream, 100);
 	}
 
 	private void redraw() {
-		System.out.println("redraw!");
 		g.clearRect(0, 0, scene.getWidth(), scene.getHeight());
-		//animate();
 	    g.drawImage(bg, canvas.getWidth()/4, canvas.getHeight()/4);
 	}
 
@@ -282,23 +221,16 @@ Font bgFont2 = Font.loadFont(fontStream, 100);
 		vbox.setSpacing(10);
 		vbox.getChildren().addAll(buttonList);
 		vbox.setAlignment(Pos.CENTER);
-		//root.getChildren().add(vbox);
-
-	 //	gameName.setFont(bgFont);
 
 		// set horizontal layout off buttons
 		HBox hbox = new HBox();
 		hbox.getChildren().add(gameName);
 		hbox.setAlignment(Pos.CENTER);
-		//root.getChildren().add(hbox);
-
 
 		// put all into BorderPane and then put into parent root
 		borderPane.getChildren().add(canvas);
 		borderPane.setRight(vbox);
 		borderPane.setTop(hbox);
-		//borderPane.setFont(bgFont);
-		//root.getChildren().add(borderPane);
 	}
 
 	public void setButton(){
@@ -307,7 +239,6 @@ Font bgFont2 = Font.loadFont(fontStream, 100);
 			Button b = createButton(s);
 			buttonList.add(b);
 		}
-
 		// set style and add EventLstener
 		String cssButton = "-fx-border-radius: 20.0;-fx-background-color: green;"
 					+ "-fx-background-radius: 20;-fx-text-fill: yellow; "
@@ -319,13 +250,10 @@ Font bgFont2 = Font.loadFont(fontStream, 100);
 			b.setFont(bgFont);
 			b.setOnAction(this::press);
 		}
-		//gameName.setStyle("-fx-font-size: 80px;-fx-text-fill: greenyellow;");
 		borderPane.setStyle("-fx-background: ORANGE");
 	}
 
 	public void bindControl(){
-		//Scene scene = new Scene(root,400,300, Color.ORANGE);
-
 		// Bind the width/height with scene
 	    canvas.widthProperty().bind(scene.widthProperty());
         canvas.heightProperty().bind(scene.heightProperty());
@@ -347,14 +275,10 @@ Font bgFont2 = Font.loadFont(fontStream, 100);
         backScene = scene;
 	    stage.setTitle("Bug Bits!");
 	    stage.setScene(scene);
-
-	    System.out.println(scene);
-
 	    bindControl();
 	    animate(scene.getWidth(),scene.getHeight());
 	    setButton();
 		fixPosition();
-
 	 	show(stage);
 	}
 

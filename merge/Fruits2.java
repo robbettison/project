@@ -146,15 +146,11 @@ currentFruit.setFruitAnswer(endGame.get(i));}
 
 
         if(currentFruit.getFruitAnswer().equals(nextAns)) {
-			correct = new inGameText(root);
-
-          score.set(score.get()+10);
-          System.out.println("correct answer");
-System.out.println("SCORE IS:" +  score.get());
+			     correct = new inGameText(root);
+           score.set(score.get()+10);
         }
         else {score.set(score.get());
-		System.out.println("wrong answer");
-	}
+		}
 	questions.setNewQuestion();
         resetSalad();
         

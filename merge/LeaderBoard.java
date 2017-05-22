@@ -25,7 +25,7 @@ public class LeaderBoard {
     private Button confirm;
 	private Button back;
     private int sc = 99;
-Scanner scanner;
+    Scanner scanner;
     Scene newScene, oldScene;
 	double width, height;
 	MMenu menu = new MMenu();
@@ -61,14 +61,14 @@ Scanner scanner;
 		back = new Button("Back");
 		back.setTranslateX(140);
         back.setOnAction(e -> backFunc());
-	readFile();
+	   readFile();
 
         table = new TableView<>();
-	scoreColumn.setSortType(TableColumn.SortType.DESCENDING);
+	    scoreColumn.setSortType(TableColumn.SortType.DESCENDING);
         table.setItems(getTopScore());
         table.getColumns().add(nameColumn);
         table.getColumns().add(scoreColumn);
-	table.getSortOrder().add(scoreColumn);
+	    table.getSortOrder().add(scoreColumn);
 
 
         VBox vBox = new VBox();
@@ -89,24 +89,13 @@ Scanner scanner;
         bp.setBottom(hBox);
 
         newScene = new Scene(bp, 800, 600);
-      //  window.setScene(scene);
-        //window.show();
     }
 
     //Get all of the TopScores
 
     public ObservableList<TopScore> getTopScore(){
-	//readFile();
-/*
-        topScores.add(new TopScore("Kev", 100));
-        topScores.add(new TopScore("Jiafeng", 80));
-        topScores.add(new TopScore("Hugo", 50));
-        topScores.add(new TopScore("Rob", 9));
-        topScores.add(new TopScore("Oli", 22));
-*/
         return topScores;
     }
-
 
     void confirmFunc(){
 
@@ -114,45 +103,39 @@ Scanner scanner;
       newScore.setName(nameInput.getText());
       newScore.setScore(sc);
       table.getItems().add(newScore);
-
-writeFile( nameInput.getText() + "`" +sc);
-
+      writeFile( nameInput.getText() + "`" +sc);
       confirm.setOnAction(null);
     }
-
 
 	void backFunc(){
 		window.setScene(oldScene);
 		menu.show(window);
-
-
 	}
-public void writeFile(String string) {
+
+    public void writeFile(String string) {
     try (BufferedWriter bw = new BufferedWriter(new FileWriter("leaderboard.txt", true))) {
 
 
-   bw.write(string);
+    bw.write(string);
     bw.newLine();
 
     } catch (IOException e) {
         e.printStackTrace();
 
+        }
     }
-}
-void readFile(){
-	String temp, name;
-	try{
-		scanner = new Scanner(new FileReader("leaderboard.txt"));
 
-		while(scanner.hasNext()){
-			temp = scanner.nextLine();
-			topScores.add(putToTopScore(temp));
+    void readFile(){
+	   String temp, name;
+    	try{
+    		scanner = new Scanner(new FileReader("leaderboard.txt"));
 
-System.out.println("adding");
-
-		}
-	}catch (Exception e){e.printStackTrace();}
-}
+    		while(scanner.hasNext()){
+    			temp = scanner.nextLine();
+    			topScores.add(putToTopScore(temp));
+    		}
+    	}catch (Exception e){e.printStackTrace();}
+    }
 
 TopScore putToTopScore(String temp){
 	TopScore ts;
